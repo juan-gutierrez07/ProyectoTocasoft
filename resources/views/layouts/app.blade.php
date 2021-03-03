@@ -15,6 +15,7 @@
     <script src="https://unpkg.com/esri-leaflet" defer></script>
     <script src="https://unpkg.com/esri-leaflet-geocoder" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.js" integrity="sha256-OG/103wXh6XINV06JTPspzNgKNa/jnP1LjPP5Y3XQDY=" crossorigin="anonymous" defer></script>
+   
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -114,7 +115,7 @@
 @endcan
     
        <li>                                   
-       <a href="{{ route('home') }}">
+       <a href="{{ url('/') }}">
        <i class="fa fa-home fa-lg"></i>
        <span class="nav-text">Home</span>
        </a>

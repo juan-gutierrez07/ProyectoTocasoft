@@ -48,5 +48,14 @@ class Categorias extends Seeder
 
 
         ]);
+        DB::table('categories')->insert([
+            'name'=>'Hoteles',
+            'slug'=>'Hoteles',
+            'type'=> 'Sitio',
+            'created_at'=>Carbon::now(),
+            'updated_at'=>Carbon::now(),
+
+
+        ]);
     }
 }

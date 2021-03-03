@@ -70,22 +70,19 @@ class PlaceController extends Controller
     {
         $modelos = Place::all();
 
-        return view('establecimientos/lista',compact('modelos'));
+        return view('establecimientos/informacion',compact('modelos'));
     }
     public function show(Place $place)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function edit(Place $place)
     {
-        //
+        $establecimiento = Place::findOrFail($place->id);
+        $categorys = Category::all();
+        return view('establecimientos/editar', compact('establecimiento','categorys'));
     }
 
     /**
@@ -106,8 +103,12 @@ class PlaceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Place $place)
-    {
-        //
+    public function destroy(Place $place){
+        // $place->delete();
+        $respuesta =[
+            'status'=> 200,
+            'body' => "Se elimino correctamente",
+        ];
+        return response()->json($respuesta);
     }
 }

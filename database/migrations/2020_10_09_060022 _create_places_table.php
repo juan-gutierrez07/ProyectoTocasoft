@@ -21,7 +21,7 @@ class CreatePlacesTable extends Migration
             $table->string('lat');
             $table->string('lng');
             $table->string('telefono');
-            $table->string('descripcion');
+            $table->text('descripcion');
             $table->string('imagen_principal');
             $table->time('apertura');
             $table->time('cierre');

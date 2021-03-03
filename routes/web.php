@@ -31,11 +31,11 @@ Auth::routes(['verify' => true]);
 
 //Todas las rutas del group debe ser autenticadas o verificadas en tal caso..
 Route::group(['middleware' => ['admin','auth']], function(){
-    Route::get('establecimiento/create','PlaceController@create')->name('place.create');
-    Route::post('establecimiento/store','PlaceController@store')->name('place.store');
-    Route::get('establecimiento/edit','PlaceController@edit')->name('place.edit');
-    Route::get('establecimiento/destroy','PlaceController@destroy')->name('place.destroy');
-    Route::get('establecimiento/info','PlaceController@info')->name('place.list');
+    Route::get('/establecimiento/create','PlaceController@create')->name('place.create');
+    Route::post('/establecimiento/store','PlaceController@store')->name('place.store');
+    Route::get('/establecimiento/edit/{place}','PlaceController@edit')->name('place.edit');
+    Route::get('/establecimiento/destroy/{place}','PlaceController@destroy')->name('place.destroy');
+    Route::get('/establecimiento/info','PlaceController@info')->name('place.list');
     Route::post('/imagenes/store','ImageController@store')->name('imagenes.store');
     Route::post('/imagenes/destroy','ImageController@destroy')->name('imagenes.destroy');
 }); 

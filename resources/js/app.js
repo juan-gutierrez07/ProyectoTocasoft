@@ -7,6 +7,10 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import 'sweetalert2/dist/sweetalert2.min.css';
+import router from './router';
+import VueSweetalert2 from 'vue-sweetalert2';
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,6 +24,9 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('pagina-principal', require('./components/PaginaPrincipal.vue').default);
+Vue.component('eliminar-establecimiento', require('./components/EliminarEstablecimiento.vue').default);
+Vue.use(VueSweetalert2);
+console.log(Vue.prototype);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -29,6 +36,7 @@ Vue.component('pagina-principal', require('./components/PaginaPrincipal.vue').de
 
 const app = new Vue({
     el: '#app',
+    router
 });
 require('./mapa');
 require("./dropzone");
