@@ -4,10 +4,16 @@
 
         <div class="row align-items-start">
             <div class="col-md-8 order-2">
-                    <img :src="`../storage/${establecimiento.imagen_principal}`" class="img-fluid" alt="imagen establecimiento">
-                    <p class="mt-3"> {{establecimiento.descripcion}} </p>
-                      <galeria-imagenes></galeria-imagenes>
+                <div class="card">
+                    <img :src="`../storage/${establecimiento.imagen_principal}`" class="card-img-top" alt="imagen establecimiento">
+                    <div class="card-body">
+                        <h3 class="card-title text-primary font-weight-bold"> Descripcion:</h3>
+                        <p class="mt-3"> {{establecimiento.descripcion}} </p>
+                    </div>
+                </div>
+                    <galeria-imagenes></galeria-imagenes>    
             </div>
+                    
                 <aside class="col-md-4 order-1">
                 <div>
                     <mapa-ubicacion></mapa-ubicacion>

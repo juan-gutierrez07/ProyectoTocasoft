@@ -3,7 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\User;
 use Illuminate\Support\Facades\Gate;
-use GoogleMaps\ServiceProvider\GoogleMapsServiceProvider;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,7 @@ Route::group(['middleware' => ['admin','auth']], function(){
     Route::get('/establecimiento/info','PlaceController@info')->name('place.list');
     Route::post('/imagenes/store','ImageController@store')->name('imagenes.store');
     Route::post('/imagenes/destroy','ImageController@destroy')->name('imagenes.destroy');
+    Route::get('/establecimientos','PlaceController@all')->name('places');
 }); 
 
 
@@ -47,6 +49,7 @@ Route::group(['middleware' => ['admin','auth']], function(){
 
 
 //Pruebas
+
 Route::get('/test', function(){
     return Auth::user()->roles[0]->rolname;
 

@@ -8,7 +8,8 @@ export default new Vuex.Store({
 
     state:{
         hoteles:[],
-        establecimiento:{}
+        establecimiento:{},
+        establecimientos:[]
     },
     mutations:{  // parte del state general en donde se realizar diferentes metodos que haran una accción dependiendo de data
         Agregar_hoteles(state,data){
@@ -17,6 +18,9 @@ export default new Vuex.Store({
         Agregar_establecimiento(state,data){
             state.establecimiento = data;
 
+        },
+        Agregar_establecimientos(state,data){
+            state.establecimientos = data;
         }
     },
     getters:{
@@ -25,6 +29,9 @@ export default new Vuex.Store({
         },
         obtenerImagenes: state =>{
                 return state.establecimiento.imagenes;
+        },
+        obtenerEstablecimientos: state =>{
+            return state.establecimientos;
         }
     }
 });

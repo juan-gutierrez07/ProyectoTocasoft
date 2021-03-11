@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       zoom: 16,
-      center: latLng(4.4605942, -74.63432193),
+      center: latLng(4.45637843,-74.63432193),
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
       currentZoom: 11.5,

@@ -11,7 +11,18 @@ use Intervention\Image\Facades\Image;
 class PlaceController extends Controller
 {
    
-
+    public function all()
+    {   $nombres=[];
+        $places = [];
+        $categoria=Category::with('places')->get();
+        foreach($categoria as $categorias)
+        {
+            array_push($places,  $categorias->places);
+        }
+            $places = json_encode($places);
+            // return $places;
+        return view('rutas_turisticas.create',compact('categoria', 'places','nombres'));
+    }
    
     public function create()
     {
@@ -30,10 +41,10 @@ class PlaceController extends Controller
     {
         $this->authorize('haveaccess','user.show'); 
          $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:places,name',
             'categoria_id' => 'required',
             'imagen_principal' => 'required|image|max:1000',
-            'direccion' => 'required',
+            'direccion' => 'required|unique:places,direccion',
             'lat' => 'required',
             'lng' => 'required',
             'telefono' => 'required|numeric',
@@ -104,7 +115,7 @@ class PlaceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Place $place){
-        // $place->delete();
+        $place->delete();
         $respuesta =[
             'status'=> 200,
             'body' => "Se elimino correctamente",

@@ -12,8 +12,8 @@ class Categorias extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'name'=>'Cultural',
-            'slug'=>'Cultural',
+            'name'=>'Culturales',
+            'slug'=>'Culturales',
             'type'=> 'Sitio',
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now(),
@@ -22,8 +22,8 @@ class Categorias extends Seeder
         ]);
         
         DB::table('categories')->insert([
-            'name'=>'Natural',
-            'slug'=>'Natural',
+            'name'=>'Naturales',
+            'slug'=>'Naturales',
             'type'=> 'Sitio',
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now(),
@@ -31,8 +31,8 @@ class Categorias extends Seeder
 
         ]);
         DB::table('categories')->insert([
-            'name'=>'Gubernamental',
-            'slug'=>'Gubernamental',
+            'name'=>'Gubernamentales',
+            'slug'=>'Gubernamentales',
             'type'=> 'Sitio',
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now(),
@@ -40,8 +40,8 @@ class Categorias extends Seeder
 
         ]);
         DB::table('categories')->insert([
-            'name'=>'Historica',
-            'slug'=>'Historica',
+            'name'=>'Historicos',
+            'slug'=>'Historicos',
             'type'=> 'Ruta',
             'created_at'=>Carbon::now(),
             'updated_at'=>Carbon::now(),

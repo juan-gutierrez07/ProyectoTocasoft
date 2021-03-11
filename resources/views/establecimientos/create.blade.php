@@ -7,18 +7,17 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
 />
 @endsection
 @section('content')
-<div class="container">
-      
-        <div class="container">
+    <div class="container">
                 <h1 class="text-center mt-4">Registrar Establecimiento</h1>
        
-                <div class="mt-5 row justify-content-center">
-                    <form
-                        class="col-md-9 col-xs-12 card card-body"
-                        action="{{ route('place.store') }}"
-                        method="POST"
-                        enctype="multipart/form-data"
-                    >
+        <div class="mt-5 row justify-content-center">
+                @include('establecimientos.message')
+            <form
+                class="col-md-9 col-xs-12 card card-body"
+                    action="{{ route('place.store') }}"
+                    method="POST"
+                    enctype="multipart/form-data"
+                >
                     @csrf
                         <fieldset class="border p-4">
                             <legend class="text-primary">Nombre, Categoría e Imagen Principal</legend>
@@ -32,6 +31,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                     placeholder="Nombre Establecimiento"
                                     name="name"
                                     value="{{ old('nombre') }}"
+                                    required
                                 >
         
                                 @error('nombre')
@@ -48,6 +48,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                     class="form-control @error('categoria_id') is-invalid @enderror"
                                     name="categoria_id"
                                     id="categoria"
+                                    required
                                 >
                                     <option value="" selected disabled>-- Seleccione --</option>
         
@@ -74,6 +75,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                     class="form-control @error('imagen_principal') is-invalid @enderror "
                                     name="imagen_principal"
                                     value="{{ old('imagen_principal') }}"
+                                    required
                                 >
         
                                 @error('imagen_principal')
@@ -121,6 +123,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                     placeholder="Dirección"
                                     value="{{old('direccion')}}"
                                     name="direccion"
+                                    required
                                 >
                             </div>
                             <div class="form-group">
@@ -141,6 +144,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                         placeholder="Teléfono Establecimiento"
                                         name="telefono"
                                         value="{{ old('telefono') }}"
+                                        required
                                     >
         
                                         @error('telefono')
@@ -157,7 +161,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                     <textarea
                                         class="form-control  @error('descripcion')  is-invalid  @enderror"
                                         name="descripcion"
-                                    >{{ old('descripcion') }}</textarea>
+                                        required >{{ old('descripcion') }}</textarea>
         
                                         @error('descripcion')
                                             <div class="invalid-feedback">
@@ -174,6 +178,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                         id="apertura"
                                         name="apertura"
                                         value="{{ old('apertura') }}"
+                                        required
                                     >
                                     @error('apertura')
                                         <div class="invalid-feedback">
@@ -190,6 +195,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                         id="cierre"
                                         name="cierre"
                                         value="{{ old('cierre') }}"
+                                        required
                                     >
                                     @error('cierre')
                                         <div class="invalid-feedback">
@@ -211,12 +217,8 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                         <input type="submit" class="btn btn-primary mt-3 d-block" value="Registrar Establecimiento">
         
         
-                    </form>
-                </div>
-            </div>
-        
-
-</div>
-
+            </form>
+        </div>
+    </div>
 @endsection
 
