@@ -23,8 +23,8 @@ class TuoristRoute extends Model
     {
         return $this->hasMany('App\Modelos\CommentsRoute');
     }
-    public function banners()
-    {
-        return $this->belongsTo('App\Modelos\Banner','banner_id');
-    }
+    // public function banners()
+    // {
+    //     return $this->belongsTo('App\Modelos\Banner','banner_id');
+    // }
 }

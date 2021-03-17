@@ -8,9 +8,9 @@ class Images extends Model
 {
 
 
-    public function banners()
-    {
-        return $this->belongsToMany('App\Modelos\Banner')->withPivot('images_id', 'banner_id');
+    // public function banners()
+    // {
+    //     return $this->belongsToMany('App\Modelos\Banner')->withPivot('images_id', 'banner_id');
 
-    }
+    // }
 }

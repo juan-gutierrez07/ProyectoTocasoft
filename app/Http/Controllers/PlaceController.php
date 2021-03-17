@@ -12,16 +12,22 @@ class PlaceController extends Controller
 {
    
     public function all()
-    {   $nombres=[];
+    {   
+        // $naturales=[];
+        // $culturales=[];
+        // $gubernamentales=[];
+        // $historicos=[];
+        // $hoteles=[];
         $places = [];
         $categoria=Category::with('places')->get();
+        // $categoriaruta = Category::where('type','Ruta')->get();
         foreach($categoria as $categorias)
         {
             array_push($places,  $categorias->places);
         }
             $places = json_encode($places);
             // return $places;
-        return view('rutas_turisticas.create',compact('categoria', 'places','nombres'));
+        return view('rutas_turisticas.create',compact('categoria', 'places'));
     }
    
     public function create()

@@ -17,7 +17,8 @@ class CreateTuoristRouteTable extends Migration
             $table->id();
             $table->string('name', 255);
             $table->string('time_travel');
-            $table->foreignId('banner_id')->references('id')->on('banners')->onDelete('cascade')->onUpdate('cascade');
+            $table->uuid('uuid');
+            $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
