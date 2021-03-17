@@ -16,7 +16,7 @@ class CreateImagesRoutesTable extends Migration
         Schema::create('images_routes', function (Blueprint $table) {
             $table->id();
             $table->string('locaction',255);
-            $table->string('id_route');
+            $table->uuid('id_route');
             $table->timestamps();
         });
     }
