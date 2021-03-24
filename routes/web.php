@@ -31,17 +31,18 @@ Auth::routes();
 Auth::routes(['verify' => true]);
 
 //Todas las rutas del group debe ser autenticadas o verificadas en tal caso..
-Route::group(['middleware' => ['admin','auth']], function(){
+Route::group(['middleware' => ['admin']], function(){
     Route::get('/establecimiento/create','PlaceController@create')->name('place.create');
     Route::post('/establecimiento/store','PlaceController@store')->name('place.store');
     Route::get('/establecimiento/edit/{place}','PlaceController@edit')->name('place.edit');
     Route::get('/establecimiento/destroy/{place}','PlaceController@destroy')->name('place.destroy');
     Route::get('/establecimiento/info','PlaceController@info')->name('place.list');
-    Route::post('/imagenes/store','ImageController@store')->name('imagenes.store');
-    Route::post('/imagenes/destroy','ImageController@destroy')->name('imagenes.destroy');
-    Route::get('/establecimientos','PlaceController@all')->name('places');
+    Route::post('/imagenes/store','ImageController@store');
+    Route::post('/imagenesrt','ImagesRoutesController@store');
+    Route::post('/imagenes/destroy','ImageController@destroy');
+    Route::post('/imagenesrt/destroy','ImagesRoutesController@destroy');
+    Route::get('/rutas','PlaceController@all')->name('places');
 }); 
-
 
 //Rutas de usuarios->roles y sus respectivos permisos
     Route::resource('/role', 'RoleController')->names('role')->middleware('auth');    

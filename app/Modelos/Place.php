@@ -9,10 +9,12 @@ class Place extends Model
     
     protected $fillable = [
         'name',
+        'category_id',
         'direccion',
-        'latitud',
-        'longitud',
+        'lat',
+        'lng',
         'telefono',
+        'descripcion',
         'imagen_principal',
         'apertura',
         'cierre',

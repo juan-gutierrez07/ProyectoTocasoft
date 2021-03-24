@@ -10,7 +10,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
 <div class="container">
       
         <div class="container">
-                <h1 class="text-center mt-4">Editar Establecimiento {{ $establecimiento->name }}</h1>
+                <h1 class="text-center mt-4">Editar Establecimiento {{ $place->name }}</h1>
        
                 <div class="mt-5 row justify-content-center">
                     <form
@@ -31,7 +31,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                     class="form-control @error('nombre') is-invalid @enderror "
                                     placeholder="Nombre Establecimiento"
                                     name="name"
-                                    value="{{ $establecimiento->name }}"
+                                    value="{{ $place->name }}"
                                 >
         
                                 @error('nombre')
@@ -49,7 +49,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                     name="categoria_id"
                                     id="categoria"
                                 >
-                                    <option value="">------------- </option>
+                                    <option value="{{ $place->id }}">{{ $place->category->name }}</option>
         
                                     @foreach ($categorys as $category)
                                         <option
@@ -73,7 +73,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                     type="file"
                                     class="form-control @error('imagen_principal') is-invalid @enderror "
                                     name="imagen_principal"
-                                    value="{{ $establecimiento->imagen_principal }}"
+                                    value="{{  $place->imagen_principal }}"
                                 >
         
                                 @error('imagen_principal')
@@ -119,14 +119,14 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                     id="direccion"
                                     class="form-control @error('direccion') is-invalid @enderror"
                                     placeholder="Dirección"
-                                    value="{{old('direccion')}}"
+                                    value="{{  $place->direccion }}"
                                     name="direccion"
                                 >
                             </div>
                             <div class="form-group">
-                            <input class="form-control" type="text" id="lat" name="lat" value="{{old('lat')}}" placeholder="Latitud">
+                            <input class="form-control" type="text" id="lat" name="lat" value="{{ $place->lat}}" placeholder="Latitud">
                             <br>
-                            <input class="form-control" type="text" id="lng" name="lng" value="{{old('lng')}}" placeholder="Longitud">
+                            <input class="form-control" type="text" id="lng" name="lng" value="{{ $place->lng }}" placeholder="Longitud">
                             </div>
                         </fieldset>
         
@@ -140,7 +140,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                         id="telefono"
                                         placeholder="Teléfono Establecimiento"
                                         name="telefono"
-                                        value="{{ old('telefono') }}"
+                                        value="{{ $place->telefono }}"
                                     >
         
                                         @error('telefono')
@@ -157,7 +157,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                     <textarea
                                         class="form-control  @error('descripcion')  is-invalid  @enderror"
                                         name="descripcion"
-                                    >{{ old('descripcion') }}</textarea>
+                                    >{{ $place->descripcion }}</textarea>
         
                                         @error('descripcion')
                                             <div class="invalid-feedback">
@@ -173,7 +173,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                         class="form-control @error('apertura')  is-invalid  @enderror"
                                         id="apertura"
                                         name="apertura"
-                                        value="{{ old('apertura') }}"
+                                        value="{{ $place->apertura }}"
                                     >
                                     @error('apertura')
                                         <div class="invalid-feedback">
@@ -189,7 +189,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                         class="form-control @error('cierre')  is-invalid  @enderror"
                                         id="cierre"
                                         name="cierre"
-                                        value="{{ old('cierre') }}"
+                                        value="{{ $place->cierre }}"
                                     >
                                     @error('cierre')
                                         <div class="invalid-feedback">

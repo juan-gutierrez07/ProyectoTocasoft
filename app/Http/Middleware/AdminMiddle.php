@@ -15,8 +15,9 @@ class AdminMiddle
      */
     public function handle($request, Closure $next)
     {
-
-        if(auth()->check() && auth()->user()->roles[0]->rolname == "Administrador")
+        if(!(auth()->check())){
+            return redirect('/login');
+        }else if(auth()->check() && auth()->user()->roles[0]->rolname == "Administrador")
         {
             return $next($request);
         }

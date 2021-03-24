@@ -2,12 +2,12 @@
 @section('content')
 
 <div class="container">
-    <nav aria-label="breadcrumb">
+    {{-- <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Crear Ruta</li>
         </ol>
-  </nav>
+  </nav> --}}
     <h1 class="text-center mt-4">Registrar Ruta Turistica</h1>
 
   <div class="mt-5 row justify-content-center">
@@ -18,6 +18,7 @@
         method="POST"
         enctype="multipart/form-data"
       >
+      
       @csrf
       <fieldset class="border p-4">
           <legend class="text-primary text-center mt-4">Datos para la nueva ruta</legend>
@@ -59,6 +60,9 @@
                   </div>
               @enderror
           </div>
+            <div class= form-group>
+              <label for="descripction"></label>
+            </div>            
       </fieldset>
         <fieldset>
           <div class="container-lg my-4">
@@ -308,6 +312,13 @@
                 </div>                       
               </div>
         </fieldset>
+        <fieldset class="border p-4 mt-5">
+          <legend  class="text-primary">Crear Banner </legend>
+              <div class="form-group">
+                  <label for="imagenes">Imagenes</label>
+                  <div id="dropzone-routes" class="dropzone form-control"></div>
+              </div>
+      </fieldset>
         <input type="hidden" id="uuid" name="uuid" value="{{ Str::uuid()->toString()}}">
         <input type="submit" class="btn btn-primary mt-3 d-block" value="Registrar Ruta Turistica">
     </form>

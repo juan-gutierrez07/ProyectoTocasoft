@@ -97,9 +97,9 @@ class PlaceController extends Controller
  
     public function edit(Place $place)
     {
-        $establecimiento = Place::findOrFail($place->id);
-        $categorys = Category::all();
-        return view('establecimientos/editar', compact('establecimiento','categorys'));
+        $place = Place::findOrFail($place->id);
+        $categorys = Category::where('id','!=',$place->id)->orWhereNull('id')->get();
+        return view('establecimientos/editar', compact('place','categorys'));
     }
 
     /**

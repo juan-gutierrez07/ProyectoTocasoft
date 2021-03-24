@@ -6863,7 +6863,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 exports.push([module.i, "@import url(https://unpkg.com/leaflet@1.6.0/dist/leaflet.css);", ""]);
 
 // module
-exports.push([module.i, "\n.mapa[data-v-2411da3f] {\n  height: 300px;\n  width: 100%;\n}\n", ""]);
+exports.push([module.i, "\n.mapa[data-v-2411da3f] {\r\n  height: 300px;\r\n  width: 100%;\n}\r\n", ""]);
 
 // exports
 
@@ -87512,8 +87512,8 @@ document.addEventListener('DOMContentLoaded', function () {
     Dropzone.autoDiscover = false;
     var dropzone = new Dropzone('div#dropzone', {
       url: '/imagenes/store',
-      dictDefaultMessage: 'Sube hasta 10 imágenes',
-      maxFiles: 10,
+      dictDefaultMessage: 'Sube hasta 5 imágenes',
+      maxFiles: 5,
       required: true,
       acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
       addRemoveLinks: true,
@@ -87535,6 +87535,42 @@ document.addEventListener('DOMContentLoaded', function () {
           imagen: file.nombreServidor
         };
         axios.post('/imagenes/destroy', params).then(function (respuesta) {
+          console.log(respuesta); // Limpiar archivo
+
+          file.previewElement.parentNode.removeChild(file.previewElement);
+        });
+      }
+    });
+  }
+
+  if (document.querySelector('#dropzone-routes')) {
+    Dropzone.autoDiscover = false;
+
+    var _dropzone = new Dropzone('div#dropzone-routes', {
+      url: '/imagenesrt',
+      dictDefaultMessage: 'Sube hasta 5 imágenes',
+      maxFiles: 5,
+      required: true,
+      acceptedFiles: ".png,.jpg,.gif,.bmp,.jpeg",
+      addRemoveLinks: true,
+      dictRemoveFile: "Eliminar Imagen",
+      headers: {
+        'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content
+      },
+      success: function success(file, respuesta) {
+        console.log(file);
+        console.log(respuesta);
+        file.nombreServidor = respuesta.archivo;
+      },
+      sending: function sending(file, xhr, formData) {
+        formData.append('uuid', document.querySelector('#uuid').value);
+      },
+      removedfile: function removedfile(file, respuesta) {
+        console.log(file);
+        var params = {
+          imagen: file.nombreServidor
+        };
+        axios.post('/imagenesrt/destroy', params).then(function (respuesta) {
           console.log(respuesta); // Limpiar archivo
 
           file.previewElement.parentNode.removeChild(file.previewElement);
