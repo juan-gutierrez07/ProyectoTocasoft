@@ -15,7 +15,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                 <div class="mt-5 row justify-content-center">
                     <form
                         class="col-md-9 col-xs-12 card card-body"
-                        action=""
+                        action="{{ route('rutas.store') }}"
                         method="POST"
                         enctype="multipart/form-data"
                     >
@@ -198,6 +198,22 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                     @enderror
                                 </div>
                         </fieldset>
+                        <fieldset class="border p-4">
+                                <legend class="text-primary text-center mt-4">Imagenes del sitio</legend>
+                                <div class="col-md-12 row">
+                                    @foreach ($imagenes as $imagen )
+                                        <div class="col-md-4 mb-4">
+                                            <div class="card" style="justify-content:space-evenly;">
+                                                <img class="card-img-top" src="../../storage/{{ $imagen->location }}" alt="{{ $imagen->name }}">
+                                                <div class="card-body">
+                                                    <eliminar-imagen-sitio imagen-id= {{ $imagen->id }}></eliminar-imagen-sitio>
+                                                {{-- <a class=" btn btn-danger" id="eliminar">Eliminar</a> --}}
+                                                </div>
+                                            </div>  
+                                        </div>
+                                    @endforeach
+                                </div>   
+                        </fieldset>        
                    <input type="submit" class="btn btn-primary mt-3 d-block" value="Editar Establecimiento">
         
         

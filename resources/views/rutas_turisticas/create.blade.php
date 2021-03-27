@@ -61,13 +61,23 @@
               @enderror
           </div>
             <div class= form-group>
-              <label for="descripction"></label>
+              <label for="descripction"> Descripción</label>
+              <textarea
+              class="form-control  @error('descripcion')  is-invalid  @enderror"
+              name="descripcion"
+              required >{{ old('descripcion') }}</textarea>
+
+              @error('descripcion')
+                  <div class="invalid-feedback">
+                      {{$message}}
+                  </div>
+              @enderror
             </div>            
       </fieldset>
-        <fieldset>
+      <fieldset class="border p-4">
+          <legend class="text-primary text-center mt-4">Sitios Turisticos registrados</legend>
           <div class="container-lg my-4">
                 <div class="container">
-                 @include('establecimientos.message')
                   <div class="accordion" id="accordionExample" style="margin-bottom: 10px; padding: 10px;">
                     <div class="card" style="border-radius: 10px;">
                       <div class="card-header" id="heading" style="background-color: #DCDCDC;">

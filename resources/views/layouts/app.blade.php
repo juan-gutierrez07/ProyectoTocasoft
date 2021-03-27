@@ -12,9 +12,13 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/mapa.js') }}" defer></script>
-    <script src="https://unpkg.com/esri-leaflet" defer></script>
-    <script src="https://unpkg.com/esri-leaflet-geocoder" defer></script>
+    {{-- <script src="https://unpkg.com/esri-leaflet" defer></script> --}}
+    {{-- <script src="https://unpkg.com/esri-leaflet-geocoder" defer></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.js" integrity="sha256-OG/103wXh6XINV06JTPspzNgKNa/jnP1LjPP5Y3XQDY=" crossorigin="anonymous" defer></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js" defer></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" defer></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js" defer> </script>
+    <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js" defer></script>
    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -23,14 +27,14 @@
     <!-- Styles -->
     <link href="{{ asset('css/principal/template.css') }}"  rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link
+    {{-- <link
         rel="stylesheet"
         href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
-/>
-    <link
+/> --}}
+    {{-- <link
       rel="stylesheet"
       href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
-    />
+    /> --}}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" />
@@ -87,6 +91,8 @@
 
         <main class="py-4">
             @yield('content')
+            @yield('styles')
+            @yield('scripts')
         </main>
     </div>
     <nav class="main-menu">

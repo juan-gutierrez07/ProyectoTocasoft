@@ -37,11 +37,16 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/establecimiento/edit/{place}','PlaceController@edit')->name('place.edit');
     Route::get('/establecimiento/destroy/{place}','PlaceController@destroy')->name('place.destroy');
     Route::get('/establecimiento/info','PlaceController@info')->name('place.list');
+    //Rutas para administrar imagenes
     Route::post('/imagenes/store','ImageController@store');
-    Route::post('/imagenesrt','ImagesRoutesController@store');
     Route::post('/imagenes/destroy','ImageController@destroy');
+    Route::get('/imagensitio/destroy/{images}','ImageController@sitio')->name('imagensitio');
+    Route::post('/imagenesrt','ImagesRoutesController@store');
     Route::post('/imagenesrt/destroy','ImagesRoutesController@destroy');
-    Route::get('/rutas','PlaceController@all')->name('places');
+    //Rutas turisticas
+    Route::get('/rutas/create','RutaController@create')->name('rutas');
+    Route::post('/rutas/store','RutaController@store')->name('rutas.store');
+  
 }); 
 
 //Rutas de usuarios->roles y sus respectivos permisos

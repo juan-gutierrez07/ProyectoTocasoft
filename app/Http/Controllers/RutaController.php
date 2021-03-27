@@ -3,34 +3,31 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Modelos\Category;
 
 class RutaController extends Controller
 {
-
-    public function agregar(Request $request)
-    {
-        dd($request);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+          // $naturales=[];
+        // $culturales=[];
+        // $gubernamentales=[];
+        // $historicos=[];
+        // $hoteles=[];
+        $places = [];
+        $categoria=Category::with('places')->get();
+        // $categoriaruta = Category::where('type','Ruta')->get();
+        foreach($categoria as $categorias)
+        {
+            array_push($places,  $categorias->places);
+        }
+            $places = json_encode($places);
+            // return $places;
+        return view('rutas_turisticas.create',compact('categoria', 'places'));    
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+            dd($request);
     }
 
     /**

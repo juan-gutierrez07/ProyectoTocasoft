@@ -56,4 +56,19 @@ class ImageController extends Controller
             ];
              return response()->json($respuesta);
     }
+
+    public function sitio(Images $images)
+    {
+        if(File::exists('storage/'. $images->location))
+        {
+            File::delete('storage/' . $images->location);
+
+            Images::where('id','=',$images->id)->delete();
+        }
+        $respuesta = [
+            'message'=> 'Se elimino correctamente',
+        ];
+         
+        return response()->json($respuesta);
+    }
 }

@@ -5,31 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Modelos\Place;
 use App\Modelos\Category;
+use App\Modelos\Images;
 use Illuminate\Support\Facades\Gate;
 use Intervention\Image\Facades\Image;
 
 class PlaceController extends Controller
 {
    
-    public function all()
-    {   
-        // $naturales=[];
-        // $culturales=[];
-        // $gubernamentales=[];
-        // $historicos=[];
-        // $hoteles=[];
-        $places = [];
-        $categoria=Category::with('places')->get();
-        // $categoriaruta = Category::where('type','Ruta')->get();
-        foreach($categoria as $categorias)
-        {
-            array_push($places,  $categorias->places);
-        }
-            $places = json_encode($places);
-            // return $places;
-        return view('rutas_turisticas.create',compact('categoria', 'places'));
-    }
-   
+  
     public function create()
     {
         $places=Category::all()->where('type','Sitio');
@@ -99,7 +82,8 @@ class PlaceController extends Controller
     {
         $place = Place::findOrFail($place->id);
         $categorys = Category::where('id','!=',$place->id)->orWhereNull('id')->get();
-        return view('establecimientos/editar', compact('place','categorys'));
+        $imagenes = Images::where('id_establecimiento','=',$place->uuid)->get();
+        return view('establecimientos/editar', compact('place','categorys','imagenes'));
     }
 
     /**
