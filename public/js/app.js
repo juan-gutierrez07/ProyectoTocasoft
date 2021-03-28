@@ -87990,8 +87990,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\ASUS\Desktop\Decimo Semestre- Ya mori\Desarrollo\ProyectoProduccion\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\ASUS\Desktop\Decimo Semestre- Ya mori\Desarrollo\ProyectoProduccion\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! S:\proyecto\proyecto\ProyectoTocasoft\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! S:\proyecto\proyecto\ProyectoTocasoft\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
