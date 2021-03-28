@@ -188,7 +188,7 @@
 </section>
 <!-- partial -->
 
-<pagina-principal></pagina-principal>
+{{-- <pagina-principal></pagina-principal> --}}
 @endsection    
 
    
