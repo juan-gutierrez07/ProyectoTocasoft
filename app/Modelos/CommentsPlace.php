@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class CommentsPlace extends Model
 {
     protected $fillable = [
-        'content', 'points',
+        'place_id','user_id','content', 'points',
 
     ];
     public function places()
     {
-        return $this->belongsTo('App\Modelos\Place','place_id');
+        return $this->belongsTo('App\Modelos\Place');
         
     }
 }

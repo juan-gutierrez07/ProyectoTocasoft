@@ -4,7 +4,7 @@ namespace App\Modelos;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PublicationState extends Model
+class AbousUs extends Model
 {
     //
 }

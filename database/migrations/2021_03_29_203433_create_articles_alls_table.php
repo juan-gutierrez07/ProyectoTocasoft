@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateModulosTable extends Migration
+class CreateArticlesAllsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateModulosTable extends Migration
      */
     public function up()
     {
-        Schema::create('moduls', function (Blueprint $table) {
+        Schema::create('articles_alls', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug', 255);
-            $table->string('params_content', 255);
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->text('description');
+            $table->foreignId('state_publication_id')->references('id')->on('state_publications')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('modul_id')->references('id')->on('moduls')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateModulosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('modulos');
+        Schema::dropIfExists('articles_alls');
     }
 }

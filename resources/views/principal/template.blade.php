@@ -4,11 +4,13 @@
     
         @if (session('status_success'))
         <div class="alert alert-success" role="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button> 
             {{ session('status_success') }}
         </div>
        @endif
        @if ($errors->any())
         <div class="alert alert-danger" role="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>     
             <ul>
                @foreach($errors->all() as $error) 
                 <li>{{ $error }}</li>
@@ -31,61 +33,25 @@
 	</div>
 </header>
 <!-- end of header -->
+
 <!-- #yourServices -->
 <section id="yourServices" class="container">
-    <h2 class="display-4 text-center mt-5 mb-3">Sitios Turisticos</h2>
+    <h2 class="display-4 text-center mt-5 mb-3">{{ $articulos[0]->modul->name }} </h2>
     <div class="row text-center">
-       <div class="col-md-3 mb-3">
-          <div class="card h-100">
-             <img class="card-img-top" src="http://4.bp.blogspot.com/_ivMmKzX0BpY/SxadRhqVMmI/AAAAAAAAACY/yQBmDpdlwZQ/s320/cascada+azul.jpg" alt="Design">
-             <div class="card-body">
-                <h4 class="card-title">Sitios Naturales</h4>
-                <p class="card-text">There are some description about your first service.</p>
-             </div>
-             <div class="card-footer py-4">
-                <a href="#" class="your-btn-primary-outer btn btn-info rounded-pill"> More Info</a>
-             </div>
-          </div>
-       </div>
-       
-       <div class="col-md-3 mb-3">
-          <div class="card h-100">
-             <img class="card-img-top" src="https://www.tocaima.net/mastodontemuseo.jpg" alt="Design">
-             <div class="card-body">
-                <h4 class="card-title">Sitios Culturales</h4>
-                <p class="card-text">There are some description about your second service.</p>
-             </div>
-             <div class="card-footer py-4">
-                <a href="#" class="your-btn-primary-outer btn btn-info rounded-pill">More Info</a>
-             </div>
-          </div>
-       </div>
- 
-       <div class="col-md-3 mb-3">
-          <div class="card h-100">
-             <img class="card-img-top" src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Estacion_Tocaima_2.jpg" alt="Design">
-             <div class="card-body">
-                <h4 class="col-xs-12 col-md-12 card-title">Sitios Historicos</h4>
-                <p class="card-text">There are some description about your third service.</p>
-             </div>
-             <div class="card-footer py-4">
-                <a href="#" class="your-btn-primary-outer btn btn-info rounded-pill">More Info</a>
-             </div>
-          </div>
-       </div>
-
-       <div class="col-md-3 mb-3">
-        <div class="card h-100">
-           <img class="card-img-top" src="https://images.pexels.com/photos/1624895/pexels-photo-1624895.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Design">
-           <div class="card-body">
-              <h4 class="card-title">Hoteles</h4>
-              <p class="card-text">There are some description about your third service.</p>
-           </div>
-           <div class="card-footer py-4">
-              <a href="#" class="your-btn-primary-outer btn btn-info rounded-pill">More Info</a>
-           </div>
-        </div>
-     </div>
+        @foreach ($articulos as $articulo )
+            <div class="col-md-3 mb-3">
+                <div class="card h-100">
+                    <img class="card-img-top" src="http://4.bp.blogspot.com/_ivMmKzX0BpY/SxadRhqVMmI/AAAAAAAAACY/yQBmDpdlwZQ/s320/cascada+azul.jpg" alt="Design">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ $articulo->name }}</h4>
+                        <p class="card-text">{{ $articulo->description }}</p>
+                    </div>
+                    <div class="card-footer py-4">
+                        <a href="#" class="your-btn-primary-outer btn btn-info rounded-pill">Más Información</a>
+                    </div>
+                </div>
+            </div>
+        @endforeach    
     </div>
  </section>
  <!-- end of #yourServices -->
@@ -187,8 +153,6 @@
 </div>
 </section>
 <!-- partial -->
-
-{{-- <pagina-principal></pagina-principal> --}}
 @endsection    
 
    

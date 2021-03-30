@@ -16,6 +16,7 @@ class CreateCommentsPlacesTable extends Migration
         Schema::create('comments_places', function (Blueprint $table) {
             $table->id();
             $table->foreignId('place_id')->references('id')->on('places')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('content', 255);
             $table->string('points');
             $table->timestamps();

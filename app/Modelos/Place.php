@@ -30,7 +30,11 @@ public function routetuorist(){
 }
 public function commentsplace()
 {
-    return $this->hasMany('App\Modelos\CommentsPlace');
+    return $this->hasMany('App\Modelos\CommentsPlace','place_id');
+}
+public function eventplace()
+{
+    return $this->hasMany('App\Modelos\EventPlace','place_id');
 }
 
 

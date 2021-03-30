@@ -55,6 +55,13 @@
                     <!-- Left Side Of Navbar -->
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                         @if (auth()->check() && auth()->user()->roles[0]->rolname == "Administrador")
+                        <li class="nav-item">
+                                <a class="nav-link" href="">Contenido</a> {{-- Crear contenido principal
+                                                                               Crear  --}}
+                        </li>    
+                        @endif 
+                         
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -95,78 +102,6 @@
             @yield('scripts')
         </main>
     </div>
-    <nav class="main-menu">
-        <div>
-           <a class="logo" >
-           </a> 
-         </div> 
-       <div class="settings"></div>
-       <div class="scrollbar" id="style-1">
-       <ul>
-    @can('haveaccess','user.index')
-        <li class="nav-item">
-            <a href="{{route('user.index')}}" class="nav-link"> 
-            <i class="fa fa-user fa-lg"></i>
-            <span class="nav-text">Usuarios</span>
-            </a>
-        </li>
-    @endcan
-    @can('haveaccess','role.index')
-    <li class="nav-item">
-        <a href="{{route('role.index')}}" class="nav-link">
-        <i class="fa fa-lock fa-lg"></i>
-        <span class="nav-text">Roles</span>
-        </a>
-    </li>
-@endcan
     
-       <li>                                   
-       <a href="{{ url('/') }}">
-       <i class="fa fa-home fa-lg"></i>
-       <span class="nav-text">Home</span>
-       </a>
-       </li>   
-       @can('haveaccess', 'user.place')
-       <li class="darkerlishadow">
-            <a>
-                <i class="fa fa-globe fa-lg"></i><span class="nav-text">Establecimientos</span>
-                <i class="fa fa-chevron-down" aria-hidden="true"></i>
-            </a>
-       <ul class="submenu-establecimiento">
-           <li>
-               <a href="{{ route('place.create') }}">
-                    <span class="nav-text">Crear Establecimientos</span>
-                </a>
-            </li>
-           <li>
-               <a href="{{ route('place.list') }}">
-                   <span class="nav-text">Listar Establecimientos</span>
-               </a>   
-        </li>
-       </ul>
-       </li>
-        @endcan         
-       <li class="darkerli">
-       <a href="">
-       <i class="fa fa-location-arrow fa-lg"></i>
-       <span class="nav-text">Rutas Turisticas</span><i class="fa fa-chevron-down" aria-hidden="true"></i>
-       </a>
-       </li>
-         
-       <li class="darkerli">
-       <a href="">
-       <i class="fa fa-calendar fa-lg"></i>
-       <span class="nav-text">Eventos</span>
-       </a>
-       </li>
-         
-       <li class="darkerli">
-       <a href="">
-       <i class="fa fa-comments fa-lg"></i>
-        <span class="nav-text">Comentarios</span>
-       </a>
-       </li>
-    </ul>
-    </nav>
 </body>
 </html>

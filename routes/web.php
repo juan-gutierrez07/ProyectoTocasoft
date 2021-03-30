@@ -16,17 +16,12 @@ use Illuminate\Support\Facades\Gate;
 |
 */
 
-Route::get('/', function () {
-    return view('principal/template');
-});
+Route::get('/', 'ModulController@all')->name('home');
 Route::get('/noautorizado',function(){
 
     return view('errores/401');
 });
-Route::get('/home', 'HomeController@index')->name('home');
 
-//     return view('establecimientos.create');
-// });
 Auth::routes();
 Auth::routes(['verify' => true]);
 
@@ -48,6 +43,12 @@ Route::group(['middleware' => ['admin']], function(){
     Route::post('/rutas/store','RutaController@store')->name('rutas.store');
   
 }); 
+
+//Crear contenido del sistema
+Route::group(['middleware' => ['admin']], function(){
+ Route::get('/modulsitios','ModulController@sitios')->name('sitioshome');
+
+});
 
 //Rutas de usuarios->roles y sus respectivos permisos
     Route::resource('/role', 'RoleController')->names('role')->middleware('auth');    
