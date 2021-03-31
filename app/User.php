@@ -42,16 +42,15 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Modelos\Role')->withPivot('role_id', 'user_id');
         
     }
-    public function articles()
+   
+    public function modul()
     {
-        return $this->hasMany('App\Modelos\ArticlesAll');
+        return $this->hasMany('App\Modelos\Modul','user_id');
     }
-
-    public function moduls()
+    public function coments_place()
     {
-        return $this->hasMany('App\Modelos\User');
+        return $this->hasMany('App\Modelos\CommentsPlace','user_id');
     }
-
     public function havePermisson($permiso)
     {   
             foreach($this->roles as $rol)

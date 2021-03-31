@@ -74,7 +74,8 @@ class PlaceController extends Controller
     }
     public function show(Place $place)
     {
-        //
+        $place= Place::where('id','=',$place->id)->get();
+        return view('establecimientos.showestablecimiento',compact('place'));
     }
 
  

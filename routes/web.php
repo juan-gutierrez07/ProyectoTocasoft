@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\User;
+use App\Modelos\Place;
 use Illuminate\Support\Facades\Gate;
 
 
@@ -15,7 +16,8 @@ use Illuminate\Support\Facades\Gate;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/sitio/{place}','PlaceController@show')->name('place.show');
+Route::get('/comentarios/sitios/{place}','ComentsPlaceController@all')->name('coment.place');
 Route::get('/', 'ModulController@all')->name('home');
 Route::get('/noautorizado',function(){
 

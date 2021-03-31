@@ -42,7 +42,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="z-index: 1;">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="z-index: 1; background:#0D8BD9;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -57,11 +57,14 @@
                     <ul class="navbar-nav ml-auto">
                          @if (auth()->check() && auth()->user()->roles[0]->rolname == "Administrador")
                         <li class="nav-item">
-                                <a class="nav-link" href="">Contenido</a> {{-- Crear contenido principal
+                                <a class="nav-link" href="">Contenido</a> {{-- Crear contenido para modulos..
                                                                                Crear  --}}
                         </li>    
                         @endif 
-                         
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Comentarios</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
+                        </li>    
+                     
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

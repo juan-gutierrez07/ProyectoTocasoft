@@ -4,7 +4,7 @@
       <l-tile-layer :url="url" :attribution="attribution" />
       <l-marker :latLng="center">
         <l-tooltip>
-          <div>{{establecimiento.name}}</div>
+          
         </l-tooltip>
       </l-marker>
     </l-map>
@@ -16,6 +16,12 @@
 import { latLng } from "leaflet";
 import { LMap, LTileLayer, LMarker, LTooltip } from "vue2-leaflet";
 export default {
+  props:{
+      latitud:String,
+      longitud:String,
+      
+      
+  },
   components: {
     LMap,
     LTileLayer,
@@ -24,7 +30,7 @@ export default {
   },
   data() {
     return {
-      zoom: 16,
+      zoom: 15,
       center: latLng(4.45637843,-74.63432193),
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
@@ -38,16 +44,16 @@ export default {
   },
  created(){
    setTimeout(() => {
-      this.lat = this.$store.getters.ObtenerEstablecimiento.lat;
-      this.lng = this.$store.getters.ObtenerEstablecimiento.lng;
+      this.lat = this.latitud;
+      this.lng = this.longitud;
       this.center = latLng(this.lat, this.lng);
-    }, 1000);
+    }, 100);
  },
- computed:{
-         establecimiento(){
-            return this.$store.state.establecimiento;
-        }
- }
+//  computed:{
+//          establecimiento(){
+//             return this.$store.state.establecimiento;
+//         }
+//  }
 };
 </script>
 

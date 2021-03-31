@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    $("#eliminar").click(function() {
+    $("#eliminar").click(function() 
+    {
         // $.ajax({
         //     url : '/imagensitio/destroy/',
         //     data : { images : 123 },
@@ -19,6 +20,5 @@ $(document).ready(function() {
         // });
         var imagen = document.getElementById('eliminar').parentNode.parentNode.parentNode;
         imagen.removeChild(document.getElementById('eliminar').parentNode.parentNode);
-
-      });
+    });
 });

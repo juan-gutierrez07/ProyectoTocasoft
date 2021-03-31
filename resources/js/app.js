@@ -26,6 +26,7 @@ import VueSweetalert2 from 'vue-sweetalert2';
 Vue.component('pagina-principal', require('./components/PaginaPrincipal.vue').default);
 Vue.component('eliminar-establecimiento', require('./components/EliminarEstablecimiento.vue').default);
 Vue.component('eliminar-imagen-sitio', require('./components/EliminarImagenSitio.vue').default);
+Vue.component('mapa-ubicacion', require('./components/MapaUbicacion.vue').default);
 Vue.use(VueSweetalert2);
 console.log(Vue.prototype);
 

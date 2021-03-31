@@ -21,7 +21,7 @@ class TuoristRoute extends Model
 
     public function commentsroute()
     {
-        return $this->hasMany('App\Modelos\CommentsRoute');
+        return $this->hasMany('App\Modelos\CommentsRoute','tuorist_route_id');
     }
     // public function banners()
     // {

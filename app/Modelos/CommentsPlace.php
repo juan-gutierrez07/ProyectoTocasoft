@@ -10,9 +10,14 @@ class CommentsPlace extends Model
         'place_id','user_id','content', 'points',
 
     ];
-    public function places()
+    public function place()
     {
         return $this->belongsTo('App\Modelos\Place');
+        
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
         
     }
 }

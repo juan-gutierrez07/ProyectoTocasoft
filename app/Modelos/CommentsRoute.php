@@ -11,8 +11,12 @@ class CommentsRoute extends Model
 
     ];
 
-    public function tuoristroutes()
+    public function tuorist_routes()
     {
-        return $this->belongsTo('App\Modelos\TuoristRoute','tuorist_route_id');
+        return $this->belongsTo('App\Modelos\TuoristRoute');
+    }
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 }
