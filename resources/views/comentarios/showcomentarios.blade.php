@@ -40,6 +40,16 @@
                      <p>{{ $comentario->content }}</p>
                      <div class="footer">
                          {{ $comentario->points }}
+                        @if(auth()->check() && auth()->user()->id === $comentarios[0]->user->id)    
+                            <div class=" row align-items-end">
+                                    <form action="" method="">
+                                        <a href="" class=" btn btn-danger" style="margin-right: 10px;">Eliminar</a>
+                                    </form>
+                                    <form action="" method="">
+                                        <a href="" class=" btn btn-secondary ">Editar</a>
+                                    </form>
+                            </div>
+                        @endif    
                      </div>
                  </div>
              </div>
