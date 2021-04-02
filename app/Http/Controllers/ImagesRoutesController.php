@@ -6,8 +6,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use App\Modelos\ImagesRoutes;
+use App\Modelos\Category;
 class ImagesRoutesController extends Controller
 {
+    public function show()
+    {
+      $categorias = Category::where('type','Ruta')->get();
+      return view('imagenes.rutas',compact('categorias'));
+      
+    }
     public function store(Request $request){
 
 

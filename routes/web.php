@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Gate;
 */
 Route::get('/sitio/{place}','PlaceController@show')->name('place.show');
 Route::get('/comentarios/sitios/{place}','ComentsPlaceController@all')->name('coment.place');
+Route::get('/categoria/{category}','CategoryController@categoria')->name('category.place');
 Route::get('/', 'ModulController@all')->name('home');
 Route::get('/noautorizado',function(){
 
@@ -49,6 +50,8 @@ Route::group(['middleware' => ['admin']], function(){
 //Crear contenido del sistema
 Route::group(['middleware' => ['admin']], function(){
  Route::get('/modulsitios','ModulController@sitios')->name('sitioshome');
+ Route::get('/imagenes','ImageController@show')->name('images.sitio');
+ Route::get('/imagesroute','ImagesRoutesController@show')->name('images.route');
 
 });
 

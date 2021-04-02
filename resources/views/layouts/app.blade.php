@@ -42,7 +42,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="z-index: 1; background:#0D8BD9;">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="z-index: 100; background:#0D8BD9; position:fixed; width:100%">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -62,9 +62,18 @@
                         </li>    
                         @endif 
                         <li class="nav-item">
-                            <a class="nav-link" href="">Comentarios</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
+                            <a class="nav-link" href="">Subir Imagenes</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
                         </li>    
-                     
+                        <ul class="nav-item">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('images.sitio') }}">Imagenes Sitios</a> {{-- Crear contenido para modulos..
+                                                                               Crear  --}}
+                        </li>    
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('images.route') }}">Imagenes Rutas</a> {{-- Crear contenido para modulos..
+                                                                           Crear  --}}
+                        </li>    
+                        </ul>    
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -99,12 +108,14 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4" style="margin-top:0px;">
             @yield('content')
             @yield('styles')
             @yield('scripts')
         </main>
     </div>
+    
+    <pagina-principal></pagina-principal>
     
 </body>
 </html>

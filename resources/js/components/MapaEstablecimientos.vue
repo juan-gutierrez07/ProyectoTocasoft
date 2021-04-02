@@ -1,5 +1,5 @@
 <template>
-    <div class ="mapa" style="left:5%; position:relative;">
+    <div class ="mapa" style="left:5%; position:absolute;z-index:1;border-radius: 5px 5px 5px 5px;">
       <l-map :zoom="zoom" :center="center" :option="mapOptions">
         <l-tile-layer :url="url" :attribution="attribution"/>
             <l-marker v-for =" establecimiento in establecimientos" v-bind:key="establecimiento.id"
@@ -66,13 +66,13 @@ export default {
         lng: establecimiento.lng
       };
       },
-      dibujarLinea(establecimiento){
-          const coorde = [
-              establecimiento.lat,
-              establecimiento.lng
-          ]
-          return coorde
-      },
+      // dibujarLinea(establecimiento){
+      //     const coorde = [
+      //         establecimiento.lat,
+      //         establecimiento.lng
+      //     ]
+      //     return coorde
+      // },
       iconoEstablecimiento(establecimiento) {
       const { slug } = establecimiento.category;
       return L.icon({
@@ -85,8 +85,8 @@ export default {
 </script>
 <style scoped>
 .mapa {
-  height: 600px;
-  width: 90%;
+  height: 80%;
+  width: 80%
 
 }
 </style>

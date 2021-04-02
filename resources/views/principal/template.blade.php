@@ -47,7 +47,7 @@
                         <p class="card-text">{{ $articulo->description }}</p>
                     </div>
                     <div class="card-footer py-4">
-                        <a href="#" class="your-btn-primary-outer btn btn-info rounded-pill">Más Información</a>
+                        <a href="{{ route('category.place',$articulo->slug) }}" class="your-btn-primary-outer btn btn-info rounded-pill">Más Información</a>
                     </div>
                 </div>
             </div>

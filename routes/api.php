@@ -17,7 +17,7 @@ use App\Modelos\Category;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+ });
 Route::get('/categorias', 'ApiController@categorias')->name('categorias');
 Route::get('/categorias/{categoria}','ApiController@categoria')->name('categoria');
 Route::get('/establecimiento/{place}','ApiController@place')->name('place');

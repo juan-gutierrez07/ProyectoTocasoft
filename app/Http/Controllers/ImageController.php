@@ -5,13 +5,18 @@ use App\Modelos\Images;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
-
+use App\Modelos\Category;
 
 
 class ImageController extends Controller
 {
  
-
+    public function show()
+    {
+        $categorias = Category::where('type','=','Sitio')->get();
+        return $categorias;
+        return view('imagenes.sitios',compact('categorias'));
+    }
     public function store( Request $request)
     {
         //leer imagen

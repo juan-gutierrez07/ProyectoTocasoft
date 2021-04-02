@@ -17,6 +17,7 @@ class CreateArticlesAllsTable extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->string('slug',255);
             $table->foreignId('state_publication_id')->references('id')->on('state_publications')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('modul_id')->references('id')->on('moduls')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
