@@ -42,15 +42,17 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="z-index: 100; background:#0D8BD9; position:fixed; width:100%">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="z-index: 100; background-color: rgba(224, 224, 224, 0.267);margin-top:auto; width:100%">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    <img src="{{ asset('../images\iconos/tocaimatittle.png') }}" style="height: 60px; width:180px ">
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+           
 
+                  <!-- termina la navbar mia -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <!-- Right Side Of Navbar -->
@@ -61,19 +63,56 @@
                                                                                Crear  --}}
                         </li>    
                         @endif 
-                        <li class="nav-item">
-                            <a class="nav-link" href="">Subir Imagenes</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
-                        </li>    
-                        <ul class="nav-item">
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('images.sitio') }}">Imagenes Sitios</a> {{-- Crear contenido para modulos..
+                        <!--imagenes-->
+                        <li class="dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Subir Imagenes</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
+                            <ul class="dropdown-menu">
+                                <li class="">
+                                    <a class="dropdown-item nav-link" href="{{ route('images.sitio') }}">Imagenes Sitios</a> {{-- Crear contenido para modulos..
+                                                                                   Crear  --}}
+                            </li>    
+                            <li class="">
+                                <a class="dropdown-item nav-link" href="{{ route('images.route') }}">Imagenes Rutas</a> {{-- Crear contenido para modulos..
                                                                                Crear  --}}
-                        </li>    
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('images.route') }}">Imagenes Rutas</a> {{-- Crear contenido para modulos..
-                                                                           Crear  --}}
-                        </li>    
-                        </ul>    
+                            </li>    
+                            </ul>    
+                        </li> 
+                        <!--sitios-->
+                        <li class="dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Sitios</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
+                            <ul class="dropdown-menu">
+                                <li class="">
+                                    <a href="{{ route('images.sitio') }}">Crear</a> {{-- Crear contenido para modulos..
+                                                                                   Crear  --}}
+                            </li>    
+                            <li class="">
+                                <a href="{{ route('images.route') }}">Ver</a> {{-- Crear contenido para modulos..
+                                                                               Crear  --}}
+                            </li>    
+                            <li class="">
+                                <a href="{{ route('images.route') }}">Modificar</a> {{-- Crear contenido para modulos..
+                                                                               Crear  --}}
+                            </li>    
+                            </ul>    
+                        </li> 
+                        <!--rutas-->
+                        <li class="dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Rutas</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
+                            <ul class="dropdown-menu">
+                                <li class="">
+                                    <a href="{{ route('images.sitio') }}">Crear</a> {{-- Crear contenido para modulos..
+                                                                                   Crear  --}}
+                            </li>    
+                            <li class="">
+                                <a href="{{ route('images.route') }}">Ver</a> {{-- Crear contenido para modulos..
+                                                                               Crear  --}}
+                            </li>    
+                            <li class="">
+                                <a href="{{ route('images.route') }}">Modificar</a> {{-- Crear contenido para modulos..
+                                                                               Crear  --}}
+                            </li>    
+                            </ul>    
+                        </li> 
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

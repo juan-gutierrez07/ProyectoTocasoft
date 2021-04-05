@@ -1,5 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
-
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+@import url('https://fonts.googleapis.com/css2?family=Asap&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Stick&display=swap');
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -422,6 +424,11 @@ h6,
   font-size: 1.125rem;
   font-weight: 300;
 }
+.leaddiv1 {
+  font-size: 51px;
+  font-weight: 300;
+  font-family: 'Dancing Script';
+}
 
 .display-1 {
   font-size: 6rem;
@@ -436,15 +443,32 @@ h6,
 }
 
 .display-3 {
-  font-size: 4.5rem;
+  font-size: 100px;
   font-weight: 300;
   line-height: 1.2;
+  font-family: 'Stick', sans-serif;
 }
 
 .display-4 {
   font-size: 3.5rem;
   font-weight: 300;
   line-height: 1.2;
+  font-family: 'Stick', sans-serif;
+  background: linear-gradient(rgb(187, 53, 53),rgb(255, 66, 66));
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0.1em 0.1em 0.05em rgba(134, 67, 67, 0.205);
+}
+
+.display-41 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  font-family: 'Stick', sans-serif;
+  background: linear-gradient(rgb(12, 141, 51),rgb(26, 88, 37));
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0.1em 0.1em 0.05em rgba(94, 129, 83, 0.219)
 }
 
 hr {
@@ -714,12 +738,27 @@ pre code {
   padding-left: 15px;
 }
 
+.coldiv1 {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  background-image: url("../images/iconos/Mypost.png");
+  position: relative;
+}
 .col {
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
 }
 
+.coldiv2 {
+  flex-basis: 0;
+  flex-grow: 1;
+  max-width: 100%;
+  background-image: url("../images/iconos/DondoDiv2.jpg");
+  position: relative;
+  
+}
 .row-cols-1 > * {
   flex: 0 0 100%;
   max-width: 100%;
@@ -2667,15 +2706,16 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #3490dc;
-  border-color: #3490dc;
+  color: rgb(255, 255, 255);
+  font-size: 21px;
+  background-color: #04050500;
+  border-color: #feffffab;
 }
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #227dc7;
-  border-color: #2176bd;
+  text-decoration: underline;
+  border-color: #d6d6d633;
 }
 
 .btn-primary:focus,
@@ -2790,15 +2830,15 @@ fieldset:disabled a.btn {
 }
 
 .btn-info {
-  color: #212529;
-  background-color: #6cb2eb;
-  border-color: #6cb2eb;
+  color: rgb(167, 22, 22);
+  font-family: 'Asap', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .btn-info:hover {
-  color: #fff;
-  background-color: #4aa0e6;
-  border-color: #3f9ae5;
+  color: rgb(172, 33, 33);
+  
 }
 
 .btn-info:focus,
@@ -3307,9 +3347,10 @@ fieldset:disabled a.btn {
 .btn-lg,
 .btn-group-lg > .btn {
   padding: 0.5rem 1rem;
-  font-size: 1.125rem;
+  font-size: 28px;
   line-height: 1.5;
   border-radius: 0.3rem;
+  font-family: 'Stick';
 }
 
 .btn-sm,
@@ -3582,18 +3623,19 @@ input[type=button].btn-block {
   white-space: nowrap;
   background-color: transparent;
   border: 0;
+  background-color: #1d643b;
 }
 
 .dropdown-item:hover,
 .dropdown-item:focus {
   color: #16181b;
   text-decoration: none;
-  background-color: #f8f9fa;
+  background-color: #20580f;
 }
 
 .dropdown-item.active,
 .dropdown-item:active {
-  color: #fff;
+  color: rgb(13, 95, 57);
   text-decoration: none;
   background-color: #3490dc;
 }
@@ -4413,17 +4455,25 @@ input[type=button].btn-block {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
+  background-image: radial-gradient(red, rgb(206, 53, 53));
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: background-size .3s;
+  
 }
 
 .nav-link:hover,
 .nav-link:focus {
   text-decoration: none;
+  background-size: 100% 2px;
 }
 
 .nav-link.disabled {
   color: #6c757d;
   pointer-events: none;
   cursor: default;
+  
 }
 
 .nav-tabs {
@@ -4456,6 +4506,8 @@ input[type=button].btn-block {
   color: #495057;
   background-color: white;
   border-color: #dee2e6 #dee2e6 white;
+  
+
 }
 
 .nav-tabs .dropdown-menu {
@@ -4833,20 +4885,25 @@ input[type=button].btn-block {
 
 .navbar-light .navbar-brand {
   color: rgba(0, 0, 0, 0.9);
+  font-weight: bold;
 }
 
 .navbar-light .navbar-brand:hover,
 .navbar-light .navbar-brand:focus {
-  color: rgba(0, 0, 0, 0.9);
+  color: rgba(235, 226, 226, 0.9);
 }
 
 .navbar-light .navbar-nav .nav-link {
-  color: rgba(0, 0, 0, 0.5);
+  color: rgb(27, 100, 25);
+  font-family: 'Asap', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+
 }
 
 .navbar-light .navbar-nav .nav-link:hover,
 .navbar-light .navbar-nav .nav-link:focus {
-  color: rgba(0, 0, 0, 0.7);
+  color: rgba(40, 146, 49, 0.7)
 }
 
 .navbar-light .navbar-nav .nav-link.disabled {
@@ -10902,4 +10959,24 @@ a.text-dark:focus {
     border-color: #dee2e6;
   }
 }
+/*estilo navbar*/
+.example6 .navbar-brand{ 
+  background: url(https://res.cloudinary.com/candidbusiness/image/upload/v1455406304/dispute-bills-chicago.png) center / contain no-repeat;
+  width: 200px;
+}
+.divisionpersonal{
+  background-image: url("../images/iconos/FondoCard.jpg");
+  background-size: cover;
+   height: 100%;
+   width: 100% ;
+   text-align: center;
+}
+.divisionpersonal1{
+  background-image: url("../images/iconos/FondoDiv3.jpg");
+  background-size: cover;
+   height: 100%;
+   width: 100% ;
+   text-align: center;
+}
+
 

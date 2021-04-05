@@ -1,7 +1,9 @@
 /*aqui esta el estilo de la landing */
 /* import google font */
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap");
-
+@import url("https://fonts.googleapis.com/css?family=Kaushan%20Script");
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Stick&display=swap');
 
 /* your-btn-primary */
 .your-btn-primary {
@@ -9,7 +11,7 @@
 	height: 40px;
 	margin: 0 5px;
 	padding: 0 40px;
-	background: #008080;
+	background: #0e7713;
 	border: 0;
 	font-size: 15px;
 	font-weight: 300;
@@ -19,13 +21,19 @@
 	opacity: 0.8;
 	transition: all 0.4s ease !important;
 }
+.your-btn-primary1{
+  color: rgb(253, 252, 252);
+  font-family: 'Asap', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
 .your-btn-primary:hover,
 .your-btn-primary:focus,
 .your-btn-primary:active,
 .your-btn-primary:active:focus,
 .your-btn-primary.btn-primary:not(:disabled):not(.disabled):active,
 .your-btn-primary.btn-primary:not(:disabled):not(.disabled):active:focus {
-	background: #008080;
+	background: #095809;
 	outline: 0;
 	color: #ffffff;
 	box-shadow: none;
@@ -37,7 +45,7 @@
 	background-color: #116e1e;
   border-color: #096934;
   color: #cce5e5;
-  font-family: "kaushan script";
+  font-family: 'Stick', sans-serif;
 	transition: all 0.4s ease !important;
 }
 .your-btn-primary-outer:hover,
@@ -61,9 +69,10 @@
 /* yourHeader */
 #yourHeader {
 	background-image: url("https://gotrip.tips/wp-content/uploads/tocaima.jpg");
-	background-position: center;
+	background-position: absolute;
 	background-repeat: no-repeat;
 	background-size: cover;
+  min-height: 100vh;
 }
 #yourHeader .your-header-text h1,
 #yourHeader .your-header-text p {
@@ -71,12 +80,7 @@
 }
 
 /* yourContact */
-#yourContact {
-    background: url("https://map.viamichelin.com/map/carte?map=viamichelin&z=10&lat=4.45916&lon=-74.63568&width=550&height=382&format=png&version=latest&layer=background&debug_pattern=.*");
-    background-position: center;
-	background-repeat: no-repeat;
-    background-size: cover;
-}
+
 #yourContact .your-contact-text h2,
 #yourContact .your-contact-text p {
 	color: #ffffff;
@@ -108,6 +112,7 @@
 .container1:hover {
   transform: scale(0.54);
 }
+
 .container-inner1 {
   clip-path: path(
     "M 390,400 C 390,504.9341 304.9341,590 200,590 95.065898,590 10,504.9341 10,400 V 10 H 200 390 Z"
@@ -210,12 +215,14 @@
   box-shadow: 0 0 30px rgba(0, 0, 0, .1);
   transition: .3s;
   overflow: hidden;
+  
 }
 
 .team .team-text h2 {
   color: #ca2121;
+  font-family: 'Asap', sans-serif;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: bolder;
   letter-spacing: 1px;
   margin-bottom: 10px;
 }
@@ -332,23 +339,11 @@
 }
 
 .card-title {
-  margin-bottom: 0.75rem;
-  display: inline-block;
-  font-family: 'Kaushan Script';
+  font-family: 'Asap', sans-serif;
+  background: linear-gradient(rgb(139, 23, 23),rgb(255, 66, 66));
+  -webkit-background-clip: text;
+  color: transparent;
   font-weight: bold;
-    color: #000;
-    background: #fff;
-    mix-blend-mode: multiply;
-    position: relative;
 }
-.card-title:before{
-  content: '';
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, red, green);
-  mix-blend-mode: screen; 
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+
+
