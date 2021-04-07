@@ -17,7 +17,7 @@ class CreateCommentsRoutesTable extends Migration
             $table->id();
             $table->foreignId('tuorist_route_id')->references('id')->on('tuorist_routes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('content', 255);
+            $table->text('content', 255);
             $table->string('points');
             $table->timestamps();
         });

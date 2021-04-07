@@ -20,6 +20,8 @@ Route::get('/sitio/{place}','PlaceController@show')->name('place.show');
 Route::get('/comentarios/sitios/{place}','ComentsPlaceController@all')->name('coment.place');
 Route::get('/categoria/{category}','CategoryController@categoria')->name('category.place');
 Route::get('/', 'ModulController@all')->name('home');
+Route::post('/createarticle','ArticlesAllController@store')->name('articles.store');
+Route::post('/comentcreate','CommentsPlaceController@store')->name('comentplace.store');
 Route::get('/noautorizado',function(){
 
     return view('errores/401');
@@ -52,6 +54,8 @@ Route::group(['middleware' => ['admin']], function(){
  Route::get('/modulsitios','ModulController@sitios')->name('sitioshome');
  Route::get('/imagenes','ImageController@show')->name('images.sitio');
  Route::get('/imagesroute','ImagesRoutesController@show')->name('images.route');
+ Route::get('/modulos','ModulController@show')->name('modul.show');
+
 
 });
 

@@ -18,4 +18,15 @@ class ModulController extends Controller
                                 ->get();
         return view('principal.template',compact('articulos','categorias'));
     }
+    public function show()
+    {
+        $cantidades =[];
+        $modulos =  Modul::all();
+        // for ($i=0; $i <count($modulos->articles) ; $i++) { 
+        //     $cantidades[i]= Arti
+        // }
+        
+        
+        return view('modulos.listarmodulos',compact('modulos','cantidades'));
+    }
 }
