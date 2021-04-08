@@ -21,7 +21,7 @@ Route::get('/comentarios/sitios/{place}','ComentsPlaceController@all')->name('co
 Route::get('/categoria/{category}','CategoryController@categoria')->name('category.place');
 Route::get('/', 'ModulController@all')->name('home');
 Route::post('/createarticle','ArticlesAllController@store')->name('articles.store');
-Route::post('/comentcreate','CommentsPlaceController@store')->name('comentplace.store');
+Route::post('/comentcreate','ComentsPlaceController@store')->name('comentplace.store');
 Route::get('/noautorizado',function(){
 
     return view('errores/401');

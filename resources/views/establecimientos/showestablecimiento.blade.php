@@ -2,8 +2,8 @@
 @section('content')
     {{-- <mapa-ubicacion latitud ={{ $place[0]->lat }} longitud = {{ $place[0]->lng }}></mapa-ubicacion> --}}
     <div class ="container my-5">
+        @include('establecimientos.message')
         <h2 class="text-center mb-5"> {{$place[0]->name}} </h2>
- 
          <div class="row align-items-start">
              <div class="col-md-8 order-2">
                  <div class="card">

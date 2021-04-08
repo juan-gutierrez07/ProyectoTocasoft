@@ -10,10 +10,26 @@ class ComentsPlaceController extends Controller
     public function all(Place $place)
     {
         $comentarios = CommentsPlace::where('place_id','=',$place->id)->get();
-        return view('comentarios.showcomentarios',compact('comentarios',));
+        $total = CommentsPlace::where('place_id','=',$place->id)->count();
+        $puntos = CommentsPlace::where('place_id','=',$place->id)->sum('points');
+        return view('comentarios.showcomentarios',compact('comentarios','total','puntos'));
     }
     public function store(Request $request)
     {
         
+        $request->validate([
+            'descripcion'=>'required|min:50',
+            'points'=>'required'
+        ]);
+        
+        $comentario = new CommentsPlace();
+        $comentario->place_id= $request->place_id;
+        $comentario->user_id = auth()->user()->id;
+        $comentario->content = $request->descripcion;
+        $comentario->points = $request->points;
+        $comentario->save();
+
+        return redirect()->route('place.show',$request->place_id)
+        ->with('status_success','Comentario Agregado !!'); ;
     }
 }

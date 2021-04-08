@@ -1,12 +1,6 @@
-<!-- #yourHeader -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <header id="yourHeader" class="jumbotron jumbotron-fluid">
-
 @extends('layouts.app')
 @section('content')
-
 <div class="container">
-    
         @if (session('status_success'))
         <div class="alert alert-success" role="alert">
         <button type="button" class="close" data-dismiss="alert">&times;</button> 
@@ -23,68 +17,71 @@
             </ul>
         </div>
        @endif
+
 </div>
-</header>
-<div class="your-header-content container-fluid text-center text-white" style="margin-top: -32px">
-    <div class="row">
-        <div class="your-header-text coldiv1" style="opacity: 0.9;">
-            <br><br>
-            <h1 class="display-3">Bienvenido</h1>
-            <p class="leaddiv1 pb-4" style="margin-top: -40px">Conoce mas a cerca de nuestro maravilloso municipio</p>
+<!-- #yourHeader -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<header id="yourHeader" class="jumbotron jumbotron-fluid">
+	<div class="your-header-content container-fluid text-center text-white">
+		<div class="row">
+            <div class="your-header-text col">
+		        <h1 class="display-3">Bienvenido</h1>
+                <p class="lead pb-4">Conoce mas a cerca de nuestro maravilloso municipio</p>
+            </div>
         </div>
-    </div>
-</div>
+	</div>
+</header>
 <!-- end of header -->
 
 <!-- #yourServices -->
-<div class="divisionpersonal" style="margin-top: 0">
-<section id="yourServices" class="container your-contact-text">
-    <br>
-     <h2 class="display-4 text-center mt-5 mb-3">{{--{{ $articulos[0]->modul->name }}--}} NUESTROS SERVICIOS</h2> 
+@if (isset($articulos))
+<section id="yourServices" class="container">
+    <h2 class="display-4 text-center mt-5 mb-3">{{ $articulos[0]->modul->name }} </h2>
     <div class="row text-center">
-        {{-- @foreach ($articulos as $articulo ) --}}
-        <br>
+        @foreach ($articulos as $articulo )
             <div class="col-md-3 mb-3">
                 <div class="card h-100">
                     <img class="card-img-top" src="http://4.bp.blogspot.com/_ivMmKzX0BpY/SxadRhqVMmI/AAAAAAAAACY/yQBmDpdlwZQ/s320/cascada+azul.jpg" alt="Design">
                     <div class="card-body">
-                        <h4 class="card-title">{{--{{ $articulo->name }}--}}Titulo 1</h4>
-                        <p class="card-text">{{--{{ $articulo->description }}--}}Informacion necesaria para el desarrollo</p>
+                        <h4 class="card-title">{{ $articulo->name }}</h4>
+                        <p class="card-text">{{ $articulo->description }}</p>
                     </div>
                     <div class="card-footer py-4">
-                        <a href="{{--{{ route('category.place',$articulo->slug) }}--}}" class=" btn btn-info nav-link">Más Información</a>
+                        <a href="{{ route('category.place',$articulo->slug) }}" class="your-btn-primary-outer btn btn-info rounded-pill">Más Información</a>
                     </div>
                 </div>
             </div>
-        {{-- @endforeach     --}}
+        @endforeach    
     </div>
  </section>
-</div>
  <!-- end of #yourServices -->
- 
+    @else
+        
+        <h1>Sin contenido....</h1>
+@endif
 <!-- #yourContact -->
-<div class="coldiv2" style="margin-top: -25px">
-<section id="yourContact" class="container-fluid text-center py-4 mt-4 "  id="contact">
+<section id="yourContact" class="container-fluid text-center py-4 mt-4" id="contact">
     <div class="row">
         <div class="your-contact-text col">
             <h2 class="display-4 pb-9 my-4">Rutas turisticas</h2>
             <p class="lead pb-3">Some message how to get in touch with you.</p>
         </div>
     </div>
-            <a href="#" class="your-btn-primary1 btn btn-primary btn-lg  mb-4" role="button">Conocelas</a>
+    <div class="row">
+        <div class="your-contact-button col">
+            <a href="#" class="your-btn-primary btn btn-primary btn-lg rounded-pill mb-4" role="button">Conocelas</a>
+        </div>
+    </div>
 </section>
-</div>
 <!-- end of #yourContact -->
 
 <!-- partial:index.partial.html -->
-<div class="divisionpersonal1">
 <section  class="container" >
 <div class="row text-center">
    <div class="team mt-125">
-      <div class="your-contact-text container ">
-         <h2 class="display-41 text-center mt-5 mb-3">Personal Secretaria de Turismo</h2>
-         <br><br>
-         <div class="row">
+      <div class="container">
+         <h2 class="display-4a text-center mt-5 mb-3">Personal Secretaria de Turismo</h2>
+          <div class="row">
               <div class="col-lg-3 col-md-6">
                   <div class="team-item">
                       <div class="team-img">
@@ -158,9 +155,8 @@
   </div>
 </div>
 </section>
-</div>
 <!-- partial -->
-
+<pagina-principal></pagina-principal>
 @endsection    
 
    
