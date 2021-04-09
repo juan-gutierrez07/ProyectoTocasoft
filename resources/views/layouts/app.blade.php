@@ -19,11 +19,12 @@
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" defer></script>
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js" defer> </script>
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js" defer></script>
-   
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js" defer></script>
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/principal/template.css') }}"  rel="stylesheet">
     {{-- <link href="{{ asset('css/establecimientos/establecimientoall.css') }}"  rel="stylesheet"> --}}
@@ -46,28 +47,23 @@
         <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="z-index: 100; background-color: rgba(224, 224, 224, 0.267);margin-top:auto; width:100%">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="{{ asset('../images\iconos/tocaimatittle.png') }}" style="height: 60px; width:180px ">
+                    <img src="{{ asset('../images/iconos/tocaimatittle.png') }}" style="height: 60px; width:180px ">
                 </a>
                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-           
-
-                  <!-- termina la navbar mia -->
+                    <!-- termina la navbar mia -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <!-- Right Side Of Navbar -->
+
                     <ul class="navbar-nav ml-auto">
                          @if (auth()->check() && auth()->user()->roles[0]->rolname == "Administrador")
                         <li class="nav-item">
-                                <a class="nav-link" href="">Contenido</a> {{-- Crear contenido para modulos..
+                                <a href="{{ route('modul.show') }}" class="nav-link">Contenido</a> {{-- Crear contenido para modulos..
                                                                                Crear  --}}
                         </li>    
-                        @endif 
-                        <!--imagenes-->
-                        <li class="dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Subir Imagenes</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
-                            <ul class="dropdown-menu">
+                        <ul class="dropdown-menu">
                                 <li class="">
                                     <a class="dropdown-item nav-link" href="{{ route('images.sitio') }}">Imagenes Sitios</a> {{-- Crear contenido para modulos..
                                                                                    Crear  --}}
@@ -76,44 +72,49 @@
                                 <a class="dropdown-item nav-link" href="{{ route('images.route') }}">Imagenes Rutas</a> {{-- Crear contenido para modulos..
                                                                                Crear  --}}
                             </li>    
-                            </ul>    
+                        </ul>    
+                        @endif 
+                        <li class="nav-item">
+                                <a href="{{ route('evento.place') }}" class="nav-link">Eventos</a> {{-- Crear eventos...
+                                                                               Crear  --}}
+                        </li>    
+                        <!--imagenes-->
+                        <li class="dropdown">
+                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Subir Imagenes</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
+                            
                         </li> 
                         <!--sitios-->
+                        @if (auth()->check() && auth()->user()->roles[0]->rolname == "Administrador")
                         <li class="dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Sitios</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
                             <ul class="dropdown-menu">
                                 <li class="">
-                                    <a href="{{ route('images.sitio') }}">Crear</a> {{-- Crear contenido para modulos..
+                                    <a href="{{ route('place.create') }}">Crear</a> {{-- Crear contenido para modulos..
                                                                                    Crear  --}}
-                            </li>    
+                                </li>    
                             <li class="">
-                                <a href="{{ route('images.route') }}">Ver</a> {{-- Crear contenido para modulos..
-                                                                               Crear  --}}
-                            </li>    
-                            <li class="">
-                                <a href="{{ route('images.route') }}">Modificar</a> {{-- Crear contenido para modulos..
+                                <a href="{{ route('place.list') }}">Ver</a> {{-- Crear contenido para modulos..
                                                                                Crear  --}}
                             </li>    
                             </ul>    
                         </li> 
+                        @endif
                         <!--rutas-->
+                        @if (auth()->check() && auth()->user()->roles[0]->rolname == "Administrador")
                         <li class="dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Rutas</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
                             <ul class="dropdown-menu">
                                 <li class="">
-                                    <a href="{{ route('images.sitio') }}">Crear</a> {{-- Crear contenido para modulos..
+                                    <a href="{{ route('rutas') }}">Crear</a> {{-- Crear contenido para modulos..
                                                                                    Crear  --}}
                             </li>    
                             <li class="">
                                 <a href="{{ route('images.route') }}">Ver</a> {{-- Crear contenido para modulos..
                                                                                Crear  --}}
                             </li>    
-                            <li class="">
-                                <a href="{{ route('images.route') }}">Modificar</a> {{-- Crear contenido para modulos..
-                                                                               Crear  --}}
-                            </li>    
                             </ul>    
                         </li> 
+                        @endif
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">

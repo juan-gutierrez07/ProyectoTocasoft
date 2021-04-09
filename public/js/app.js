@@ -87721,6 +87721,13 @@ document.addEventListener('DOMContentLoaded', function () {
     imagen.removeChild(document.getElementById('eliminar').parentNode.parentNode);
   });
 });
+document.addEventListener('DOMContentLoaded', function () {
+  var calendarEl = document.getElementById('calendar');
+  var calendar = new FullCalendar.Calendar(calendarEl, {
+    initialView: 'dayGridMonth'
+  });
+  calendar.render();
+});
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),

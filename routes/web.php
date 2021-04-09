@@ -24,6 +24,7 @@ Route::post('/createarticle','ArticlesAllController@store')->name('articles.stor
 Route::post('/comentcreate','ComentsPlaceController@store')->name('comentplace.store');
 Route::get('/coment/destroy/{commentsplace}','ComentsPlaceController@destroy');
 Route::post('/coment/update/{commentsplace}','ComentsPlaceController@update')->name('coment.update');
+Route::get('/eventplace','EventPlaceController@show')->name('evento.place');
 Route::get('/noautorizado',function(){
 
     return view('errores/401');

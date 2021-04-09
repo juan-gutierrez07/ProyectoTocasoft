@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class EventPlaceController extends Controller
 {
-    //
+    public function show()
+    {
+        return view('eventos.eventosplace');
+    }
 }

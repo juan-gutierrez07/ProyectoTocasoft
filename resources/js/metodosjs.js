@@ -21,4 +21,13 @@ $(document).ready(function() {
         var imagen = document.getElementById('eliminar').parentNode.parentNode.parentNode;
         imagen.removeChild(document.getElementById('eliminar').parentNode.parentNode);
     });
+
 });
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth'
+    });
+    calendar.render();
+  });
+
