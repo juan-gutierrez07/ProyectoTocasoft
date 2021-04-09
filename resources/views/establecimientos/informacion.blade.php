@@ -28,6 +28,7 @@
                                                 establecimiento-id={{$establecimiento->id}}
                                             ></eliminar-establecimiento>
                                             <a href="{{ route('place.edit', $establecimiento->id) }} " class="btn btn-dark d-block mb-2">Editar</a>
+                                            
                                         </td>
                                     </tr>
                                 @endforeach

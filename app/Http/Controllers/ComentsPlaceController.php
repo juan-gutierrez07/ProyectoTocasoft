@@ -32,4 +32,36 @@ class ComentsPlaceController extends Controller
         return redirect()->route('place.show',$request->place_id)
         ->with('status_success','Comentario Agregado !!'); ;
     }
+
+    public function destroy(CommentsPlace $commentsplace)
+    {
+        $commentsplace->delete();
+            $total = CommentsPlace::where('place_id','=',$commentsplace->place->id)->count();
+            $puntos = CommentsPlace::where('place_id','=',$commentsplace->place->id)->sum('points');
+            $promedio = number_format($puntos/$total,1);
+        $respuesta = [
+            'status'=>'200',
+            'body'=>'Eliminado correctamente',
+            'total'=> $total,
+            'promedio'=> $promedio
+        ];
+
+        return response()->json($respuesta);
+        
+    }
+
+    public function update(Request $request, CommentsPlace $commentsplace)
+    {
+        $request->validate([
+            'content'=>'required|min:50',
+            'points'=>'required'
+        ]);
+
+        $nuevo = CommentsPlace::find($commentsplace->id);
+        $nuevo->update($request->all());
+
+         
+        return redirect()->route('place.show',$request->place_id)
+        ->with('status_success','Comentario Editado !!'); ;   
+    }
 }

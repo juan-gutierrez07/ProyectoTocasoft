@@ -26,6 +26,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/principal/template.css') }}"  rel="stylesheet">
+    {{-- <link href="{{ asset('css/establecimientos/establecimientoall.css') }}"  rel="stylesheet"> --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- <link
         rel="stylesheet"

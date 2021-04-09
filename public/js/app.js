@@ -1899,6 +1899,60 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarComentario.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EliminarComentario.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['comentarioId'],
+  mounted: function mounted() {},
+  methods: {
+    EliminarComentario: function EliminarComentario() {
+      var _this = this;
+
+      this.$swal({
+        title: 'Estas Seguro?',
+        text: "Eliminaras tu comentario !!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si',
+        cancelButtonText: 'no'
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          axios.get('/coment/destroy/' + _this.comentarioId).then(function (response) {
+            console.log(response.data);
+            document.getElementById('comentarios').innerHTML = response.data.total;
+            document.getElementById('promedio').innerHTML = response.data.promedio;
+          }); // console.log(this.$el.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode);
+
+          _this.$el.parentNode.parentNode.parentNode.parentNode.removeChild(_this.$el.parentNode.parentNode.parentNode); // this.$el.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode);
+
+
+          _this.$swal({
+            title: 'Acción Completa !',
+            text: 'El comentario se eliminó .',
+            icon: 'success'
+          });
+        }
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarEstablecimiento.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EliminarEstablecimiento.vue?vue&type=script&lang=js& ***!
@@ -57025,6 +57079,35 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarComentario.vue?vue&type=template&id=bc97ebe6&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EliminarComentario.vue?vue&type=template&id=bc97ebe6& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("input", {
+    staticClass: "btn btn-danger",
+    staticStyle: { "margin-right": "13px" },
+    attrs: { type: "submit", value: "Eliminar" },
+    on: { click: _vm.EliminarComentario }
+  })
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarEstablecimiento.vue?vue&type=template&id=44d4276c&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/EliminarEstablecimiento.vue?vue&type=template&id=44d4276c& ***!
@@ -86661,7 +86744,8 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 Vue.component('pagina-principal', __webpack_require__(/*! ./components/PaginaPrincipal.vue */ "./resources/js/components/PaginaPrincipal.vue")["default"]);
 Vue.component('eliminar-establecimiento', __webpack_require__(/*! ./components/EliminarEstablecimiento.vue */ "./resources/js/components/EliminarEstablecimiento.vue")["default"]);
 Vue.component('eliminar-imagen-sitio', __webpack_require__(/*! ./components/EliminarImagenSitio.vue */ "./resources/js/components/EliminarImagenSitio.vue")["default"]);
-Vue.component('mapa-ubicacion', __webpack_require__(/*! ./components/MapaUbicacion.vue */ "./resources/js/components/MapaUbicacion.vue")["default"]); // Vue.component('mapa-establecimientos',require('./components/MapaEstablecimientos.vue').default);
+Vue.component('mapa-ubicacion', __webpack_require__(/*! ./components/MapaUbicacion.vue */ "./resources/js/components/MapaUbicacion.vue")["default"]);
+Vue.component('eliminar-comentario', __webpack_require__(/*! ./components/EliminarComentario.vue */ "./resources/js/components/EliminarComentario.vue")["default"]); // Vue.component('mapa-establecimientos',require('./components/MapaEstablecimientos.vue').default);
 
 Vue.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_2__["default"]);
 console.log(Vue.prototype);
@@ -86728,6 +86812,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/EliminarComentario.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/EliminarComentario.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EliminarComentario_vue_vue_type_template_id_bc97ebe6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EliminarComentario.vue?vue&type=template&id=bc97ebe6& */ "./resources/js/components/EliminarComentario.vue?vue&type=template&id=bc97ebe6&");
+/* harmony import */ var _EliminarComentario_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EliminarComentario.vue?vue&type=script&lang=js& */ "./resources/js/components/EliminarComentario.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EliminarComentario_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EliminarComentario_vue_vue_type_template_id_bc97ebe6___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EliminarComentario_vue_vue_type_template_id_bc97ebe6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/EliminarComentario.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/EliminarComentario.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/EliminarComentario.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarComentario_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./EliminarComentario.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarComentario.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarComentario_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/EliminarComentario.vue?vue&type=template&id=bc97ebe6&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/EliminarComentario.vue?vue&type=template&id=bc97ebe6& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarComentario_vue_vue_type_template_id_bc97ebe6___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./EliminarComentario.vue?vue&type=template&id=bc97ebe6& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/EliminarComentario.vue?vue&type=template&id=bc97ebe6&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarComentario_vue_vue_type_template_id_bc97ebe6___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EliminarComentario_vue_vue_type_template_id_bc97ebe6___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

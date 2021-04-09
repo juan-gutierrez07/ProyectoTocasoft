@@ -13,11 +13,12 @@
                 <h3 class="my-4" style="font-size: 18px;
                     color: #407587;
                     margin-bottom: 15px;" > Total de comentarios del {{ $comentarios[0]->place->name }}:</h3>
-                    <h3>{{ $total }}</h3>
+                    <h3 id ="comentarios">{{ $total }}</h3>
                 <h3 class="my-4" style="font-size: 18px;
                     color: #407587;
                     margin-bottom: 15px;" > Puntuación promedio del {{ $comentarios[0]->place->name }}:</h3>
-                    <h3>{{ number_format($puntos/$total,1) }}</h3>
+                    <h3 id="promedio">{{ number_format($puntos/$total,1) }}</h3>
+                    
                   @if (auth()->check())
                   <a class="btn btn-primary" data-toggle="modal" data-target="#nuevo">
                     Agregar Comentario
@@ -33,6 +34,7 @@
             <div class="modal-content">
                 <!-- Modal Header -->
                 <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Agregar Comentario</h5>
                     <button type="button" class="close" data-dismiss="modal">
                         <span aria-hidden="true">×</span>
                         <span class="sr-only">Close</span>
@@ -51,16 +53,17 @@
                         <div class="form-group">
                             <label for="inputPuntos">Puntuación</label>
                             <select  name ="points" class="form-control" id="inputPuntos">
-                                <option value="1"> 1 Punto</option>
-                                <option value="2"> 2 Punto</option>
-                                <option value="3"> 3 Punto</option>
-                                <option value="4"> 4 Punto</option>
-                                <option value="5"> 5 Punto</option>
+                                    <option value=" "> -------</option>
+                                    <option value="1"> 1 Puntos</option>
+                                    <option value="2"> 2 Puntos</option>
+                                    <option value="3"> 3 Puntos</option>
+                                    <option value="4"> 4 Puntos</option>
+                                    <option value="5"> 5 Puntos</option>
                             </select>
                         </div>
                         <!-- Modal Footer -->
                         <div class="modal-footer">
-                            <a class="btn btn-danger" data-dismiss="modal">Close</a>
+                            <a class="btn btn-danger" data-dismiss="modal">Cerrar</a>
                             <input type="hidden" name="place_id" value="{{ $comentarios[0]->place->id }}"/>   
                             <input type="submit" class="btn btn-primary" value="Agregar"/>
                         </div>
@@ -85,13 +88,55 @@
                         <div class="footer">
                             {{ $comentario->points }}
                             @if(auth()->check() && auth()->user()->id == $comentario->user->id)    
-                                <div class=" row align-items-end">
-                                        <form action="" method="">
-                                            <a href="" class=" btn btn-danger" style="margin-right: 10px;">Eliminar</a>
-                                        </form>
-                                        <form action="" method="">
-                                            <a href="" class=" btn btn-secondary ">Editar</a>
-                                        </form>
+                                <div class=" row align-items-end" style="position: relative; right: 1%;">
+                                        <eliminar-comentario comentario-id={{ $comentario->id }}></eliminar-comentario>
+                                        <a class="btn btn-secondary" data-toggle="modal" data-target="#editar">
+                                             Editar
+                                        </a>
+                                        {{-- Editar modal --}}
+                                <div class="modal fade" id="editar" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <!-- Modal Header -->
+                                                <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Editar Comentario</h5>
+                                                    <button type="button" class="close" data-dismiss="modal">
+                                                        <span aria-hidden="true">×</span>
+                                                        <span class="sr-only">Close</span>
+                                                    </button>
+                                                </div>
+                                                
+                                                <!-- Modal Body -->
+                                                <div class="modal-body">
+                                                    <p class="statusMsg"></p>
+                                                    <form action="{{ route('coment.update',$comentario->id) }}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        <div class="form-group">
+                                                            <label for="inputMessage">Edita comentario</label>
+                                                            <textarea class="form-control" name="content" id="inputMessage">{{ $comentario->content }}</textarea>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="inputPuntos">Puntuación</label>
+                                                            <select  name ="points" class="form-control" id="inputPuntos">
+                                                                <option value=" "> -------</option>
+                                                                <option value="1"> 1 Puntos</option>
+                                                                <option value="2"> 2 Puntos</option>
+                                                                <option value="3"> 3 Puntos</option>
+                                                                <option value="4"> 4 Puntos</option>
+                                                                <option value="5"> 5 Puntos</option>
+                                                            </select>
+                                                        </div>
+                                                        <!-- Modal Footer -->
+                                                        <div class="modal-footer">
+                                                            <a class="btn btn-danger" data-dismiss="modal">Cerrar</a>
+                                                            <input type="hidden" name="place_id" value="{{ $comentarios[0]->place->id }}"/>   
+                                                            <input type="submit" class="btn btn-primary" value="Agregar"/>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             @endif    
                         </div>

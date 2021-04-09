@@ -22,6 +22,8 @@ Route::get('/categoria/{category}','CategoryController@categoria')->name('catego
 Route::get('/', 'ModulController@all')->name('home');
 Route::post('/createarticle','ArticlesAllController@store')->name('articles.store');
 Route::post('/comentcreate','ComentsPlaceController@store')->name('comentplace.store');
+Route::get('/coment/destroy/{commentsplace}','ComentsPlaceController@destroy');
+Route::post('/coment/update/{commentsplace}','ComentsPlaceController@update')->name('coment.update');
 Route::get('/noautorizado',function(){
 
     return view('errores/401');
@@ -34,7 +36,7 @@ Auth::routes(['verify' => true]);
 Route::group(['middleware' => ['admin']], function(){
     Route::get('/establecimiento/create','PlaceController@create')->name('place.create');
     Route::post('/establecimiento/store','PlaceController@store')->name('place.store');
-    Route::get('/establecimiento/edit/{place}','PlaceController@edit')->name('place.edit');
+    Route::post('/establecimiento/edit/{place}','PlaceController@edit')->name('place.edit');
     Route::get('/establecimiento/destroy/{place}','PlaceController@destroy')->name('place.destroy');
     Route::get('/establecimiento/info','PlaceController@info')->name('place.list');
     //Rutas para administrar imagenes
