@@ -3,29 +3,28 @@
 <link rel="stylesheet" href="{{ asset('css/comentarios.css') }}">
 @endsection
 @section('content')
+<h1  class="display-3" style="position: relative;">Comentarios sobre {{ $comentarios[0]->place->name }} </h1>
+<br>
 <div class="row align-items-start">
     <div class="col-md-4 order-1" id="contenedor" style="right:20%;">
         <aside>
-            <div class="p-4 bg-light" style="text-align: center; border-radius: 4px">
-                <img style="width: 150px; height: 150px;
-                    border-radius: 50%;
-                    margin-top: 30px;" src="../../storage/{{ $comentarios[0]->place->imagen_principal }}" alt="Location">
-                <h3 class="my-4" style="font-size: 18px;
-                    color: #407587;
-                    margin-bottom: 15px;" > Total de comentarios del {{ $comentarios[0]->place->name }}:</h3>
-                    <h3 id ="comentarios">{{ $total }}</h3>
-                <h3 class="my-4" style="font-size: 18px;
-                    color: #407587;
-                    margin-bottom: 15px;" > Puntuación promedio del {{ $comentarios[0]->place->name }}:</h3>
-                    <h3 id="promedio">{{ number_format($puntos/$total,1) }}</h3>
-                    
-                  @if (auth()->check())
-                  <a class="btn btn-primary" data-toggle="modal" data-target="#nuevo">
-                    Agregar Comentario
-                  </a> 
+            <div class="card " style="float: left;margin-left: -15%" >
+                            <img class="card-img-top" src="../../storage/{{ $comentarios[0]->place->imagen_principal }}" alt="Location">
+                            <div class="card-body">
+                            <h3 class="card-title" style="font-size: 21px; text-align: center;
+                                margin-bottom: 15px;" >{{ $comentarios[0]->place->name }}</h3>
+        
+                                <h3 id ="comentarios">Total Comentarios : {{ $total }}</h3>
                      
-                  @endif  
-                
+                                <h3 id="promedio">Puntuación promedio : {{ number_format($puntos/$total,1) }}</h3>
+                            </div>
+                            <div class="card-footer py-4">
+                              @if (auth()->check())
+                              <a class="btn nav-link btn-style"  data-toggle="modal" data-target="#nuevo">
+                                Agregar Comentario
+                              </a> 
+                            </div>
+                              @endif  
             </div>
         </aside>
     </div>
@@ -72,25 +71,28 @@
             </div>
         </div>
     </div>
+
     @if (isset($comentarios))
     @include('establecimientos.message')
-    <legend  class="text-primary" style="position: relative; left: 45%;">Comentarios sobre {{ $comentarios[0]->place->name }} </legend>
-    <div class="col-md-8 order-2" style="right: 16%;">    
+    <div class="col-md-8 order-2" style="right: 16%;float: right;">    
         @foreach ($comentarios as $comentario)
-            <div class="container-comments my-5">
-                <div class="comments" style="margin-top: 15%;">
-                    <div class="info-comments" style="width: 160%;">
-                        <div class="header">
-                            <h4>{{ $comentario->user->name }}</h4>
-                            <h5>{{ date('d - m - Y  //  h:i',strtotime($comentario->created_at))}}</h5>
-                        </div>
-                        <p>{{ $comentario->content }}</p>
-                        <div class="footer">
-                            {{ $comentario->points }}
-                            @if(auth()->check() && auth()->user()->id == $comentario->user->id)    
+        <div class="comment-main-level">
+            <!-- Contenedor del Comentario -->
+           <div class="comment-box">
+               <div class="comment-head">
+                   <h6 class="comment-name by-author">{{ $comentario->user->name }}</h6>
+                   <span>{{ date('d - m - Y  //  h:i',strtotime($comentario->created_at))}}</span>
+               </div>
+               <div class="comment-content">
+                {{ $comentario->content }} 
+                <br>
+                <strong>Puntuacion sitio: </strong> 
+                {{ $comentario->points }}
+                @if(auth()->check() && auth()->user()->id == $comentario->user->id)    
                                 <div class=" row align-items-end" style="position: relative; right: 1%;">
-                                        <eliminar-comentario comentario-id={{ $comentario->id }}></eliminar-comentario>
-                                        <a class="btn btn-secondary" data-toggle="modal" data-target="#editar">
+                                    <br>
+                                        <eliminar-comentario style="margin-left: 5%" comentario-id={{ $comentario->id }}></eliminar-comentario>
+                                        <a class="btn btn-secondary" data-toggle="modal" data-target="#editar" >
                                              Editar
                                         </a>
                                         {{-- Editar modal --}}
@@ -138,12 +140,11 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endif    
-                        </div>
-                    </div>
+                            @endif   
                 </div>
-            </div>
-            
+           </div>
+       </div>
+            <br>
         @endforeach
     </div>
         @else   
