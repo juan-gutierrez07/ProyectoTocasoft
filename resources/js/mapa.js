@@ -5,7 +5,7 @@ const provider = new OpenStreetMapProvider();
 document.addEventListener('DOMContentLoaded', () => {  
     
     if(document.querySelector('#map')){
-      //Dibujar el mapa
+      
 
         var map = L.map('map').setView([4.45637843,-74.63432193], 16);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

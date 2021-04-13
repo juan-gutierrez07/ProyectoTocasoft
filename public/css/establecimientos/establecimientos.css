@@ -1,0 +1,37 @@
+/* .carousel-caption {
+    width:100%;
+    height:100%;
+    left:0 !important;
+    background: transparent;
+}
+
+/* .carousel-caption h3 {
+  text-align:left;
+  margin-left:30px;
+} */
+/* .carousel-caption p {
+  margin-top:60%;
+}
+@media screen and (max-width: 479px) {
+  .carousel-caption p {
+    margin-top:20%;
+  }
+} */ 
+body {
+    margin-top: -40px;
+    background-color: white;
+  }
+  
+  .carousel-inner > .item > img{
+    height: 480px;
+  }
+  
+  .col-centered {
+    float: none;
+    margin: 0 auto;
+  }
+  
+  .carousel-caption {
+    background: rgba(0, 0, 0, 0.3)
+  } 
+ 

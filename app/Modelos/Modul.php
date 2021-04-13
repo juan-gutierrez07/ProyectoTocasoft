@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Modul extends Model
 {
     protected $fillable = [
-        'name', 'slud','params_content','user_id'
+        'name', 'slug','description','user_id','state_publication_id'
 
     ];
     public function users()
@@ -17,5 +17,10 @@ class Modul extends Model
     public function articles()
     {
         return $this->hasMany('App\Modelos\ArticlesAll','modul_id');
+    }
+
+    public function state_publication()
+    {
+        return $this->belongsTo('App\Modelos\StatePublication');
     }
 }

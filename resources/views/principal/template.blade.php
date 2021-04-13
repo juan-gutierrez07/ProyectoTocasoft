@@ -38,11 +38,11 @@
 
 <!-- #yourServices -->
 <div class="divisionpersonal" style="margin-top: 0">
-    @if (isset($articulos))
+    @if (isset($modulos))
         <section id="yourServices" class="container">
-            <h2 class="display-4 text-center mt-5 mb-3">{{ $articulos[0]->modul->name }}</h2>
+            <h2 class="display-4 text-center mt-5 mb-3">{{ $modulos[0]->name}}</h2>
             <div class="row text-center">
-                @foreach ($articulos as $articulo )
+                @foreach ($modulos[0]->articles->where('state_publication_id',1) as $articulo )
                     <div class="col-md-3 mb-3">
                         <div class="card h-100">
                             <img class="card-img-top" src="http://4.bp.blogspot.com/_ivMmKzX0BpY/SxadRhqVMmI/AAAAAAAAACY/yQBmDpdlwZQ/s320/cascada+azul.jpg" alt="Design">
@@ -76,7 +76,6 @@
 </section>
 </div>
 <!-- end of #yourContact -->
-
 <!-- partial:index.partial.html -->
 <div class="divisionpersonal1">
 <section  class="container" >

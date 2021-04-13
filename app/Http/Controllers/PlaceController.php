@@ -78,7 +78,10 @@ class PlaceController extends Controller
         return view('establecimientos.showestablecimiento',compact('place'));
     }
 
- 
+    public function mapshow()
+    {
+        return view('establecimientos.mapaall');
+    }
     public function edit(Place $place)
     {
         $place = Place::findOrFail($place->id);

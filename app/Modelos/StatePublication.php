@@ -14,4 +14,8 @@ class StatePublication extends Model
     {
         return $this->hasMany('App\Modelos\ArticlesAll','state_publication_id');
     }
+    public function moduls()
+    {
+        return $this->hasMany('App\Modelos\Modul','state_publication_id');
+    }
 }

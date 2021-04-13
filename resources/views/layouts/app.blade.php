@@ -19,7 +19,7 @@
     <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js" defer></script>
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js" defer> </script>
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js"></script>
     
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -27,7 +27,7 @@
     <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.css" rel="stylesheet">
     <!-- Styles -->
     <link href="{{ asset('css/principal/template.css') }}"  rel="stylesheet">
-    {{-- <link href="{{ asset('css/establecimientos/establecimientoall.css') }}"  rel="stylesheet"> --}}
+    <link href="{{ asset('css/establecimientos/establecimientos.css') }}"  rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- <link
         rel="stylesheet"
@@ -63,39 +63,32 @@
                                 <a href="{{ route('modul.show') }}" class="nav-link">Contenido</a> {{-- Crear contenido para modulos..
                                                                                Crear  --}}
                         </li>    
-                        <ul class="dropdown-menu">
-                                <li class="">
-                                    <a class="dropdown-item nav-link" href="{{ route('images.sitio') }}">Imagenes Sitios</a> {{-- Crear contenido para modulos..
-                                                                                   Crear  --}}
-                            </li>    
-                            <li class="">
-                                <a class="dropdown-item nav-link" href="{{ route('images.route') }}">Imagenes Rutas</a> {{-- Crear contenido para modulos..
-                                                                               Crear  --}}
-                            </li>    
-                        </ul>    
                         @endif 
                         <li class="nav-item">
-                                <a href="{{ route('evento.place') }}" class="nav-link">Eventos</a> {{-- Crear eventos...
+                                <a class="nav-link" href="{{ route('mapa.places') }}" class="nav-link">Ver Todos Sitios</a> {{-- Crear contenido para modulos..
                                                                                Crear  --}}
                         </li>    
-                        <!--imagenes-->
-                        <li class="dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Subir Imagenes</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
-                            
-                        </li> 
+                        <li class="nav-item">
+                                <a class="nav-link" href="{{ route('evento.place') }}" class="nav-link">Eventos</a> {{-- Crear eventos...
+                                                                               Crear  --}}
+                        </li>    
                         <!--sitios-->
                         @if (auth()->check() && auth()->user()->roles[0]->rolname == "Administrador")
                         <li class="dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Sitios</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
                             <ul class="dropdown-menu">
-                                <li class="">
-                                    <a href="{{ route('place.create') }}">Crear</a> {{-- Crear contenido para modulos..
+                                <li class="nav-item">
+                                    <a class="dropdown-item nav-link" href="{{ route('place.create') }}">Crear</a> {{-- Crear contenido para modulos..
                                                                                    Crear  --}}
                                 </li>    
-                            <li class="">
-                                <a href="{{ route('place.list') }}">Ver</a> {{-- Crear contenido para modulos..
+                            <li class="nav-item">
+                                <a class="dropdown-item nav-link" href="{{ route('place.list') }}">Ver</a> {{-- Crear contenido para modulos..
                                                                                Crear  --}}
-                            </li>    
+                            </li>   
+                            <li class="nav-item">
+                                    <a class="dropdown-item nav-link" href="{{ route('images.sitio') }}">Subir imagenes</a> {{-- Crear contenido para modulos..
+                                                                                   Crear  --}}
+                            </li>     
                             </ul>    
                         </li> 
                         @endif
@@ -104,12 +97,15 @@
                         <li class="dropdown">
                             <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Rutas</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
                             <ul class="dropdown-menu">
-                                <li class="">
-                                    <a href="{{ route('rutas') }}">Crear</a> {{-- Crear contenido para modulos..
-                                                                                   Crear  --}}
+                                <li class="nav-item">
+                                    <a class="dropdown-item nav-link" href="{{ route('rutas') }}">Crear</a> 
                             </li>    
-                            <li class="">
-                                <a href="{{ route('images.route') }}">Ver</a> {{-- Crear contenido para modulos..
+                            <li class="nav-item">
+                                    <a class="dropdown-item nav-link" href="{{ route('images.sitio') }}">Subir imagenes</a> 
+                                                                                   
+                            </li>    
+                            <li class="nav-item">
+                                <a class="dropdown-item nav-link" href="{{ route('images.route') }}">Ver</a> {{-- Crear contenido para modulos..
                                                                                Crear  --}}
                             </li>    
                             </ul>    
@@ -118,21 +114,21 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link"  href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class=" nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -149,14 +145,12 @@
             </div>
         </nav>
 
-        <main class="py-4" style="margin-top:0px;">
+        <main style="margin-top:0px;">
             @yield('content')
             @yield('styles')
             @yield('scripts')
+
         </main>
     </div>
-    
-    <pagina-principal></pagina-principal>
-    
 </body>
 </html>

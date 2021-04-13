@@ -20,11 +20,14 @@ Route::get('/sitio/{place}','PlaceController@show')->name('place.show');
 Route::get('/comentarios/sitios/{place}','ComentsPlaceController@all')->name('coment.place');
 Route::get('/categoria/{category}','CategoryController@categoria')->name('category.place');
 Route::get('/', 'ModulController@all')->name('home');
+Route::post('/modulos/update/{modul}','ModulController@update')->name('modul.update');
+Route::get('/contenido/{modul}','ArticlesAllController@index')->name('articles.show');
 Route::post('/createarticle','ArticlesAllController@store')->name('articles.store');
 Route::post('/comentcreate','ComentsPlaceController@store')->name('comentplace.store');
 Route::get('/coment/destroy/{commentsplace}','ComentsPlaceController@destroy');
 Route::post('/coment/update/{commentsplace}','ComentsPlaceController@update')->name('coment.update');
 Route::get('/eventplace','EventPlaceController@show')->name('evento.place');
+Route::get('/sitios','PlaceController@mapshow')->name('mapa.places');
 Route::get('/noautorizado',function(){
 
     return view('errores/401');
@@ -54,7 +57,6 @@ Route::group(['middleware' => ['admin']], function(){
 
 //Crear contenido del sistema
 Route::group(['middleware' => ['admin']], function(){
- Route::get('/modulsitios','ModulController@sitios')->name('sitioshome');
  Route::get('/imagenes','ImageController@show')->name('images.sitio');
  Route::get('/imagesroute','ImagesRoutesController@show')->name('images.route');
  Route::get('/modulos','ModulController@show')->name('modul.show');

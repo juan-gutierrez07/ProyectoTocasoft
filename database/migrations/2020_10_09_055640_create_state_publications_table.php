@@ -15,7 +15,7 @@ class CreateStatePublicationsTable extends Migration
     {
         Schema::create('state_publications', function (Blueprint $table) {
             $table->id();
-            $table->enum('status', ['PUBLICAR','NO PUBLICAR']);
+            $table->enum('status', ['PUBLICADO','NO PUBLICADO']);
             $table->timestamps();
         });
     }

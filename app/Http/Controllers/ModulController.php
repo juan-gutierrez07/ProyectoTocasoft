@@ -13,20 +13,26 @@ class ModulController extends Controller
     public function all()
     {   
         $categorias = Category::where('type','Sitio')->get();
-        $articulos = ArticlesAll::where('modul_id','=',1)
-                                ->where('state_publication_id','=',1)
-                                ->get();
-        return view('principal.template',compact('articulos','categorias'));
+        $modulos = Modul::where('state_publication_id','=',1)->get();
+                
+        return view('principal.template',compact('modulos','categorias'));
     }
     public function show()
     {
-        $cantidades =[];
         $modulos =  Modul::all();
-        // for ($i=0; $i <count($modulos->articles) ; $i++) { 
-        //     $cantidades[i]= Arti
-        // }
-        
-        
-        return view('modulos.listarmodulos',compact('modulos','cantidades'));
+        return view('modulos.listarmodulos',compact('modulos'));
+    }
+    public function update(Request $request, Modul $modul)
+    {
+        $request->validate([
+            'name'=>'required',
+            'description'=>'required|min:20'
+        ]);
+
+        $modul->name= $request->name;
+        $modul->description=$request->description;
+        $modul->state_publication_id= $request->status;
+        $modul->save();
+        return redirect()->route('modul.show');
     }
 }

@@ -44,7 +44,7 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <p class="statusMsg"></p>
-                    <form action="{{ route('comentplace.store',) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('comentplace.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="inputMessage">Realiza comentario</label>
@@ -164,8 +164,6 @@
             </div>
         @endif       
     </div>
-
-
 @endsection
 @section('styles')
     <style>

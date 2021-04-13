@@ -22,12 +22,5 @@ $(document).ready(function() {
         imagen.removeChild(document.getElementById('eliminar').parentNode.parentNode);
     });
 
+  
 });
-document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth'
-    });
-    calendar.render();
-  });
-
