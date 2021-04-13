@@ -12,7 +12,7 @@ class ComentsPlaceController extends Controller
         $comentarios = CommentsPlace::where('place_id','=',$place->id)->get();
         $total = CommentsPlace::where('place_id','=',$place->id)->count();
         $puntos = CommentsPlace::where('place_id','=',$place->id)->sum('points');
-        return view('comentarios.showcomentarios',compact('comentarios','total','puntos'));
+        return view('comentarios.showcomentarios',compact('comentarios','total','puntos','place'));
     }
     public function store(Request $request)
     {

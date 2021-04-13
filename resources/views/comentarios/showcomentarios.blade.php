@@ -3,16 +3,16 @@
 <link rel="stylesheet" href="{{ asset('css/comentarios.css') }}">
 @endsection
 @section('content')
-<h1  class="display-3" style="position: relative;">Comentarios sobre {{ $comentarios[0]->place->name }} </h1>
+<h1  class="display-3" style="position: relative;">Comentarios sobre {{ $place->name }} </h1>
 <br>
 <div class="row align-items-start">
     <div class="col-md-4 order-1" id="contenedor" style="right:20%;">
         <aside>
             <div class="card " style="float: left;margin-left: -15%" >
-                            <img class="card-img-top" src="../../storage/{{ $comentarios[0]->place->imagen_principal }}" alt="Location">
+                            <img class="card-img-top" src="../../storage/{{ $place->imagen_principal }}" alt="Location">
                             <div class="card-body">
                             <h3 class="card-title" style="font-size: 21px; text-align: center;
-                                margin-bottom: 15px;" >{{ $comentarios[0]->place->name }}</h3>
+                                margin-bottom: 15px;" >{{ $place->name }}</h3>
         
                                 <h3 id ="comentarios">Total Comentarios : {{ $total }}</h3>
                      
