@@ -1,7 +1,7 @@
 <!-- #yourHeader -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <header id="yourHeader" class="jumbotron jumbotron-fluid">
-
+        <pagina-principal></pagina-principal>
 @extends('layouts.app')
 @section('content')
 
@@ -51,7 +51,7 @@
                                 <p class="card-text">{{ $articulo->description }}</p>
                             </div>
                             <div class="card-footer py-4">
-                                <a href="{{ route('category.place',$articulo->slug) }}" class="your-btn-primary-outer btn btn-info rounded-pill">Más Información</a>
+                                <a href="{{ route('category.place',$articulo->slug) }}" class="btn-info nav-link">Más Información</a>
                             </div>
                         </div>
                     </div>

@@ -1,3 +1,4 @@
+@import url("https://use.fontawesome.com/releases/v5.8.1/css/all.css");
 *{
     margin: 0;
     padding: 0;
@@ -7,6 +8,11 @@
 
 body{
     padding-bottom: 50px;
+    background-image:linear-gradient(
+        rgba(230, 228, 228, 0.411),
+        rgba(233, 232, 232, 0.315)
+      ), url("../../images/iconos/FondoComentarios.jpg");
+    background-size: cover;
 }
 /* 
 .background{
@@ -77,22 +83,28 @@ main h1{
 
 .info-comments p{
     padding: 20px;
+    font-family: 'Asap', sans-serif;
 }
 
 .info-comments .footer{
     width: 100%;
+    height: 45px;
     background: white;
     padding: 10px;
     color: #5f5f5f;
     display: flex;
-    justify-content: space-between;
 }
 
-.info-comments .footer h5{
+.info-comments h5{
     font-size: 15px;
     cursor: pointer;
+    font-family: 'Asap', sans-serif;
 }
-
+.info-comments h4{
+  font-size: 15px;
+  cursor: pointer;
+  font-family: 'Asap', sans-serif;
+}
 
 /*Contenedor para los datos de comentarios*/
 
@@ -150,7 +162,7 @@ main h1{
     font-size: 16px;
     background: #ebebeb;
 }
-
+ 
 .btn-comment{
     position: absolute;
     right: 20px;
@@ -178,8 +190,322 @@ main h1{
     z-index: 10;
 }
 
+.divscroll
+{
+    align-items: flex-start;
+    overflow-y: scroll;
+    height:400px;
+    width: 600px;
+    float: right;
+    background-color: #ffff;
+}
+.fondo{
+    background-image: url("../../images/iconos/FondoComentarios.jpg");
+}
+.divgrande{
+    width: 5000px;
+    height: 3000px;
+    border: 5px solid red;
+    background: white;
+    color: black;
+    display: flex;
+    align-items: flex-end;
+}
 
+/*pruebas*/
 
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    width: 130%;
+    height: 45%;
+  }
+  .card-img,
+  .card-img-top,
+  .card-img-bottom {
+    flex-shrink: 0;
+    max-width: 100%;
+    max-height: 20% ;
+  }
+  
+  .card-img,
+  .card-img-top {
+    border-top-left-radius: calc(0.25rem - 1px);
+    border-top-right-radius: calc(0.25rem - 1px);
+  }
+  .card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+  }
+  .card-title {
+    font-family: 'Asap', sans-serif;
+    background: linear-gradient(rgb(50, 110, 42),rgb(58, 150, 29));
+    -webkit-background-clip: text;
+    color: transparent;
+    font-weight: bold;
+  }
+  .card h3{
+    font-family: 'Asap', sans-serif;
+    font-size: 19px;
+    font-weight: bolder;
+    text-align: center;
+  }
+  
+.btn-info {
+    text-align: center;
+    color: rgb(167, 22, 22);
+    font-family: 'Asap', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .btn-info:hover {
+    color: rgb(172, 33, 33);
+    cursor: pointer;
+  }
+  
+  .btn-info:focus,
+  .btn-info.focus {
+    color: #fff;
+    background-color: #4aa0e600;
+    border-color: #3f9ae500;
+    box-shadow: 0 0 0 0.2rem rgba(97, 157, 206, 0.5);
+  }
+  
+  .btn-info.disabled,
+  .btn-info:disabled {
+    color: #212529;
+    background-color: #6cb2eb00;
+    border-color: #6cb2eb00;
+  }
+  
+  .btn-info:not(:disabled):not(.disabled):active,
+  .btn-info:not(:disabled):not(.disabled).active,
+  .show > .btn-info.dropdown-toggle {
+    color: rgb(180, 86, 86);
+    background-color: #3f9ae500;
+    border-color: #3494e300;
+  }
+  
+  .btn-info:not(:disabled):not(.disabled):active:focus,
+  .btn-info:not(:disabled):not(.disabled).active:focus,
+  .show > .btn-info.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(97, 157, 206, 0.5);
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .btn {
+      transition: none;
+     
+    }
+  }
+  
+  .btn:hover {
+    color: #212529;
+    text-decoration: none;
+  }
+  
+  .btn:focus,
+  .btn.focus {
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(52, 144, 220, 0.25);
+    font-family: 'Asap';
+    background: linear-gradient(rgb(187, 53, 53),rgb(255, 66, 66));
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  .btn.disabled,
+  .btn:disabled {
+    opacity: 0.65;
+  }
+  
+  .btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+  
+  a.btn.disabled,
+  fieldset:disabled a.btn {
+    pointer-events: none;
+  }
+  .display-3 {
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 1.2;
+    font-family: 'Asap';
+    background: linear-gradient(rgb(148, 10, 10),rgb(255, 66, 66));
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0.1em 0.1em 0.05em rgba(134, 67, 67, 0.205);
+    text-transform: uppercase;
+  }
+  /*estrellas*/
+  .stars-outer {
+    display: inline-block;
+    position: relative;
+    font-family: FontAwesome;
+  }
+   
+  .stars-outer::before {
+    content: "\f006 \f006 \f006 \f006 \f006";
+  }
+   
+  .stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+  }
+   
+  .stars-inner::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    color: #f8ce0b;
+  }
+/**
+ * Caja del Comentario
+ ---------------------------*/
+ .comments-list .comment-box {
+	width: 680px;
+	float: right;
+	position: relative;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+}
 
+.comments-list .comment-box:before, .comments-list .comment-box:after {
+	content: '';
+	height: 0;
+	width: 0;
+	position: absolute;
+	display: block;
+	border-width: 10px 12px 10px 0;
+	border-style: solid;
+	border-color: transparent #FCFCFC;
+	top: 8px;
+	left: -11px;
+}
 
+.comments-list .comment-box:before {
+	border-width: 11px 13px 11px 0;
+	border-color: transparent rgba(0,0,0,0.05);
+	left: -12px;
+}
 
+.reply-list .comment-box {
+	width: 610px;
+}
+.comment-box .comment-head {
+	background: #FCFCFC;
+	padding: 10px 12px;
+	border-bottom: 1px solid #E5E5E5;
+	overflow: hidden;
+	-webkit-border-radius: 4px 4px 0 0;
+	-moz-border-radius: 4px 4px 0 0;
+	border-radius: 4px 4px 0 0;
+}
+
+.comment-box .comment-head i {
+	float: right;
+	margin-left: 14px;
+	position: relative;
+	top: 2px;
+	color: #A6A6A6;
+	cursor: pointer;
+	-webkit-transition: color 0.3s ease;
+	-o-transition: color 0.3s ease;
+	transition: color 0.3s ease;
+}
+
+.comment-box .comment-head i:hover {
+	color: #03658c;
+}
+
+.comment-box .comment-name {
+	color: #352828;
+	font-size: 14px;
+	font-weight: 700;
+	float: left;
+	margin-right: 10px;
+}
+
+.comment-box .comment-name a {
+	color: #690808;
+}
+
+.comment-box .comment-head span {
+	float: left;
+	color: #999;
+	font-size: 13px;
+	position: relative;
+	top: 1px;
+}
+
+.comment-box .comment-content {
+	background: #FFF;
+	padding: 12px;
+	font-size: 15px;
+	color: #595959;
+	-webkit-border-radius: 0 0 4px 4px;
+	-moz-border-radius: 0 0 4px 4px;
+	border-radius: 0 0 4px 4px;
+}
+
+.comment-box .comment-name.by-author, .comment-box .comment-name.by-author a {color: #016601;}
+.comment-box .comment-name.by-author:after {
+	content: 'autor';
+	background: linear-gradient(rgb(139, 23, 23),rgb(255, 66, 66));
+    
+    color: transparent;
+	color: #FFF;
+	font-size: 12px;
+	padding: 3px 5px;
+	font-weight: 700;
+	margin-left: 10px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+
+/** =====================
+ * Responsive
+ ========================*/
+@media only screen and (max-width: 766px) {
+	.comments-container {
+		width: 480px;
+	}
+
+	.comments-list .comment-box {
+		width: 390px;
+	}
+
+	.reply-list .comment-box {
+		width: 320px;
+	}
+}
+.btn-style{
+  border-color: #8e909286;
+  font-family: 'Asap';
+  font-weight: bolder;
+  font-size: 16px;
+  background: linear-gradient(rgb(50, 110, 42),rgb(58, 150, 29));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.btn-style:hover{
+  border-color: #979997;
+  background: linear-gradient(rgb(134, 177, 128),rgb(58, 150, 29));
+  -webkit-background-clip: text;
+  color: transparent;
+  box-shadow: 0 0 0 0.2rem rgba(46, 158, 61, 0.25);
+}
