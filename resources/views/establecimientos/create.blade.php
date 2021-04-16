@@ -8,7 +8,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
 @endsection
 @section('content')
     <div class="container">
-                <h1 class="text-center mt-4">Registrar Establecimiento</h1>
+                <h1 class="text-center mt-4">Registrar Sitio</h1>
        
         <div class="mt-5 row justify-content-center">
                 @include('establecimientos.message')
@@ -23,7 +23,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                             <legend class="text-primary">Nombre, Categoría e Imagen Principal</legend>
         
                             <div class="form-group">
-                                <label for="nombre">Nombre Establecimiento</label>
+                                <label for="nombre">Nombre Sitio</label>
                                 <input
                                     id="nombre"
                                     type="text"
@@ -205,13 +205,13 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                 </div>
                         </fieldset>
         
-                        <fieldset class="border p-4 mt-5">
+                        {{-- <fieldset class="border p-4 mt-5">
                             <legend  class="text-primary">Imágenes Establecimiento: </legend>
                                 <div class="form-group">
                                     <label for="imagenes">Imagenes</label>
                                     <div id="dropzone" class="dropzone form-control"></div>
                                 </div>
-                        </fieldset>
+                        </fieldset> --}}
         
                         <input type="hidden" id="uuid" name="uuid" value="{{ Str::uuid()->toString()}}">
                         <input type="submit" class="btn btn-primary mt-3 d-block" value="Registrar Establecimiento">

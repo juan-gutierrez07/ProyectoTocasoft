@@ -45,7 +45,7 @@ class PlaceController extends Controller
                 
         //Guardando imagen en el store desde el cliente
         $path_imagen = $request['imagen_principal']->store('principal_establecimientos', 'public');
-        $imagen = Image::make( public_path("storage/{$path_imagen}"))->fit(400, 450);
+        $imagen = Image::make( public_path("storage/{$path_imagen}"))->resize(1700, 600);
         $imagen->save();
         //Guardando con el modelo
         $nuevo = new Place;
@@ -63,7 +63,7 @@ class PlaceController extends Controller
         $nuevo->uuid=$request['uuid'];
         $nuevo->save();
         
-        return redirect('/')->with('status_success','Establecimiento Registrado');
+        return view('imagenes.sitios',compact('nuevo'));
     }
 
     public function info()

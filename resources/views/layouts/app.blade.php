@@ -29,7 +29,9 @@
     <link href="{{ asset('css/principal/template.css') }}"  rel="stylesheet">
     <link href="{{ asset('css/establecimientos/establecimientos.css') }}"  rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
     {{-- <link
+
         rel="stylesheet"
         href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
 /> --}}
@@ -68,10 +70,20 @@
                                 <a class="nav-link" href="{{ route('mapa.places') }}" class="nav-link">Ver Todos Sitios</a> {{-- Crear contenido para modulos..
                                                                                Crear  --}}
                         </li>    
-                        <li class="nav-item">
-                                <a class="nav-link" href="{{ route('evento.place') }}" class="nav-link">Eventos</a> {{-- Crear eventos...
-                                                                               Crear  --}}
-                        </li>    
+                        
+                        <li class="dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Eventos</a> 
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item nav-link" href="{{ route('evento.place') }}" >Eventos sitios</a> {{-- Crear eventos.. --}}        
+                                    </li>    
+                                    <li class="nav-item">
+                                            <a class="dropdown-item nav-link" href="{{ route('evento.place') }}">Eventos rutas turisticas</a> {{-- Crear eventos.. --}}        
+                                        </li> 
+                                </ul>
+                            </li>      
+                                
+                        
                         <!--sitios-->
                         @if (auth()->check() && auth()->user()->roles[0]->rolname == "Administrador")
                         <li class="dropdown">
@@ -81,14 +93,10 @@
                                     <a class="dropdown-item nav-link" href="{{ route('place.create') }}">Crear</a> {{-- Crear contenido para modulos..
                                                                                    Crear  --}}
                                 </li>    
-                            <li class="nav-item">
-                                <a class="dropdown-item nav-link" href="{{ route('place.list') }}">Ver</a> {{-- Crear contenido para modulos..
-                                                                               Crear  --}}
-                            </li>   
-                            <li class="nav-item">
-                                    <a class="dropdown-item nav-link" href="{{ route('images.sitio') }}">Subir imagenes</a> {{-- Crear contenido para modulos..
-                                                                                   Crear  --}}
-                            </li>     
+                                <li class="nav-item">
+                                    <a class="dropdown-item nav-link" href="{{ route('place.list') }}">Ver</a> {{-- Crear contenido para modulos..
+                                                                                Crear  --}}
+                                </li>   
                             </ul>    
                         </li> 
                         @endif
@@ -99,10 +107,6 @@
                             <ul class="dropdown-menu">
                                 <li class="nav-item">
                                     <a class="dropdown-item nav-link" href="{{ route('rutas') }}">Crear</a> 
-                            </li>    
-                            <li class="nav-item">
-                                    <a class="dropdown-item nav-link" href="{{ route('images.sitio') }}">Subir imagenes</a> 
-                                                                                   
                             </li>    
                             <li class="nav-item">
                                 <a class="dropdown-item nav-link" href="{{ route('images.route') }}">Ver</a> {{-- Crear contenido para modulos..
@@ -145,7 +149,7 @@
             </div>
         </nav>
 
-        <main style="margin-top:0px;">
+        <main>
             @yield('content')
             @yield('styles')
             @yield('scripts')

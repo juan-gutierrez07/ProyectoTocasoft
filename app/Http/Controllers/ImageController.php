@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use App\Modelos\Category;
-
+use App\Modelos\Place;
 
 class ImageController extends Controller
 {
@@ -14,8 +14,15 @@ class ImageController extends Controller
     public function show()
     {
         $categorias = Category::where('type','=','Sitio')->get();
-        return $categorias;
+        
         return view('imagenes.sitios',compact('categorias'));
+    }
+
+    public function send( Category $category)
+    {
+        $sitios=Place::where('category_id',$category->id)->get();
+
+        return response()->json($sitios);
     }
     public function store( Request $request)
     {

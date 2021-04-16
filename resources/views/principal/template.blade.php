@@ -38,29 +38,29 @@
 
 <!-- #yourServices -->
 <div class="divisionpersonal" style="margin-top: 0">
-    @if (isset($modulos))
-        <section id="yourServices" class="container">
-            <h2 class="display-4 text-center mt-5 mb-3">{{ $modulos[0]->name}}</h2>
-            <div class="row text-center">
-                @foreach ($modulos[0]->articles->where('state_publication_id',1) as $articulo )
-                    <div class="col-md-3 mb-3">
-                        <div class="card h-100">
-                            <img class="card-img-top" src="http://4.bp.blogspot.com/_ivMmKzX0BpY/SxadRhqVMmI/AAAAAAAAACY/yQBmDpdlwZQ/s320/cascada+azul.jpg" alt="Design">
-                            <div class="card-body">
-                                <h4 class="card-title">{{ $articulo->name }}</h4>
-                                <p class="card-text">{{ $articulo->description }}</p>
-                            </div>
-                            <div class="card-footer py-4">
-                                <a href="{{ route('category.place',$articulo->slug) }}" class="btn-info nav-link">Más Información</a>
-                            </div>
+    @if ($modulos[0] == '0')
+        <h2>Sin contenido....</h2>
+    @else
+    <section id="yourServices" class="container">
+        <h2 class="display-4 text-center mt-5 mb-3">{{ $modulos[0]->name}}</h2>
+        <div class="row text-center">
+            @foreach ($modulos[0]->articles->where('state_publication_id',1) as $articulo)
+                <div class="col-md-3 mb-3">
+                    <div class="card h-100">
+                        <img class="card-img-top" src="http://4.bp.blogspot.com/_ivMmKzX0BpY/SxadRhqVMmI/AAAAAAAAACY/yQBmDpdlwZQ/s320/cascada+azul.jpg" alt="Design">
+                        <div class="card-body">
+                            <h4 class="card-title">Sitios {{ $articulo->name }}</h4>
+                            <p class="card-text">{{ $articulo->description }}</p>
+                        </div>
+                        <div class="card-footer py-4">
+                            <a href="{{ route('category.place',$articulo->slug) }}" class="btn-info nav-link">Más Información</a>
                         </div>
                     </div>
-                @endforeach    
-            </div>
-         </section>
-         <!-- end of #yourServices -->
-    @else
-    <h1>Sin contenido....</h1>
+                </div>
+            @endforeach    
+        </div>
+     </section>
+     <!-- end of #yourServices -->
     @endif
 </div>    
 <!-- #yourContact -->

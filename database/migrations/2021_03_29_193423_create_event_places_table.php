@@ -15,10 +15,11 @@ class CreateEventPlacesTable extends Migration
     {
         Schema::create('event_places', function (Blueprint $table) {
             $table->id();
-            $table->string('name',255);
+            $table->string('title',255);
             $table->text('descripcion');
-            $table->time('start');
-            $table->time('finish');
+            $table->string('color',30);
+            $table->dateTime('start');
+            $table->dateTime('end');
             $table->foreignId('place_id')->references('id')->on('places')->onUpdate('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

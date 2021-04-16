@@ -10,6 +10,7 @@ class ArticlesAll extends Model
         'name',
         'descripcion',
         'state_publication_id',
+        'imagen_location',
         'modul_id',
     ];
     public function state_publication()

@@ -30,7 +30,7 @@ class ComentsPlaceController extends Controller
         $comentario->save();
 
         return redirect()->route('place.show',$request->place_id)
-        ->with('status_success','Comentario Agregado !!'); ;
+        ->with('status_success','Comentario Agregado !!'); 
     }
 
     public function destroy(CommentsPlace $commentsplace)

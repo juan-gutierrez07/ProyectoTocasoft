@@ -16,7 +16,7 @@
         
                                 <h3 id ="comentarios">Total Comentarios : {{ $total }}</h3>
                      
-                                <h3 id="promedio">Puntuación promedio : {{ number_format($puntos/$total,1) }}</h3>
+                                <h3 id="promedio">Puntuación promedio : @if($total>0){{ number_format($puntos/$total,1) }} @else 0 @endif</h3>
                             </div>
                             <div class="card-footer py-4">
                               @if (auth()->check())
@@ -63,7 +63,7 @@
                         <!-- Modal Footer -->
                         <div class="modal-footer">
                             <a class="btn btn-danger" data-dismiss="modal">Cerrar</a>
-                            <input type="hidden" name="place_id" value="{{ $comentarios[0]->place->id }}"/>   
+                            <input type="hidden" name="place_id" value="{{ $place->id }}"/>   
                             <input type="submit" class="btn btn-primary" value="Agregar"/>
                         </div>
                     </form>
@@ -131,7 +131,7 @@
                                                         <!-- Modal Footer -->
                                                         <div class="modal-footer">
                                                             <a class="btn btn-danger" data-dismiss="modal">Cerrar</a>
-                                                            <input type="hidden" name="place_id" value="{{ $comentarios[0]->place->id }}"/>   
+                                                            <input type="hidden" name="place_id" value="{{ $place->id }}"/>   
                                                             <input type="submit" class="btn btn-primary" value="Agregar"/>
                                                         </div>
                                                     </form>

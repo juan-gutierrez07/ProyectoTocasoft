@@ -19,14 +19,23 @@ use Illuminate\Support\Facades\Gate;
 Route::get('/sitio/{place}','PlaceController@show')->name('place.show');
 Route::get('/comentarios/sitios/{place}','ComentsPlaceController@all')->name('coment.place');
 Route::get('/categoria/{category}','CategoryController@categoria')->name('category.place');
+//Modulos
 Route::get('/', 'ModulController@all')->name('home');
 Route::post('/modulos/update/{modul}','ModulController@update')->name('modul.update');
+//Contenido
 Route::get('/contenido/{modul}','ArticlesAllController@index')->name('articles.show');
-Route::post('/createarticle','ArticlesAllController@store')->name('articles.store');
+Route::post('/create/article/{modul}','ArticlesAllController@store')->name('articles.store');
+Route::post('/articles/update/{articlesall}','ArticlesAllController@update')->name('article.update');
+//Comentarios
 Route::post('/comentcreate','ComentsPlaceController@store')->name('comentplace.store');
 Route::get('/coment/destroy/{commentsplace}','ComentsPlaceController@destroy');
 Route::post('/coment/update/{commentsplace}','ComentsPlaceController@update')->name('coment.update');
-Route::get('/eventplace','EventPlaceController@show')->name('evento.place');
+//Eventos
+Route::get('/eventos/sitios','EventPlaceController@show')->name('evento.place');
+Route::get('/eventosall','EventPlaceController@send');
+Route::post('/eventos/store','EventPlaceController@store');
+Route::post('/eventos/update/{eventplace}','EventPlaceController@update');
+Route::get('/eventos/destroy/{eventplace}','EventPlaceController@destroy');
 Route::get('/sitios','PlaceController@mapshow')->name('mapa.places');
 Route::get('/noautorizado',function(){
 
@@ -58,6 +67,7 @@ Route::group(['middleware' => ['admin']], function(){
 //Crear contenido del sistema
 Route::group(['middleware' => ['admin']], function(){
  Route::get('/imagenes','ImageController@show')->name('images.sitio');
+ Route::post('/categoria/sitios/{category}','ImageController@send');
  Route::get('/imagesroute','ImagesRoutesController@show')->name('images.route');
  Route::get('/modulos','ModulController@show')->name('modul.show');
 
