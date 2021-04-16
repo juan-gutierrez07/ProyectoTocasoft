@@ -46,7 +46,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="z-index: 100; background-color: rgba(224, 224, 224, 0.267);margin-top:auto; width:100%">
+        <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="z-index: 100; background-color: rgba(224, 224, 224, 0.822);margin-top:auto; width:100%">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('../images/iconos/tocaimatittle.png') }}" style="height: 60px; width:180px ">
