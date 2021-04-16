@@ -75,10 +75,7 @@
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Eventos</a> 
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
-                                        <a class="dropdown-item nav-link" href="{{ route('evento.place') }}" >Eventos sitios</a> {{-- Crear eventos.. --}}        
-                                    </li>    
-                                    <li class="nav-item">
-                                            <a class="dropdown-item nav-link" href="{{ route('evento.place') }}">Eventos rutas turisticas</a> {{-- Crear eventos.. --}}        
+                                            <a class="dropdown-item nav-link" href="{{ url('/eventos') }}">Eventos rutas turisticas</a> {{-- Crear eventos.. --}}        
                                         </li> 
                                 </ul>
                             </li>      

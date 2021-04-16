@@ -31,11 +31,11 @@ Route::post('/comentcreate','ComentsPlaceController@store')->name('comentplace.s
 Route::get('/coment/destroy/{commentsplace}','ComentsPlaceController@destroy');
 Route::post('/coment/update/{commentsplace}','ComentsPlaceController@update')->name('coment.update');
 //Eventos
-Route::get('/eventos/sitios','EventPlaceController@show')->name('evento.place');
-Route::get('/eventosall','EventPlaceController@send');
-Route::post('/eventos/store','EventPlaceController@store');
-Route::post('/eventos/update/{eventplace}','EventPlaceController@update');
-Route::get('/eventos/destroy/{eventplace}','EventPlaceController@destroy');
+Route::resource('/eventos','EventPlaceController');
+// Route::get('/eventosall','EventPlaceController@send');
+// Route::post('/eventos/store','EventPlaceController@store');
+// Route::post('/eventos/update/{eventplace}','EventPlaceController@update');
+// Route::get('/eventos/destroy/{eventplace}','EventPlaceController@destroy');
 Route::get('/sitios','PlaceController@mapshow')->name('mapa.places');
 Route::get('/noautorizado',function(){
 

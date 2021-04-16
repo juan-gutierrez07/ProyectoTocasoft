@@ -21,10 +21,13 @@ class ArticlesAllController extends Controller
         return view('modulos.listarcontenido',compact('modul','disponibles','estados'));
         }else if($modul->slug == "personal")
         {
-            return "sirvio";
+            return "contenido personal";
         }else if($modul->slug =="eventos")
         {
             return "contenido para eventos";
+        }else if($modul->slug == "rutas")
+        {
+            return "cotenido rutas";
         }
     }
 
