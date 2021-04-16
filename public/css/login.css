@@ -1,0 +1,26 @@
+body{
+    background-image:linear-gradient(
+        rgba(230, 228, 228, 0.253),
+        rgba(233, 232, 232, 0.11)
+      ), url("../../images/iconos/QUEBRADACACHIMBULA2.JPG");
+    background-size: cover;
+}
+.div1{
+    background-color: rgb(27, 175, 52);
+  color: #fff;
+  padding: 1.5em;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Asap';
+  font-size: 19px;
+}
+.btn1{
+    background-color: rgb(40, 161, 40);
+    color: #fff;
+    border-radius: 5px;
+    font-family: 'Asap';
+}
+.btn1:hover{
+    background-color: rgb(98, 163, 98);
+    color: rgb(255, 255, 255);
+}
