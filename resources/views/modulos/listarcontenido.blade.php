@@ -2,7 +2,7 @@
 @section('content')
 <div class="col-md-10 mx-auto bg-white p-3" style="margin-top: 5%;">
     @include('establecimientos.message')
-<a class="btn btn-success mb-2" style="margin-left: 90%;" data-toggle="modal" data-target="@if($disponibles->count()>0)#Agregar @else #Noacces @endif">Agregar</a>
+<a class="btn btn-success mb-2" style="margin-left: 90%;" data-toggle="modal" data-target=" @if($bandera == 1)@if($disponibles->count()>0)#Agregar @else #Noacces @endif @elseif($bandera == 2)  #Agregar @endif">Agregar</a>
 <div class="card">
     <div class="card-body">
     <table class="table" id="dtable">
@@ -10,7 +10,10 @@
             <tr>
                 <th scole="col">Id</th>
                 <th scole="col">Nombre</th>
-                <th scole="col">Descripción</th>
+                @if($modul->slug=="personal") <th scole="col">Imagen</th> @endif
+                <th scole="col">@if($modul->slug=="sitios")Descripción @elseif($modul->slug=="personal") Cargo @endif</th>
+                @if($modul->slug=="personal") <th scole="col">Celular</th> @endif
+                @if($modul->slug=="personal") <th scole="col">Correo</th> @endif
                 <th scole="col">Estado</th>
                 <th scole="col">Acciones</th>
 
@@ -116,6 +119,7 @@
                 <p class="statusMsg"></p>
                 <form action="{{ route('articles.store',$modul->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    @if($bandera == 1)
                     <div class="form-group">
                         <label for="slug"> Nombre:</label>
                         <select  name ="name" id="slug" class="form-control">
@@ -125,6 +129,7 @@
                             @endforeach
                         </select>
                     </div>
+                    @endif
                     <div class="form-group">
                         <label for="imagen_principal">Imagen Principal</label>
                         <input id="imagen_principal"

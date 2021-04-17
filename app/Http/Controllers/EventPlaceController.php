@@ -5,6 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Modelos\Place;
 use App\Modelos\EventPlace;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
+
+
+
 
 class EventPlaceController extends Controller
 {
@@ -37,18 +42,23 @@ class EventPlaceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store( Request $request)
-    {
+    {   
+        $path_imagen = $request->file('imagen_location')->store('eventos', 'public');
+
+        //Resize imagen
+        $imagen = Image::make( public_path("storage/{$path_imagen}"))->resize(1700, 600);
+        $imagen->save();
         $datos= request()->except(['_token','_method']);
         $nuevo = new EventPlace();
         $nuevo->title = $datos['name'];
-        $nuevo->descripcion = $datos['descripcion'];
+        $nuevo->descripcion = $datos['description'];
+        $nuevo->imagen_location = $path_imagen;
         $nuevo->place_id = $datos['place_id'];
         $nuevo->start = $datos['start'];
-        $nuevo->end = $datos['finish'];
+        $nuevo->end = $datos['end'];;
         $nuevo->color = $datos['color'];
         $nuevo->save();
-
-        print_r($datos);
+        return response()->json($request);
 
     }
     /**
@@ -101,4 +111,5 @@ class EventPlaceController extends Controller
      $eventos->delete();
      return response()->json($id);
     }
+    
 }

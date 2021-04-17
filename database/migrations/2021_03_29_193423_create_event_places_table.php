@@ -18,6 +18,7 @@ class CreateEventPlacesTable extends Migration
             $table->string('title',255);
             $table->text('descripcion');
             $table->string('color',30);
+            $table->string('imagen_location');
             $table->dateTime('start');
             $table->dateTime('end');
             $table->foreignId('place_id')->references('id')->on('places')->onUpdate('cascade')->onUpdate('cascade');

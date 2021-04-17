@@ -14,14 +14,18 @@ class ArticlesAllController extends Controller
     public function index(Modul $modul)
     {   
         $estados  = StatePublication::all();
+        $bandera =0;
+        $disponibles =0;
         if($modul->slug == "sitios")
         {
         $disponibles = Category::whereNotIn("slug", ArticlesAll::pluck("slug")->all())->get();
-
-        return view('modulos.listarcontenido',compact('modul','disponibles','estados'));
+        $bandera = 1;
+        return view('modulos.listarcontenido',compact('modul','disponibles','estados','bandera'));
         }else if($modul->slug == "personal")
         {
-            return "contenido personal";
+             $bandera = 2;
+
+            return view('modulos.listarcontenido',compact('modul','disponibles','estados','bandera'));;
         }else if($modul->slug =="eventos")
         {
             return "contenido para eventos";
