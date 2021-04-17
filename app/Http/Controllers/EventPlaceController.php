@@ -101,4 +101,9 @@ class EventPlaceController extends Controller
      $eventos->delete();
      return response()->json($id);
     }
+    public function mostrar()
+    {   
+        $places = Place::all();
+        return view('eventos.showeventsall',compact('places'));
+    }
 }

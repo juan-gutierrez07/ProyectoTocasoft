@@ -37,8 +37,8 @@ Route::resource('/eventos','EventPlaceController');
 // Route::post('/eventos/update/{eventplace}','EventPlaceController@update');
 // Route::get('/eventos/destroy/{eventplace}','EventPlaceController@destroy');
 Route::get('/sitios','PlaceController@mapshow')->name('mapa.places');
+Route::get('/events/mostrar', 'EventPlaceController@mostrar');
 Route::get('/noautorizado',function(){
-
     return view('errores/401');
 });
 
