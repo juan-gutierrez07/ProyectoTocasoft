@@ -114,6 +114,7 @@ class EventPlaceController extends Controller
     public function mostrar()
     {   
         $places = Place::all();
-        return view('eventos.showeventsall',compact('places'));
+        $eventos = EventPlace::all();
+        return view('eventos.showeventsall',compact('places','eventos'));
     }
 }
