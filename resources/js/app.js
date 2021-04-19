@@ -29,7 +29,7 @@ Vue.component('eliminar-imagen-sitio', require('./components/EliminarImagenSitio
 Vue.component('mapa-ubicacion', require('./components/MapaUbicacion.vue').default);
 Vue.component('eliminar-comentario',require('./components/EliminarComentario.vue').default);
 Vue.component('mapa-establecimientos',require('./components/MapaEstablecimientos.vue').default);
-Vue.component('estados-contenido',require('./components/EstadosContenido.vue').default);
+Vue.component('eliminar-rutas',require('./components/EliminarRutas.vue').default);
 Vue.use(VueSweetalert2);
 console.log(Vue.prototype);
 

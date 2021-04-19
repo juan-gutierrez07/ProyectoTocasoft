@@ -8,7 +8,7 @@ class AbousUs extends Model
 {
     protected $fillable =
     [
-        'name','position','phone','modul_id','imagen_location'
+        'name','lastname','position','phone','modul_id','imagen_location','email'
     ];
     public function modul()
     {

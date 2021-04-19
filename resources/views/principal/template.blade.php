@@ -1,12 +1,12 @@
 <!-- #yourHeader -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <header id="yourHeader" class="jumbotron jumbotron-fluid">
-        <pagina-principal></pagina-principal>
+        
 @extends('layouts.app')
 @section('content')
 
 <div class="container">
-    
+        <input type="hidden" name="rol" id="rol" @if(auth()->check()) value="{{ Auth::user()->roles[0]->rolname}}"@endif>
         @if (session('status_success'))
         <div class="alert alert-success" role="alert">
         <button type="button" class="close" data-dismiss="alert">&times;</button> 
@@ -47,7 +47,7 @@
             @foreach ($modulos[0]->articles->where('state_publication_id',1) as $articulo)
                 <div class="col-md-3 mb-3">
                     <div class="card h-100">
-                        <img class="card-img-top" src="http://4.bp.blogspot.com/_ivMmKzX0BpY/SxadRhqVMmI/AAAAAAAAACY/yQBmDpdlwZQ/s320/cascada+azul.jpg" alt="Design">
+                        <img class="card-img-top" src="../storage/{{ $articulo->image_location }}" alt="{{ $articulo->name }}">
                         <div class="card-body">
                             <h4 class="card-title">Sitios {{ $articulo->name }}</h4>
                             <p class="card-text">{{ $articulo->description }}</p>
@@ -81,6 +81,7 @@
 <section  class="container" >
 <div class="row text-center">
    <div class="team mt-125">
+       
       <div class="your-contact-text container ">
          <h2 class="display-41 text-center mt-5 mb-3">Personal Secretaria de Turismo</h2>
          <br><br>
@@ -160,6 +161,39 @@
 </section>
 </div>
 <!-- partial -->
-
-@endsection    
+<div class="modal fade" id="Noacces" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Acción denegada</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                </div>
+    
+                <!-- Modal Body -->
+                <div class="modal-body">
+                    <p>
+                        No puedes agregar más contenido sin categorias existentes !
+                        <a class="btn btn-link" href="{{ route('place.list') }}"> Ir a crear</a>
+                    </p>
+    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+        </div>
+@endsection
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        if($("#rol").val() == "Turista")
+        {
+            $("#Noacces").modal();
+        }
+    });
+</script>    
 

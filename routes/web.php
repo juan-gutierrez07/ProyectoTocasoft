@@ -57,9 +57,9 @@ Route::group(['middleware' => ['admin']], function(){
     //Rutas turisticas
     Route::get('/rutas/create','RutaController@create')->name('rutas');
     Route::post('/rutas/store','RutaController@store')->name('rutas.store');
-    Route::get('/rutas','RutaController@show')->name('rutas.show');
+    Route::get('/rutas','RutaController@index')->name('rutas.index');
     Route::get('/rutas/places/{id}','RutaController@ruta')->name('coordenas');
-  
+    Route::get('/rutas/destroy/{id}','RutaController@destroy');
 }); 
 
 //Crear contenido del sistema
@@ -73,7 +73,8 @@ Route::get('/contenido/{modul}','ArticlesAllController@index')->name('articles.s
 Route::post('/create/article/{modul}','ArticlesAllController@store')->name('articles.store');
 Route::post('/articles/update/{articlesall}','ArticlesAllController@update')->name('article.update');
 Route::post('/create/personal/{modul}','AbousUsController@store')->name('aboutus.store');
-
+Route::post('/personal/update/{abousus}','AbousUsController@update')->name('aboutus.update');
+Route::post('/personal/destroy/{abousus}','AbousUsController@destroy')->name('aboutus.destroy');
 
 });
 

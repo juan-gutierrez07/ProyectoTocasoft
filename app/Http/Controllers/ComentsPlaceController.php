@@ -38,7 +38,12 @@ class ComentsPlaceController extends Controller
         $commentsplace->delete();
             $total = CommentsPlace::where('place_id','=',$commentsplace->place->id)->count();
             $puntos = CommentsPlace::where('place_id','=',$commentsplace->place->id)->sum('points');
-            $promedio = number_format($puntos/$total,1);
+            if($total >0){
+                $promedio = number_format($puntos/$total,1);
+            }else{
+                $promedio = 0;
+            }
+            
         $respuesta = [
             'status'=>'200',
             'body'=>'Eliminado correctamente',

@@ -10,7 +10,8 @@
         <thead class="bg-secondary text-light">
             <tr>
                 <th scole="col">Id</th>
-                <th scole="col">Nombre</th>
+                <th scole="col">Nombres</th>
+                @if($modul->slug=="personal") <th scole="col">Apellidos</th> @endif
                 <th scole="col">@if($modul->slug=="sitios")Descripción @elseif($modul->slug=="personal") Cargo @endif</th>
                 @if($modul->slug=="personal") <th scole="col">Celular</th> @endif
                 @if($modul->slug=="personal") <th scole="col">Correo</th> @endif
@@ -67,7 +68,9 @@
                                                     <input id="imagen_principal_{{$article->id }}"
                                                     type="file"
                                                     class="form-control"
-                                                    name="imagen_principal">     
+                                                    name="imagen_principal">  
+                                                    <h5 class="text-center">Imagen actual</h5>
+                                                    <img style="width:200px; margin-top: 20px;" src="../storage/{{ $article->image_location }}">               
                                                 </div>            
                                                 <div class="form-group">
                                                     <label for="inputDescription">Descripcion</label>
@@ -103,9 +106,77 @@
                 <tbody>
                     @foreach ($personal as $persona)
                         <tr>
-                            <td>{{ $personal->id }}</td>
-                            <td>{{ $personal->name }}</td>
-                            <td></td>
+                            <td>{{ $persona->id }}</td>
+                            <td>{{ $persona->name }}</td>
+                            <td>{{ $persona->lastname }}</td>
+                            <td>{{ $persona->position }}</td>
+                            <td style="width: 10%;">{{ $persona->phone }}</td>
+                            <td>{{ $persona->email }}</td>
+                            <td class=" row align-items">
+                                <a class="btn btn-dark d-block mb-2" style="margin-left: 20%;" data-toggle="modal" data-target="#Editar_{{ $persona->id }}">Editar</a>
+                                <a class="btn btn-danger d-block mb-2" style="margin-left: 20%;" >Eliminar</a>
+                                <div class="modal fade" id="Editar_{{ $persona->id }}" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <!-- Modal Header -->
+                                            <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Editar contenido {{ $persona->name }} {{ $persona->lastname }}</h5>
+                                                <button type="button" class="close" data-dismiss="modal">
+                                                    <span aria-hidden="true">×</span>
+                                                    <span class="sr-only">Close</span>
+                                                </button>
+                                            </div>
+                            
+                                            <!-- Modal Body -->
+                                            <div class="modal-body">
+                                            <p class="statusMsg"></p>
+                                            <form action="{{ route('aboutus.update',$persona->id) }}" method="POST" enctype="multipart/form-data">
+                                                    @csrf 
+                                                        <div class="form-row">
+                                                        <div class="form-group col-md-6">
+                                                            <label for="txtName"> Nombres:</label>
+                                                            <input class="form-control"  name="name" type="text"  value="{{ $persona->name }}">
+                                                            </div>
+                                                        <div class="form-group col-md-6">
+                                                            <label for="txtName"> Apellidos:</label>
+                                                            <input class="form-control"  name="lastname" type="text"  value="{{ $persona->lastname }}">
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                        <label for="txtName"> Cargo:</label>
+                                                            <textarea class="form-control" name="position"  value="{{ $persona->position }}"></textarea>
+                                                        </div>     
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-6">
+                                                                    <label for="txtName"> Telefono:</label>
+                                                                    <input class="form-control"  name="phone" type="text"  value="{{ $persona->phone }}"onkeypress="return valideKey(event);">
+                                                            </div>
+                                                            <div class="form-group col-md-6">
+                                                                    <label for="phone"> Email:</label>
+                                                                    <input class="form-control"  name="phone" type="text" value="{{ $persona->email }}">
+                                                            </div>  
+                                                        </div>
+                                                    
+                                                        <div class="form-group">
+                                                            <label for="imagen_principal">Imagen Principal</label>
+                                                            <input 
+                                                            type="file"
+                                                            class="form-control"
+                                                            name="imagen_principal"> 
+                                                            <h5 class="text-center">Imagen actual</h5>
+                                                            <img style="width:200px; margin-top: 20px;" src="../storage/{{ $persona->imagen_location }}">            
+                                                        </div>          
+                                                    <!-- Modal Footer -->
+                                                    <div class="modal-footer">
+                                                        <a class="btn btn-danger" data-dismiss="modal">Cerrar</a>
+                                                        <input type="submit" class="btn btn-primary" value="Crear"/>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -145,26 +216,32 @@
                         <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="txtName"> Nombres:</label>
-                            <input class="form-control" id="txtName" name="name" type="text" placeholder="Nombres">
+                            <input class="form-control"  name="name" type="text" placeholder="Nombres">
                           </div>
                         <div class="form-group col-md-6">
-                            <label for="txtName"> Apellidos:</label>
-                            <input class="form-control" id="txtLastN" name="lastname" type="text" placeholder="Apellidos">
+                            <label for="lastname"> Apellidos:</label>
+                            <input class="form-control"  name="lastname" type="text" placeholder="Apellidos">
                           </div>
                         </div>
                         <div class="form-group">
                 
-                                <label for="txtName"> Cargo:</label>
-                                <textarea class="form-control" name="position" placeholder="Ingresa nombre del cargo"></textarea>
+                                <label for="position"> Cargo:</label>
+                                <textarea class="form-control" name="position" placeholder="Ingresa nombre del cargo y descripción"></textarea>
                         </div>     
-                        <div class="form-group ">
-                                <label for="txtName"> Telefono:</label>
-                                <input class="form-control" id="txtLastN" name="phone" type="text" placeholder="Numero" onkeypress="return valideKey(event);">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                    <label for="phone"> Telefono:</label>
+                                    <input class="form-control"  name="phone" type="text" placeholder="Numero" onkeypress="return valideKey(event);">
+                            </div>
+                            <div class="form-group col-md-6">
+                                    <label for="email"> Email:</label>
+                                    <input class="form-control"  name="email" type="text" placeholder="Email">
+                            </div>  
                         </div>
                     @endif
                     <div class="form-group">
                         <label for="imagen_principal">Imagen Principal</label>
-                        <input id="imagen_principal"
+                        <input 
                         type="file"
                         class="form-control"
                         name="imagen_principal">     

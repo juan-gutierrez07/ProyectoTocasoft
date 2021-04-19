@@ -18,7 +18,8 @@ class ArticlesAllController extends Controller
         
         if($modul->slug == "sitios")
         {
-        $disponibles = Category::whereNotIn("slug", ArticlesAll::pluck("slug")->all())->get();
+        $disponibles = Category::whereNotIn("slug", ArticlesAll::pluck("slug")->all())->where('type','Sitio')->get();
+        
         return view('modulos.listarcontenido',compact('modul','disponibles','estados'));
         }else if($modul->slug == "personal")
         {
@@ -42,7 +43,7 @@ class ArticlesAllController extends Controller
             'imagen_principal' => 'max:5000',
             'status'           => 'required|not_in:0'
         ]);
-        dd($modul);
+        
         $nuevo = new ArticlesAll();
         $nuevo->name = $request->name;
         $nuevo->description = $request->description;

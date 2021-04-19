@@ -18,7 +18,7 @@ class Category extends Model
 
     public function routeturist()
     {
-        return $this->hasMany('App\Modelos\TuoristRoute ','category_id');
+        return $this->hasMany('App\Modelos\TuoristRoute','category_id');
     }
 
     

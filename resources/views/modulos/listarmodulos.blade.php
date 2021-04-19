@@ -21,7 +21,12 @@
                                         <td> {{$modulo->id }}</td>
                                         <td> {{$modulo->name}} </td>
                                         <td> <div class="row-md-4 mb-4"> 
-                                            {{$modulo->articles->count() }} 
+                                            @if($modulo->articles->count()>0)
+                                            {{$modulo->articles->count()}} 
+                                            @else
+                                            {{ $modulo->abous_us->count() }}
+                                            @endif
+
                                             <a  href="{{ route('articles.show',$modulo->id) }}"class="btn btn-outline-info mb-2" style="margin-left:10%;">Ver</a>
                                             </div>
                                         </td>

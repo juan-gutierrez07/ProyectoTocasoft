@@ -16,8 +16,10 @@ class CreateAbousUsTable extends Migration
         Schema::create('abous_us', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('lastname');
             $table->text('position');
             $table->string('phone');
+            $table->string('email')->nullable();
             $table->string('imagen_location');
             $table->foreignId('modul_id')->references('id')->on('moduls')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

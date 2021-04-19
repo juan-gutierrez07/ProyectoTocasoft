@@ -12,7 +12,7 @@ class ModulController extends Controller
 {
     public function all()
     {   
-        $categorias = Category::all();
+        $categorias = Category::all()->where('type','Sitios');
         $modulos = Modul::all();
         return view('principal.template',compact('modulos','categorias'));
     }

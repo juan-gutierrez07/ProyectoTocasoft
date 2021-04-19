@@ -5,15 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Modelos\Category;
 use App\Modelos\TuoristRoute;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class RutaController extends Controller
 {   
 
     public function index()
     {
-        $rutas = TuoristRoute::all();
+        $modelos = TuoristRoute::all();
+       
+        $categoria=Category::with('routeturist')->where('type','Ruta')->get();
+        
+        
+            // return $places;
 
-        return view('rutas_turisticas.rutashow',compact('rutas'));
+        return view('rutas_turisticas.inforutas',compact('modelos','categoria'));
     }
     public function create()
     {
@@ -23,7 +30,7 @@ class RutaController extends Controller
         // $historicos=[];
         // $hoteles=[];
         $places = [];
-        $categoria=Category::with('places')->get();
+        $categoria=Category::with('places')->where('type','Ruta')->get();
         // $categoriaruta = Category::where('type','Ruta')->get();
         foreach($categoria as $categorias)
         {
@@ -44,11 +51,23 @@ class RutaController extends Controller
                 'description'=>'required|min:20',
                 'uuid' => 'required'
             ]);
+                 
+        $path_imagen = $request->file('imagen_principal')->store('rutas_turisticas', 'public');
 
-            $ruta = TuoristRoute::create($request->all());
-            
-            $ruta->places()->sync($request->get('place'));
-            return response()->json($ruta);
+        
+        $imagen = Image::make( public_path("storage/{$path_imagen}"))->fit(800, 450);
+        $imagen->save();
+            $nuevo= new TuoristRoute();
+            $nuevo->name = $request->name;
+            $nuevo->time_travel = $request->time_travel;
+            $nuevo->imagen_principal = $path_imagen;
+            $nuevo->category_id = $request->category_id;
+            $nuevo->description = $request->description;
+            $nuevo->uuid = $request->uuid;
+            $nuevo->save();
+            // $ruta = TuoristRoute::create($request->all());
+            $nuevo->places()->sync($request->get('place'));
+            return view('imagenes.sitios',compact('nuevo'))->with('status_success','Ruta Creada, Agrega las imagenes'); 
     }
 
     public function ruta($id)
@@ -100,6 +119,13 @@ class RutaController extends Controller
      */
     public function destroy($id)
     {
-        //
+            $ruta = TuoristRoute::find($id);
+            $ruta->delete();
+            $respuesta =[
+                'status'=> 200,
+                'body' => "Se elimino correctamente",
+            ];
+            return response()->json($respuesta);
     }
-}
+    }
+

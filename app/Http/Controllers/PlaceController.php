@@ -70,7 +70,7 @@ class PlaceController extends Controller
     {
         $modelos = Place::all();
         $places = [];
-        $categoria=Category::with('places')->get();
+        $categoria=Category::with('places')->where('type','Sitio')->get();
         // $categoriaruta = Category::where('type','Ruta')->get();
         foreach($categoria as $categorias)
         {

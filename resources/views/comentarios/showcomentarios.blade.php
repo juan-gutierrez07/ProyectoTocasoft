@@ -13,10 +13,10 @@
                             <div class="card-body">
                             <h3 class="card-title" style="font-size: 21px; text-align: center;
                                 margin-bottom: 15px;" >{{ $place->name }}</h3>
-        
-                                <h3 id ="comentarios">Total Comentarios : {{ $total }}</h3>
-                     
-                                <h3 id="promedio">Puntuación promedio : @if($total>0){{ number_format($puntos/$total,1) }} @else 0 @endif</h3>
+                                        <h3>Total Comentarios</h3>
+                                <h3 id ="comentarios">@if($comentarios->isEmpty()) 0  @else{{ $comentarios->count() }} @endif</h3>
+                                        <h3>Puntuación promedio</h3>
+                                <h3 id="promedio"> @if($total>0){{ number_format($puntos/$total,1) }} @else 0 @endif</h3>
                             </div>
                             <div class="card-footer py-4">
                               @if (auth()->check())
@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    @if (isset($comentarios))
+    @if (!$comentarios->isEmpty())
     @include('establecimientos.message')
     <div class="col-md-8 order-2" style="right: 16%;float: right;">    
         @foreach ($comentarios as $comentario)
@@ -84,7 +84,7 @@
                    <span>{{ date('d - m - Y  //  h:i',strtotime($comentario->created_at))}}</span>
                </div>
                <div class="comment-content">
-                {{ $comentario->content }} 
+                {{ $comentario->content }}
                 <br>
                 <strong>Puntuacion sitio: </strong> 
                 {{ $comentario->points }}
@@ -115,11 +115,11 @@
                                                         @csrf
                                                         <div class="form-group">
                                                             <label for="inputMessage">Edita comentario</label>
-                                                            <textarea class="form-control" name="content" id="inputMessage">{{ $comentario->content }}</textarea>
+                                                            <textarea class="form-control" name="content" >{{ $comentario->content }}</textarea>
                                                         </div>
                                                         <div class="form-group">
                                                             <label for="inputPuntos">Puntuación</label>
-                                                            <select  name ="points" class="form-control" id="inputPuntos">
+                                                            <select  name ="points" class="form-control">
                                                                 <option value=" "> -------</option>
                                                                 <option value="1"> 1 Puntos</option>
                                                                 <option value="2"> 2 Puntos</option>
