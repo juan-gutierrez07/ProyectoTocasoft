@@ -144,7 +144,7 @@
                                                         </div>
                                                         <div class="form-group">
                                                         <label for="txtName"> Cargo:</label>
-                                                            <textarea class="form-control" name="position"  value="{{ $persona->position }}"></textarea>
+                                                            <textarea class="form-control" name="position">{{ $persona->position }}"</textarea>
                                                         </div>     
                                                         <div class="form-row">
                                                             <div class="form-group col-md-6">
