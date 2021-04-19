@@ -27,7 +27,7 @@
 </div>
 
 <!--Inicia Ventana Modal-->
-<div id="Kaoru" class="Modal">
+<div id="Kaoru" class="Modal" data-backdrop="static">
     <div class="ModalBox all">
        
         <input id="cerrar-modal" name="modal" type="radio" data-dismiss="modal"/>

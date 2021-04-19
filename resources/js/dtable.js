@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $('#dtable').DataTable({
+    $('.card-body > table').DataTable({
         reponsive:true,
         autoWidth:false,
         "language": {
@@ -16,4 +16,6 @@ $(document).ready(function() {
 
         }
     });
+
+
 } );

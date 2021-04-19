@@ -18,7 +18,10 @@ class Modul extends Model
     {
         return $this->hasMany('App\Modelos\ArticlesAll','modul_id');
     }
-
+    public function abous_us()
+    {
+        return $this->hasMany('App\Modelos\AbousUs','modul_id');
+    }
     public function state_publication()
     {
         return $this->belongsTo('App\Modelos\StatePublication');

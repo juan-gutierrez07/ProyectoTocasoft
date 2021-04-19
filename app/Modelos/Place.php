@@ -25,7 +25,7 @@ class Place extends Model
     return $this->belongsTo('App\Modelos\Category');
 }
 public function routetuorist(){
-    return $this->belongsToMany('App\Modelos\TuoristRoute')->withPivot('place_id', 'tuorist_route_id');
+    return $this->belongsToMany('App\Modelos\TuoristRoute')->withPivot('tuorist_route_id', 'place_id');
     
 }
 public function commentsplace()

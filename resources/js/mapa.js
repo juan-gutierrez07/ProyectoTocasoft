@@ -5,7 +5,9 @@ const provider = new OpenStreetMapProvider();
 document.addEventListener('DOMContentLoaded', () => {  
     
     if(document.querySelector('#map')){
-      
+      const lat = document.querySelector('#lat').value === '' ? 4.45637843 : document.querySelector('#lat').value;
+      const lng = document.querySelector('#lng').value === '' ? -74.63432193 : document.querySelector('#lng').value;
+
 
         var map = L.map('map').setView([4.45637843,-74.63432193], 16);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -15,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // let markers = new L.FeatureGroup().addTo(map);
     let marker;
     /// Crear pin o marcador dandole una posicion en el mapa para que se ubique
-    marker = new L.marker([4.45637843,-74.63432193],{
+    marker = new L.marker([lat,lng],{
         draggable: true
 
         }).addTo(map);

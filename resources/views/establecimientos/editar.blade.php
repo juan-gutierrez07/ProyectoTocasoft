@@ -8,14 +8,14 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
 @endsection
 @section('content')
 <div class="container">
-      
+        @include('establecimientos.message')
         <div class="container">
                 <h1 class="text-center mt-4">Editar Establecimiento {{ $place->name }}</h1>
        
                 <div class="mt-5 row justify-content-center">
                     <form
                         class="col-md-9 col-xs-12 card card-body"
-                        action="{{ route('rutas.store') }}"
+                        action="{{ route('place.update',$place->id) }}"
                         method="POST"
                         enctype="multipart/form-data"
                     >
@@ -81,8 +81,9 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                         {{$message}}
                                     </div>
                                 @enderror
+                                <img style="width:200px; margin-top: 20px;" src="/storage/{{ $place->imagen_principal }}">        
                             </div>
-        
+                            
                         </fieldset>
         
                         <fieldset class="border p-4 mt-5">
@@ -135,13 +136,13 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                 <div class="form-group">
                                     <label for="nombre">Teléfono</label>
                                     <input
-                                        type="tel"
+                                        type="text"
                                         class="form-control @error('telefono')  is-invalid  @enderror"
                                         id="telefono"
                                         placeholder="Teléfono Establecimiento"
                                         name="telefono"
                                         value="{{ $place->telefono }}"
-                                    >
+                                        onkeypress="return valideKey(event);">
         
                                         @error('telefono')
                                             <div class="invalid-feedback">
@@ -214,7 +215,8 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                     @endforeach
                                 </div>   
                         </fieldset>        
-                   <input type="submit" class="btn btn-primary mt-3 d-block" value="Editar Establecimiento">
+                        <input type="hidden" id="uuid" name="uuid" value="{{ $place->uuid }}">    
+                   <input type="submit" class="btn btn-primary mt-3 d-block" value="Editar Sitio">
         
         
                     </form>
@@ -225,3 +227,18 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
 </div>
 
 @endsection
+<script>
+    function valideKey(evt){
+        
+        // code is the decimal ASCII representation of the pressed key.
+        var code = (evt.which) ? evt.which : evt.keyCode;
+        
+        if(code==8) { // backspace.
+          return true;
+        } else if(code>=48 && code<=57) { // is a number.
+          return true;
+        } else{ // other keys.
+          return false;
+        }
+    }
+    </script> 

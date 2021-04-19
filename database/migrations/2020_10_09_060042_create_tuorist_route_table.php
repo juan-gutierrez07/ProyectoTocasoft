@@ -15,8 +15,9 @@ class CreateTuoristRouteTable extends Migration
     {
         Schema::create('tuorist_routes', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 255);
+            $table->string('name', 255)->unique();
             $table->string('time_travel');
+            $table->text('description');
             $table->uuid('uuid');
             $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

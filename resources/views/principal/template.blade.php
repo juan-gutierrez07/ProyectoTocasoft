@@ -38,7 +38,7 @@
 
 <!-- #yourServices -->
 <div class="divisionpersonal" style="margin-top: 0">
-    @if ($modulos[0] == '0')
+    @if ($modulos[0]->state_publication_id == '2')
         <h2>Sin contenido....</h2>
     @else
     <section id="yourServices" class="container">

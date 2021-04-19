@@ -18,7 +18,6 @@ class CreateModulosTable extends Migration
             $table->string('name');
             $table->string('slug', 255);
             $table->text('description')->nullable();
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('state_publication_id')->references('id')->on('state_publications')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

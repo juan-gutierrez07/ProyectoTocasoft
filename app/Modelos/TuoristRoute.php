@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class TuoristRoute extends Model
 {
     protected $fillable = [
-        'time_travel'
+        'name','time_travel','description','uuid','category_id'
 
     ];
     public function places(){
-        return $this->belongsToMany('App\Modelos\Place')->withTimestamps();
+        return $this->belongsToMany('App\Modelos\Place')->withPivot('tuorist_route_id', 'place_id');
         
     }
     public function categoryrouteturism()
     {
-        return $this->belongsToMany('App\Modelos\Category')->withPivot('tuorist_route_id', 'category_id');
+        return $this->belongsTo('App\Modelos\Category');
     }
 
     public function commentsroute()

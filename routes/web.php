@@ -22,20 +22,13 @@ Route::get('/categoria/{category}','CategoryController@categoria')->name('catego
 //Modulos
 Route::get('/', 'ModulController@all')->name('home');
 Route::post('/modulos/update/{modul}','ModulController@update')->name('modul.update');
-//Contenido
-Route::get('/contenido/{modul}','ArticlesAllController@index')->name('articles.show');
-Route::post('/create/article/{modul}','ArticlesAllController@store')->name('articles.store');
-Route::post('/articles/update/{articlesall}','ArticlesAllController@update')->name('article.update');
+
 //Comentarios
 Route::post('/comentcreate','ComentsPlaceController@store')->name('comentplace.store');
 Route::get('/coment/destroy/{commentsplace}','ComentsPlaceController@destroy');
 Route::post('/coment/update/{commentsplace}','ComentsPlaceController@update')->name('coment.update');
 //Eventos
 Route::resource('/eventos','EventPlaceController');
-// Route::get('/eventosall','EventPlaceController@send');
-// Route::post('/eventos/store','EventPlaceController@store');
-// Route::post('/eventos/update/{eventplace}','EventPlaceController@update');
-// Route::get('/eventos/destroy/{eventplace}','EventPlaceController@destroy');
 Route::get('/sitios','PlaceController@mapshow')->name('mapa.places');
 Route::get('/events/mostrar', 'EventPlaceController@mostrar');
 Route::get('/noautorizado',function(){
@@ -49,9 +42,12 @@ Auth::routes(['verify' => true]);
 Route::group(['middleware' => ['admin']], function(){
     Route::get('/establecimiento/create','PlaceController@create')->name('place.create');
     Route::post('/establecimiento/store','PlaceController@store')->name('place.store');
-    Route::post('/establecimiento/edit/{place}','PlaceController@edit')->name('place.edit');
+    Route::get('/establecimiento/edit/{place}','PlaceController@edit')->name('place.edit');
+    Route::post('/establecimiento/update/{place}','PlaceController@update')->name('place.update');
     Route::get('/establecimiento/destroy/{place}','PlaceController@destroy')->name('place.destroy');
     Route::get('/establecimiento/info','PlaceController@info')->name('place.list');
+    Route::post('/categoria/store','CategoryController@store')->name('category.store');
+    Route::post('/categoria/update/{id}','CategoryController@update')->name('category.update');
     //Rutas para administrar imagenes
     Route::post('/imagenes/store','ImageController@store');
     Route::post('/imagenes/destroy','ImageController@destroy');
@@ -61,6 +57,7 @@ Route::group(['middleware' => ['admin']], function(){
     //Rutas turisticas
     Route::get('/rutas/create','RutaController@create')->name('rutas');
     Route::post('/rutas/store','RutaController@store')->name('rutas.store');
+    Route::get('/rutas/places/{id}','RutaController@ruta')->name('coordenas');
   
 }); 
 
@@ -70,6 +67,11 @@ Route::group(['middleware' => ['admin']], function(){
  Route::post('/categoria/sitios/{category}','ImageController@send');
  Route::get('/imagesroute','ImagesRoutesController@show')->name('images.route');
  Route::get('/modulos','ModulController@show')->name('modul.show');
+ //Contenido
+Route::get('/contenido/{modul}','ArticlesAllController@index')->name('articles.show');
+Route::post('/create/article/{modul}','ArticlesAllController@store')->name('articles.store');
+Route::post('/articles/update/{articlesall}','ArticlesAllController@update')->name('article.update');
+Route::post('/create/personal/{modul}','AbousUsController@store')->name('aboutus.store');
 
 
 });

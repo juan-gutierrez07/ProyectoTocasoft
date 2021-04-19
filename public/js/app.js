@@ -87719,7 +87719,7 @@ document.addEventListener('DOMContentLoaded', function () {
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function($) {$(document).ready(function () {
-  $('#dtable').DataTable({
+  $('.card-body > table').DataTable({
     reponsive: true,
     autoWidth: false,
     "language": {
@@ -87767,6 +87767,8 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     };
 
+    var lat = document.querySelector('#lat').value === '' ? 4.45637843 : document.querySelector('#lat').value;
+    var lng = document.querySelector('#lng').value === '' ? -74.63432193 : document.querySelector('#lng').value;
     var map = L.map('map').setView([4.45637843, -74.63432193], 16);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -87775,7 +87777,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var marker; /// Crear pin o marcador dandole una posicion en el mapa para que se ubique
 
-    marker = new L.marker([4.45637843, -74.63432193], {
+    marker = new L.marker([lat, lng], {
       draggable: true
     }).addTo(map); //añadiendo marcador a la capa de marcadores        
     // markers.addLayer(marker);    

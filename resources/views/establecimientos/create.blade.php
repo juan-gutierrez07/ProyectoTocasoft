@@ -144,6 +144,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                         placeholder="Teléfono Establecimiento"
                                         name="telefono"
                                         value="{{ old('telefono') }}"
+                                        onkeypress="return valideKey(event);"
                                         required
                                     >
         
@@ -214,11 +215,25 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                         </fieldset> --}}
         
                         <input type="hidden" id="uuid" name="uuid" value="{{ Str::uuid()->toString()}}">
-                        <input type="submit" class="btn btn-primary mt-3 d-block" value="Registrar Establecimiento">
+                        <input type="submit" class="btn btn-primary mt-3 d-block" value="Registrar Sitio">
         
         
             </form>
         </div>
     </div>
 @endsection
-
+<script>
+        function valideKey(evt){
+            
+            // code is the decimal ASCII representation of the pressed key.
+            var code = (evt.which) ? evt.which : evt.keyCode;
+            
+            if(code==8) { // backspace.
+              return true;
+            } else if(code>=48 && code<=57) { // is a number.
+              return true;
+            } else{ // other keys.
+              return false;
+            }
+        }
+        </script> 

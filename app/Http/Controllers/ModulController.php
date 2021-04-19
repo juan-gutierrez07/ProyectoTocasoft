@@ -12,17 +12,8 @@ class ModulController extends Controller
 {
     public function all()
     {   
-        $categorias = Category::where('type','Sitio')->get();
-    
-        $modulos = Modul::where('state_publication_id','=',1)->first();
-        
-         if($modulos)
-         {
-            $modulos = Modul::where('state_publication_id','=',1)->get();
-         } else{
-             $modulos = ['0'];
-         }      
-         
+        $categorias = Category::all();
+        $modulos = Modul::all();
         return view('principal.template',compact('modulos','categorias'));
     }
     public function show()

@@ -7,6 +7,7 @@ use App\Modelos\ArticlesAll;
 use App\Modelos\Modul;
 use App\Modelos\Category;
 use App\Modelos\StatePublication;
+use App\Modelos\AbousUs;
 use Intervention\Image\Facades\Image;
 
 class ArticlesAllController extends Controller
@@ -14,21 +15,19 @@ class ArticlesAllController extends Controller
     public function index(Modul $modul)
     {   
         $estados  = StatePublication::all();
-        $bandera =0;
-        $disponibles =0;
+        
         if($modul->slug == "sitios")
         {
         $disponibles = Category::whereNotIn("slug", ArticlesAll::pluck("slug")->all())->get();
-        $bandera = 1;
-        return view('modulos.listarcontenido',compact('modul','disponibles','estados','bandera'));
+        return view('modulos.listarcontenido',compact('modul','disponibles','estados'));
         }else if($modul->slug == "personal")
         {
-             $bandera = 2;
+            $personal = AbousUs::all();
 
-            return view('modulos.listarcontenido',compact('modul','disponibles','estados','bandera'));;
+            return view('modulos.listarcontenido',compact('modul','estados','personal'));
         }else if($modul->slug =="eventos")
         {
-            return "contenido para eventos";
+            return view('modulos.listarcontenido',compact('modul','estados'));
         }else if($modul->slug == "rutas")
         {
             return "cotenido rutas";
@@ -43,6 +42,7 @@ class ArticlesAllController extends Controller
             'imagen_principal' => 'max:5000',
             'status'           => 'required|not_in:0'
         ]);
+        dd($modul);
         $nuevo = new ArticlesAll();
         $nuevo->name = $request->name;
         $nuevo->description = $request->description;

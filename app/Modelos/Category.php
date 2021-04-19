@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $fillable = [
-        'name', 'slug','type',
+        'name', 'slug',
 
     ];
    
@@ -18,7 +18,7 @@ class Category extends Model
 
     public function routeturist()
     {
-        return $this->belongsToMany('App\Modelos\TuoristRoute')->withPivot('tuorist_route_id', 'category_id');
+        return $this->hasMany('App\Modelos\TuoristRoute ','category_id');
     }
 
     

@@ -15,7 +15,7 @@ class PlaceController extends Controller
   
     public function create()
     {
-        $places=Category::all()->where('type','Sitio');
+        $places=Category::all();
             
       return view('establecimientos.create',compact('places'));
     }
@@ -63,14 +63,23 @@ class PlaceController extends Controller
         $nuevo->uuid=$request['uuid'];
         $nuevo->save();
         
-        return view('imagenes.sitios',compact('nuevo'));
+        return view('imagenes.sitios',compact('nuevo'))->with('status_success','Sitio creado !');
     }
 
     public function info()
     {
         $modelos = Place::all();
+        $places = [];
+        $categoria=Category::with('places')->get();
+        // $categoriaruta = Category::where('type','Ruta')->get();
+        foreach($categoria as $categorias)
+        {
+            array_push($places,  $categorias->places);
+        }
+            $places = json_encode($places);
+            // return $places;
 
-        return view('establecimientos/informacion',compact('modelos'));
+        return view('establecimientos/informacion',compact('modelos','categoria', 'places'));
     }
     public function show(Place $place)
     {
@@ -84,10 +93,11 @@ class PlaceController extends Controller
     }
     public function edit(Place $place)
     {
-        $place = Place::findOrFail($place->id);
+        $place->apertura = date('H:i', strtotime($place->apertura) );
+        $place->cierre = date('H:i', strtotime($place->cierre));
         $categorys = Category::where('id','!=',$place->id)->orWhereNull('id')->get();
         $imagenes = Images::where('id_establecimiento','=',$place->uuid)->get();
-        return view('establecimientos/editar', compact('place','categorys','imagenes'));
+        return view('establecimientos.editar', compact('place','categorys','imagenes'));
     }
 
     /**
@@ -99,7 +109,46 @@ class PlaceController extends Controller
      */
     public function update(Request $request, Place $place)
     {
-        //
+        $data=$request->validate([
+            'name' => 'required|unique:places,name',
+            'categoria_id' => 'required',
+            'imagen_principal' => 'image|max:1000',
+            'direccion' => 'required',
+            'lat' => 'required',
+            'lng' => 'required',
+            'telefono' => 'required|numeric',
+            'descripcion' => 'required|min:20',
+            'apertura' => 'date_format:H:i',
+            'cierre' => 'date_format:H:i|after:apertura',
+            'uuid' => 'required|uuid'
+        ]);
+        $place->name = $data['name'];
+        $place->category_id = $data['categoria_id'];
+        $place->direccion = $data['direccion'];
+        $place->lat = $data['lat'];
+        $place->lng = $data['lng'];
+        $place->telefono = $data['telefono'];
+        $place->descripcion = $data['descripcion'];
+        $place->apertura = $data['apertura'];
+        $place->cierre = $data['cierre'];
+        $place->uuid = $data['uuid'];
+           
+        
+
+        if(request('imagen_principal')) {
+            // Guardar la imagen
+            $ruta_imagen = $request['imagen_principal']->store('principal_establecimientos', 'public');
+
+            // Resize a la imagen
+            $img = Image::make( public_path("storage/{$ruta_imagen}") )->fit(800, 600);
+            $img->save();
+
+            $place->imagen_principal = $ruta_imagen;
+        }
+            $nuevo= $place;
+            $place->save();
+            
+            return view('imagenes.sitios',compact('nuevo'))->with('status_success','Sitio Creado, Agrega las imagenes'); 
     }
 
     /**

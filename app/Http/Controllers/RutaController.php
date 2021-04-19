@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Modelos\Category;
+use App\Modelos\TuoristRoute;
 
 class RutaController extends Controller
 {
@@ -27,7 +28,26 @@ class RutaController extends Controller
     }
     public function store(Request $request)
     {
-            dd($request);
+            $request->validate([
+                'name' => 'required|unique:tuorist_routes,name',
+                'time_travel' => 'required',
+                'place' => 'required',
+                'category_id' => 'required',
+                'description'=>'required|min:20',
+                'uuid' => 'required'
+            ]);
+
+            $ruta = TuoristRoute::create($request->all());
+            
+            $ruta->places()->sync($request->get('place'));
+            return response()->json($ruta);
+    }
+
+    public function ruta($id)
+    {
+        $ruta = TuoristRoute::find($id);
+        
+        return response()->json($ruta->places);
     }
 
     /**
