@@ -74,7 +74,7 @@
 	background-position: absolute;
 	background-repeat: no-repeat;
 	background-size: cover;
-  min-height: 100vh;
+  min-height: 80vh;
 }
 #yourHeader .your-header-text h1,
 #yourHeader .your-header-text p {
@@ -476,7 +476,7 @@
 .divisionpersonal{
   background-image: url("../../images/iconos/FondoCard.jpg");
   background-size: cover;
-   height: 100%;
+   height: 120%;
    width: 100% ;
    text-align: center;
 }
