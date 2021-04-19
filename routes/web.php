@@ -57,6 +57,7 @@ Route::group(['middleware' => ['admin']], function(){
     //Rutas turisticas
     Route::get('/rutas/create','RutaController@create')->name('rutas');
     Route::post('/rutas/store','RutaController@store')->name('rutas.store');
+    Route::get('/rutas','RutaController@show')->name('rutas.show');
     Route::get('/rutas/places/{id}','RutaController@ruta')->name('coordenas');
   
 }); 

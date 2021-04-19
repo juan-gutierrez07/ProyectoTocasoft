@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TuoristRoute extends Model
 {
     protected $fillable = [
-        'name','time_travel','description','uuid','category_id'
+        'name','time_travel','description','uuid','category_id','imagen_principal'
 
     ];
     public function places(){

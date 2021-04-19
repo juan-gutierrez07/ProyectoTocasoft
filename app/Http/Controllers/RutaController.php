@@ -7,7 +7,14 @@ use App\Modelos\Category;
 use App\Modelos\TuoristRoute;
 
 class RutaController extends Controller
-{
+{   
+
+    public function index()
+    {
+        $rutas = TuoristRoute::all();
+
+        return view('rutas_turisticas.rutashow',compact('rutas'));
+    }
     public function create()
     {
           // $naturales=[];
@@ -31,6 +38,7 @@ class RutaController extends Controller
             $request->validate([
                 'name' => 'required|unique:tuorist_routes,name',
                 'time_travel' => 'required',
+                'imagen_principal'=> 'required|max:2000',
                 'place' => 'required',
                 'category_id' => 'required',
                 'description'=>'required|min:20',
@@ -58,7 +66,7 @@ class RutaController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**

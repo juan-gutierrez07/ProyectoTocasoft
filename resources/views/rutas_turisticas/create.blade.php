@@ -61,7 +61,23 @@
                       {{$message}}
                   </div>
               @enderror
+              <div class="form-group">
+                  <label for="imagen_principal">Imagen Principal</label>
+                  <input
+                      id="imagen_principal"
+                      type="file"
+                      class="form-control @error('imagen_principal') is-invalid @enderror "
+                      name="imagen_principal"
+                      value="{{ old('imagen_principal') }}"
+                      required
+                  >
 
+                  @error('imagen_principal')
+                      <div class="invalid-feedback">
+                          {{$message}}
+                      </div>
+                  @enderror
+              </div>
           </div>
             <div class= form-group>
               <label for="descripction"> Descripción</label>

@@ -31,15 +31,27 @@ class CategoryController extends Controller
       $request->validate([
         'name' => 'required'
         ]);
+
         $category = Category::find($id);
-        $article = ArticlesAll::where('slug',"=",$category->slug)->get();
-        dd($article);
-        $category->name = $request->name;
-        $category->slug = $request->name;
-        $article->slug = $request->name;
-        $category->save();
-        $article->save();
-        return redirect()->route('place.list')->with('status_success','Categoria editada !');;
+        $article = ArticlesAll::where("slug","=",$category->slug)->get()->first();
+        if($article != null )
+        {
+          $category->name = $request->name;
+          $category->slug = $request->name;
+          $article->slug = $request->name;
+          $article->name = $request->name;
+          $category->save();
+          $article->save();  
+          return redirect()->route('place.list')->with('status_success','Categoria editada !');;
+        }else{
+          $category->name = $request->name;
+          $category->slug = $request->name;
+          $category->save();
+          return redirect()->route('place.list')->with('status_success','Categoria editada !');;
+        }
+
+        
+
     }
 }
 
