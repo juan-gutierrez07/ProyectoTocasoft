@@ -66,9 +66,19 @@
                                                                                Crear  --}}
                         </li>    
                         @endif 
-                        <li class="nav-item">
-                                <a class="nav-link" href="{{ route('mapa.places') }}" class="nav-link">Ver Todos Sitios</a> {{-- Crear contenido para modulos..
-                                                                               Crear  --}}
+                        <li class="dropdown">
+                                <a class="nav-link dropdown-toggle"  data-toggle="dropdown" role="button" aria-expanded="false" >Sitios</a> {{-- Crear contenido para modulos..
+                                                    Crear  --}}
+                                <ul class="dropdown-menu">        
+                                @foreach ($modulos[0]->articles->where('state_publication_id',1) as $articulo)
+                                     <li class="nav-item">
+                                           <a class="dropdown-item nav-link" href="{{ route('category.place',$articulo->slug) }}">{{ $articulo->name }} </a> {{-- Crear eventos.. --}}        
+                                     </li> 
+                                @endforeach
+                                <li class="nav-item">
+                                    <a class="dropdown-item nav-link" href="{{ route('mapa.places') }}">Todos los sitios en el mapa</a> {{-- Crear eventos.. --}}        
+                                </li> 
+                                </ul>                                              
                         </li>    
                         
                         <li class="dropdown">
@@ -76,7 +86,7 @@
                                 <ul class="dropdown-menu">
                                     <li class="nav-item">
                                             <a class="dropdown-item nav-link" href="{{ url('/eventos') }}">Eventos sitios</a> {{-- Crear eventos.. --}}        
-                                        </li> 
+                                     </li> 
                                 </ul>
                             </li>      
                                 
