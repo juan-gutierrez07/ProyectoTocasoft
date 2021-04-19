@@ -367,10 +367,10 @@
   font-weight: 300;
   line-height: 1.2;
   font-family: 'Stick', sans-serif;
-  background: linear-gradient(rgb(187, 53, 53),rgb(255, 66, 66));
-  -webkit-background-clip: text;
-  color: transparent;
-  text-shadow: 0.1em 0.1em 0.05em rgba(134, 67, 67, 0.205);
+  background-color: rgba(209, 52, 52, 0.568);
+    text-shadow: 0.1em 0.1em 0.05em rgba(12, 10, 10, 0.719);
+    margin-left: 28%;
+    margin-right: 28%;
 }
 
 .display-41 {
@@ -389,6 +389,8 @@
   max-width: 100%;
   background-image: url("../../images/iconos/Mypost.png");
   position: relative;
+  background-size:cover;
+  background-attachment: fixed;
 }
 
 .coldiv2 {
@@ -396,8 +398,9 @@
   flex-grow: 1;
   max-width: 100%;
   background-image: url("../../images/iconos/DondoDiv2.jpg");
-  position: relative;
-  
+  position: static;
+  background-size:cover;
+  background-attachment: fixed;
 }
 .btn-primary {
   color: rgb(255, 255, 255);

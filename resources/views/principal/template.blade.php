@@ -64,12 +64,12 @@
     @endif
 </div>    
 <!-- #yourContact -->
-<div class="coldiv2" style="margin-top: 10%">
+<div class="coldiv2" style="margin-top:0%">
 <section id="yourContact" class="container-fluid text-center py-4 mt-4 "  id="contact">
     <div class="row">
         <div class="your-contact-text col">
-            <h2 class="display-4 pb-9 my-4">Rutas turisticas</h2>
-            <p class="lead pb-3">Some message how to get in touch with you.</p>
+            <h2 class="display-4 pb-9 my-4" >Rutas turisticas</h2>
+            <p class="lead pb-3">Disfruta de la ruta que elijas</p>
         </div>
     </div>
             <a href="#" class="your-btn-primary1 btn btn-primary btn-lg  mb-4" role="button">Conocelas</a>

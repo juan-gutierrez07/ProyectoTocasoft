@@ -42,7 +42,7 @@ hr {
 {
   margin: 5px;
   width: 370px;
-  height: 114px;
+  height: 175px;
   background-size:cover;
   position: relative;
   display: inline-block;
@@ -190,6 +190,7 @@ hr {
 }
 
 .contenido .box img{
+	height: 250px;
     background-size:cover;
 }
 .title{
