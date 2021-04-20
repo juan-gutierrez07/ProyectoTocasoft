@@ -52,8 +52,13 @@ class ArticlesAllController extends Controller
         $nuevo->state_publication_id = $request->status;
         $nuevo->modul_id = $modul->id;
         $nuevo->save();
+        DB::table('auditorias')->insert([
+            'detail' => 'Creacion de contenido'. " ".$nuevo->name,
+            'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+            'created_at'=>Carbon::now(),
+        ]);
         return redirect()->route('articles.show',$modul->id)->with('status_success','Articulo Creado!'); ;
-
+        
 
     }
 
@@ -74,14 +79,18 @@ class ArticlesAllController extends Controller
             }else{
                 $path_imagen= '';
             }
-            
+            $nombre_anterior=  $articlesall->name;
             $articlesall->name = $request->name;
             $articlesall->description = $request->description;
             $articlesall->image_location = $path_imagen;
             $articlesall->state_publication_id = $request->status;
             $articlesall->slug = $request->name;
             $articlesall->save();
-            
+            DB::table('auditorias')->insert([
+                'detail' => 'Actualizacion de contenido'. " de ".$nombre_anterior. "a" .$articlesall->name,
+                'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+                'created_at'=>Carbon::now(),
+            ]);
             return redirect()->route('articles.show',$articlesall->modul->id) ->with('status_success','Operación con éxito'); ;
     }
 }

@@ -68,6 +68,7 @@ class AbousUsController extends Controller
         //Resize imagen
         $imagen = Image::make( public_path("storage/{$path_imagen}"))->fit(700, 1200);
         $imagen->save();
+        $primer_nombre= $abousus->name . " " . $abousus->lastname;
         $abousus->name= $request->name;
         $abousus->lastname= $request->lastname;
         $abousus->position =$request->position;
@@ -82,13 +83,22 @@ class AbousUsController extends Controller
             $abousus->phone = $request->phone;
             $abousus->save();
         }
+        DB::table('auditorias')->insert([
+            'detail' => 'Actualizacion del Personal'. " ".$primer_nombre." a ". $abousus->name ." " .$abousus->lastname,
+            'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+            'created_at'=>Carbon::now(),
+        ]);
         return redirect()->route('articles.show',$abousus->modul->id) ->with('status_success','Operación con éxito'); 
     }
     public function destroy(AbousUs $abousus)
     {
         $anterior = $abousus;
         $abousus->delete();
-
+        DB::table('auditorias')->insert([
+            'detail' => 'Eliminacion de Personal'. " ". $anterior->name ." " .$anterior->lastname,
+            'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+            'created_at'=>Carbon::now(),
+        ]);
         return redirect()->route('articles.show',$anterior->modul->id) ->with('status_success','Persona Eliminado !'); 
     }
 }
