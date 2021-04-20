@@ -59,6 +59,11 @@ class EventPlaceController extends Controller
         $nuevo->end = $datos['end'];;
         $nuevo->color = $datos['color'];
         $nuevo->save();
+        DB::table('auditorias')->insert([
+            'detail' => 'Creacion de evento'. " ". $nuevo->title,
+            'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+            'created_at'=>Carbon::now(),
+        ]);
         return response()->json($request);
 
     }
@@ -96,7 +101,11 @@ class EventPlaceController extends Controller
     {
         $datos= request()->except(['_token','_method']);
         $nuevo = EventPlace::where('id',$id)->update($datos);
-
+        DB::table('auditorias')->insert([
+            'detail' => 'Actualizacion de evento'. " ". $id,
+            'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+            'created_at'=>Carbon::now(),
+        ]);
         return response()->json($nuevo);
     }
 

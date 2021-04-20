@@ -29,13 +29,18 @@ class ComentsPlaceController extends Controller
         $comentario->content = $request->descripcion;
         $comentario->points = $request->points;
         $comentario->save();
-
+        DB::table('auditorias')->insert([
+            'detail' => 'Creacion de comentario'. " en sitio ". $comentario->place_id,
+            'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+            'created_at'=>Carbon::now(),
+        ]);
         return redirect()->route('place.show',$request->place_id)
         ->with('status_success','Comentario Agregado !!'); 
     }
 
     public function destroy(CommentsPlace $commentsplace)
     {
+        $id_comentario=$commentsplace->place_id;
         $commentsplace->delete();
             $total = CommentsPlace::where('place_id','=',$commentsplace->place->id)->count();
             $puntos = CommentsPlace::where('place_id','=',$commentsplace->place->id)->sum('points');
@@ -51,7 +56,11 @@ class ComentsPlaceController extends Controller
             'total'=> $total,
             'promedio'=> $promedio
         ];
-
+        DB::table('auditorias')->insert([
+            'detail' => 'Eliminacion de comentario del sitio'. " ". $id_comentario,
+            'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+            'created_at'=>Carbon::now(),
+        ]);
         return response()->json($respuesta);
         
     }
@@ -66,7 +75,11 @@ class ComentsPlaceController extends Controller
         $nuevo = CommentsPlace::find($commentsplace->id);
         $nuevo->update($request->all());
 
-         
+        DB::table('auditorias')->insert([
+            'detail' => 'Actualizacion de comentario del sitio'. " ". $commentsplace->place_id,
+            'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+            'created_at'=>Carbon::now(),
+        ]);
         return redirect()->route('place.show',$request->place_id)
         ->with('status_success','Comentario Editado !!'); ;   
     }

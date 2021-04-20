@@ -25,6 +25,11 @@ class CategoryController extends Controller
         $nuevo->name = $request->name;
         $nuevo->slug = $request->name;
         $nuevo->save();
+        DB::table('auditorias')->insert([
+          'detail' => 'Creacion de Categoría'. " ".$nuevo->name,
+          'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+          'created_at'=>Carbon::now(),
+      ]);
         return redirect()->route('place.list')->with('status_success','Categoria creada !');;
     }
 
@@ -38,6 +43,7 @@ class CategoryController extends Controller
         $article = ArticlesAll::where("slug","=",$category->slug)->get()->first();
         if($article != null )
         {
+          $nombre_anterior = $category->name;
           $category->name = $request->name;
           $category->slug = $request->name;
           $article->slug = $request->name;
@@ -49,6 +55,11 @@ class CategoryController extends Controller
           $category->name = $request->name;
           $category->slug = $request->name;
           $category->save();
+          DB::table('auditorias')->insert([
+            'detail' => 'Actualizacion de Categoría'. " de ".$nombre_anterior. " a ". $category->name,
+            'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+            'created_at'=>Carbon::now(),
+           ]);
           return redirect()->route('place.list')->with('status_success','Categoria editada !');;
         }
 
