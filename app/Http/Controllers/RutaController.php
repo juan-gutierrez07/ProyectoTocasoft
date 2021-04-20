@@ -76,7 +76,7 @@ class RutaController extends Controller
 
     public function ruta($id)
     {
-        $rutas = TuoristRoute::with('places'->all(['lat','lng']))->find($id);
+        $rutas = TuoristRoute::with('places')->get();
         $coordenadas= array();
         return $rutas->places;
         foreach ($rutas[0]->places as $ruta)

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http;
-
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -13,6 +13,22 @@ class Kernel extends HttpKernel
      *
      * @var array
      */
+
+    protected $commands = [
+        'App\Console\Commands\DatabaseBackUp'
+        ];
+    protected function schedule(Schedule $schedule)
+    {
+
+    $schedule->command('database:backup')->daily();
+    }   
+    
+    
+    protected function commands()
+    {
+    $this->load(__DIR__.'/Commands');
+    require base_path('routes/console.php');
+    }
     protected $middleware = [
         \App\Http\Middleware\TrustProxies::class,
         \Fruitcake\Cors\HandleCors::class,
