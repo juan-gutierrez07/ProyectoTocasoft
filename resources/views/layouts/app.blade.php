@@ -59,18 +59,54 @@
                     <!-- Left Side Of Navbar -->
                     <!-- Right Side Of Navbar -->
 
-                    <ul class="navbar-nav ml-auto">
+                    <ul class="navbar-nav ml-auto" style="
+                    left: 20%;
+                    position: relative;">
                          @if (auth()->check() && auth()->user()->roles[0]->rolname == "Administrador")
                         <li class="nav-item">
                                 <a href="{{ route('modul.show') }}" class="nav-link">Contenido</a> {{-- Crear contenido para modulos..
                                                                                Crear  --}}
                         </li>    
+                        <li class="dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Eventos</a> 
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                            <a class="dropdown-item nav-link" href="{{ url('/eventos') }}">Eventos sitios</a> {{-- Crear eventos.. --}}        
+                                     </li> 
+                                </ul>
+                            </li>      
+                        <li class="dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Sitios</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item nav-link" href="{{ route('place.create') }}">Crear</a> {{-- Crear contenido para modulos..
+                                                                                        Crear  --}}
+                                    </li>    
+                                    <li class="nav-item">
+                                        <a class="dropdown-item nav-link" href="{{ route('place.list') }}">Ver</a> {{-- Crear contenido para modulos..
+                                                                                    Crear  --}}
+                                    </li>   
+                                </ul>    
+                            </li>
+                            <li class="dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Rutas</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
+                                <ul class="dropdown-menu">
+                                    <li class="nav-item">
+                                        <a class="dropdown-item nav-link" href="{{ route('rutas') }}">Crear</a> 
+                                </li>    
+                                <li class="nav-item">
+                                    <a class="dropdown-item nav-link" href="{{ route('rutas.index') }}">Ver</a> {{-- Crear contenido para modulos..
+                                                                                    Crear  --}}
+                                </li>    
+                                </ul>    
+                            </li>  
                         @endif 
+                        @if (auth()->check() && auth()->user()->roles[0]->rolname == "Turista")
                         <li class="dropdown">
                                 <a class="nav-link dropdown-toggle"  data-toggle="dropdown" role="button" aria-expanded="false" >Sitios</a> {{-- Crear contenido para modulos..
                                                     Crear  --}}
                                 <ul class="dropdown-menu">        
-                                @foreach ($modulos[0]->articles->where('state_publication_id',1) as $articulo)
+                                @foreach ($sitios->articles->where('state_publication_id',1) as $articulo)
                                      <li class="nav-item">
                                            <a class="dropdown-item nav-link" href="{{ route('category.place',$articulo->slug) }}">{{ $articulo->name }} </a> {{-- Crear eventos.. --}}        
                                      </li> 
@@ -80,47 +116,6 @@
                                 </li> 
                                 </ul>                                              
                         </li>    
-                        
-                        <li class="dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Eventos</a> 
-                                <ul class="dropdown-menu">
-                                    <li class="nav-item">
-                                            <a class="dropdown-item nav-link" href="{{ url('/eventos') }}">Eventos sitios</a> {{-- Crear eventos.. --}}        
-                                     </li> 
-                                </ul>
-                            </li>      
-                                
-                        
-                        <!--sitios-->
-                        @if (auth()->check() && auth()->user()->roles[0]->rolname == "Administrador")
-                        <li class="dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Sitios</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a class="dropdown-item nav-link" href="{{ route('place.create') }}">Crear</a> {{-- Crear contenido para modulos..
-                                                                                   Crear  --}}
-                                </li>    
-                                <li class="nav-item">
-                                    <a class="dropdown-item nav-link" href="{{ route('place.list') }}">Ver</a> {{-- Crear contenido para modulos..
-                                                                                Crear  --}}
-                                </li>   
-                            </ul>    
-                        </li> 
-                        @endif
-                        <!--rutas-->
-                        @if (auth()->check() && auth()->user()->roles[0]->rolname == "Administrador")
-                        <li class="dropdown">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Rutas</a> {{-- Mostrar Comentarios sobre las rutas y sitios--}}
-                            <ul class="dropdown-menu">
-                                <li class="nav-item">
-                                    <a class="dropdown-item nav-link" href="{{ route('rutas') }}">Crear</a> 
-                            </li>    
-                            <li class="nav-item">
-                                <a class="dropdown-item nav-link" href="{{ route('rutas.index') }}">Ver</a> {{-- Crear contenido para modulos..
-                                                                               Crear  --}}
-                            </li>    
-                            </ul>    
-                        </li> 
                         @endif
                         <!-- Authentication Links -->
                         @guest

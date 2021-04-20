@@ -66,7 +66,6 @@ class AbousUsController extends Controller
         $abousus->position =$request->position;
         $abousus->phone = $request->phone;
         $abousus->imagen_location = $path_imagen;
-        $abousus->modul_id = $modul->id;
         $abousus->save();
         }else
         {
@@ -74,13 +73,15 @@ class AbousUsController extends Controller
             $abousus->lastname= $request->lastname;
             $abousus->position =$request->position;
             $abousus->phone = $request->phone;
-            $abousus->modul_id = $modul->id;    
             $abousus->save();
         }
-        return redirect()->route('articles.show',$$abousus->modul->id) ->with('status_success','Operación con éxito'); ;
+        return redirect()->route('articles.show',$abousus->modul->id) ->with('status_success','Operación con éxito'); 
     }
     public function destroy(AbousUs $abousus)
     {
+        $anterior = $abousus;
+        $abousus->delete();
 
+        return redirect()->route('articles.show',$anterior->modul->id) ->with('status_success','Persona Eliminado !'); 
     }
 }

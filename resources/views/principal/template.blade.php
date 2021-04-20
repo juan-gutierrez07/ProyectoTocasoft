@@ -81,80 +81,26 @@
 <section  class="container" >
 <div class="row text-center">
    <div class="team mt-125">
-       
       <div class="your-contact-text container ">
          <h2 class="display-41 text-center mt-5 mb-3">Personal Secretaria de Turismo</h2>
          <br><br>
          <div class="row">
+            @foreach ($modulos[1]->abous_us as $personal)
               <div class="col-lg-3 col-md-6">
                   <div class="team-item">
                       <div class="team-img">
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/4/46/Leonardo_Dicaprio_Cannes_2019.jpg" alt="Team Image">
+                          <img src="../storage/{{$personal->imagen_location }}" alt="{{ $personal->name }}">
                       </div>
                       <div class="team-text">
-                          <h2>Donald John</h2>
-                          <p>Founder & CEO</p>
-                          <div class="team-social">
-                              <a href=""><i class="fab fa-twitter"></i></a>
-                              <a href=""><i class="fab fa-facebook-f"></i></a>
-                              <a href=""><i class="fab fa-linkedin-in"></i></a>
-                              <a href=""><i class="fab fa-instagram"></i></a>
-                          </div>
+                          <h2>{{ $personal->name }} {{ $personal->lastname }}</h2>
+                          <p>{{ $personal->position }}</p>
+                          <p>{{$personal->phone}}</p>
+                          <p>{{$personal->email}}</p>
                       </div>
                   </div>
               </div>
-              <div class="col-lg-3 col-md-6">
-                  <div class="team-item">
-                      <div class="team-img">
-                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Tom_Holland_by_Gage_Skidmore.jpg/220px-Tom_Holland_by_Gage_Skidmore.jpg" alt="Team Image">
-                      </div>
-                      <div class="team-text">
-                          <h2>Adam Phillips</h2>
-                          <p>Chef Executive</p>
-                          <div class="team-social">
-                              <a href=""><i class="fab fa-twitter"></i></a>
-                              <a href=""><i class="fab fa-facebook-f"></i></a>
-                              <a href=""><i class="fab fa-linkedin-in"></i></a>
-                              <a href=""><i class="fab fa-instagram"></i></a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                  <div class="team-item">
-                      <div class="team-img">
-                          <img src="https://tendencybook.com/wp-content/uploads/2020/02/110577-11.jpg" alt="Team Image">
-                      </div>
-                      <div class="team-text">
-                          <h2>Thomas Olsen</h2>
-                          <p>Chef Advisor</p>
-                          <div class="team-social">
-                              <a href=""><i class="fab fa-twitter"></i></a>
-                              <a href=""><i class="fab fa-facebook-f"></i></a>
-                              <a href=""><i class="fab fa-linkedin-in"></i></a>
-                              <a href=""><i class="fab fa-instagram"></i></a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-3 col-md-6">
-                  <div class="team-item">
-                      <div class="team-img">
-                          <img src="https://cdn2.vogue.es/uploads/images/thumbs/es/vog/2/s/2017/13/anne_hathaway_7489_620x.jpg" alt="Team Image">
-                      </div>
-                      <div class="team-text">
-                          <h2>James Alien</h2>
-                          <p>Advisor</p>
-                          <div class="team-social">
-                              <a href=""><i class="fab fa-twitter"></i></a>
-                              <a href=""><i class="fab fa-facebook-f"></i></a>
-                              <a href=""><i class="fab fa-linkedin-in"></i></a>
-                              <a href=""><i class="fab fa-instagram"></i></a>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
+            @endforeach              
+        </div>
       </div>
   </div>
 </div>

@@ -74,7 +74,7 @@ Route::post('/create/article/{modul}','ArticlesAllController@store')->name('arti
 Route::post('/articles/update/{articlesall}','ArticlesAllController@update')->name('article.update');
 Route::post('/create/personal/{modul}','AbousUsController@store')->name('aboutus.store');
 Route::post('/personal/update/{abousus}','AbousUsController@update')->name('aboutus.update');
-Route::post('/personal/destroy/{abousus}','AbousUsController@destroy')->name('aboutus.destroy');
+Route::get('/personal/destroy/{abousus}','AbousUsController@destroy')->name('aboutus.destroy');
 
 });
 

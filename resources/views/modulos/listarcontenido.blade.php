@@ -114,7 +114,7 @@
                             <td>{{ $persona->email }}</td>
                             <td class=" row align-items">
                                 <a class="btn btn-dark d-block mb-2" style="margin-left: 20%;" data-toggle="modal" data-target="#Editar_{{ $persona->id }}">Editar</a>
-                                <a class="btn btn-danger d-block mb-2" style="margin-left: 20%;" >Eliminar</a>
+                                <a href="{{ route('aboutus.destroy',$persona->id ) }}" class="btn btn-danger d-block mb-2" style="margin-left: 20%;" >Eliminar</a>
                                 <div class="modal fade" id="Editar_{{ $persona->id }}" role="dialog">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
@@ -153,7 +153,7 @@
                                                             </div>
                                                             <div class="form-group col-md-6">
                                                                     <label for="phone"> Email:</label>
-                                                                    <input class="form-control"  name="phone" type="text" value="{{ $persona->email }}">
+                                                                    <input class="form-control"  name="email" type="text" value="{{ $persona->email }}">
                                                             </div>  
                                                         </div>
                                                     
@@ -164,12 +164,14 @@
                                                             class="form-control"
                                                             name="imagen_principal"> 
                                                             <h5 class="text-center">Imagen actual</h5>
+                                                            <center>
                                                             <img style="width:200px; margin-top: 20px;" src="../storage/{{ $persona->imagen_location }}">            
+                                                            </center>
                                                         </div>          
                                                     <!-- Modal Footer -->
                                                     <div class="modal-footer">
                                                         <a class="btn btn-danger" data-dismiss="modal">Cerrar</a>
-                                                        <input type="submit" class="btn btn-primary" value="Crear"/>
+                                                        <input type="submit" class="btn btn-primary" value="Editar"/>
                                                     </div>
                                                 </form>
                                             </div>
