@@ -14,7 +14,7 @@ class Modulos extends Seeder
       
         DB::table('moduls')->insert([
             'name'=>'Sitios Turisticos',
-            'slug'=>'sitios',
+            'slug'=>'Sitios',
             'description'=> ' ',
             'state_publication_id' =>  1,
             'created_at'=>Carbon::now(),
@@ -24,7 +24,7 @@ class Modulos extends Seeder
         ]);
         DB::table('moduls')->insert([
             'name'=>'Personal',
-            'slug'=>'personal',
+            'slug'=>'Personal',
             'description'=> ' ',
             'state_publication_id' =>  1,
             'created_at'=>Carbon::now(),
@@ -34,7 +34,7 @@ class Modulos extends Seeder
         ]);
         DB::table('moduls')->insert([
             'name'=>'Rutas',
-            'slug'=>'rutas',
+            'slug'=>'Rutas',
             'description'=> ' ',
             'state_publication_id' =>  1,
             'created_at'=>Carbon::now(),
@@ -42,15 +42,6 @@ class Modulos extends Seeder
 
 
         ]);
-        DB::table('moduls')->insert([
-            'name'=>'Eventos',
-            'slug'=>'eventos',
-            'description'=> ' ',
-            'state_publication_id' =>  1,
-            'created_at'=>Carbon::now(),
-            'updated_at'=>Carbon::now(),
-
-
-        ]);
+      
     }
 }

@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use App\Modelos\Category;
 use App\Modelos\Place;
+use DB;
+use Carbon\Carbon;
 
 class ImageController extends Controller
 {

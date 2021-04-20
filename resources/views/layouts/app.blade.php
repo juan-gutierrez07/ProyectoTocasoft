@@ -21,6 +21,7 @@
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js"></script>
     
+    <script src="//cdn.jsdelivr.net/npm/leaflet-routeboxer@1.0.4/src/leaflet-routeboxer.min.js" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -66,7 +67,11 @@
                         <li class="nav-item">
                                 <a href="{{ route('modul.show') }}" class="nav-link">Contenido</a> {{-- Crear contenido para modulos..
                                                                                Crear  --}}
-                        </li>    
+                        </li>  
+                        <li class="nav-item">
+                                <a href="{{ route('auditoria') }}" class="nav-link">Auditoria</a> {{-- Crear contenido para modulos..
+                                                                               Crear  --}}
+                        </li>      
                         <li class="dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" >Eventos</a> 
                                 <ul class="dropdown-menu">

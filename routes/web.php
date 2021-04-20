@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\User;
+use App\Modelos\Modul;
 use App\Modelos\Place;
 use Illuminate\Support\Facades\Gate;
 
@@ -60,6 +61,8 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/rutas','RutaController@index')->name('rutas.index');
     Route::get('/rutas/places/{id}','RutaController@ruta')->name('coordenas');
     Route::get('/rutas/destroy/{id}','RutaController@destroy');
+    Route::get('/ruta','RutaController@show')->name('ruta');
+    
 }); 
 
 //Crear contenido del sistema
@@ -75,7 +78,7 @@ Route::post('/articles/update/{articlesall}','ArticlesAllController@update')->na
 Route::post('/create/personal/{modul}','AbousUsController@store')->name('aboutus.store');
 Route::post('/personal/update/{abousus}','AbousUsController@update')->name('aboutus.update');
 Route::get('/personal/destroy/{abousus}','AbousUsController@destroy')->name('aboutus.destroy');
-
+Route::get('/auditoria','AuditoriaController@show')->name('auditoria');
 });
 
 //Rutas de usuarios->roles y sus respectivos permisos
@@ -86,8 +89,8 @@ Route::get('/personal/destroy/{abousus}','AbousUsController@destroy')->name('abo
 //Pruebas
 
 Route::get('/test', function(){
-    return Auth::user()->roles[0]->rolname;
-
+   $slug = Modul::where('slug','Rutas')->first();
+    return $slug->slug;
     // return $user->RolAdmin($data);
 
 //  return $user->havePermisson('user.show');

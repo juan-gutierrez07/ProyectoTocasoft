@@ -9,6 +9,9 @@ use App\Modelos\Category;
 use App\Modelos\StatePublication;
 use App\Modelos\AbousUs;
 use Intervention\Image\Facades\Image;
+use Carbon\Carbon;
+use DB;
+
 
 class ArticlesAllController extends Controller
 {
@@ -16,20 +19,17 @@ class ArticlesAllController extends Controller
     {   
         $estados  = StatePublication::all();
         
-        if($modul->slug == "sitios")
+        if($modul->slug == "Sitios")
         {
         $disponibles = Category::whereNotIn("slug", ArticlesAll::pluck("slug")->all())->where('type','Sitio')->get();
         
         return view('modulos.listarcontenido',compact('modul','disponibles','estados'));
-        }else if($modul->slug == "personal")
+        }else if($modul->slug == "Personal")
         {
             $personal = AbousUs::all();
 
             return view('modulos.listarcontenido',compact('modul','estados','personal'));
-        }else if($modul->slug =="eventos")
-        {
-            return view('modulos.listarcontenido',compact('modul','estados'));
-        }else if($modul->slug == "rutas")
+        }else if($modul->slug == "Rutas")
         {
             return "cotenido rutas";
         }

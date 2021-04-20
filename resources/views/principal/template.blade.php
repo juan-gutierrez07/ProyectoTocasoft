@@ -79,12 +79,12 @@
 <!-- partial:index.partial.html -->
 <div class="divisionpersonal1">
 <section  class="container" >
-<div class="row text-center">
+<div class="row text-center" >
    <div class="team mt-125">
       <div class="your-contact-text container ">
          <h2 class="display-41 text-center mt-5 mb-3">Personal Secretaria de Turismo</h2>
          <br><br>
-         <div class="row">
+         <div class="row" style="display: flex; justify-content: center;">
             @foreach ($modulos[1]->abous_us as $personal)
               <div class="col-lg-3 col-md-6">
                   <div class="team-item">

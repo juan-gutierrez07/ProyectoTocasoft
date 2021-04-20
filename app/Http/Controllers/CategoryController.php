@@ -7,6 +7,8 @@ use App\Modelos\Category;
 use App\Modelos\Place;
 use App\Modelos\Images;
 use App\Modelos\ArticlesAll;
+use DB;
+use Carbon\Carbon;
 class CategoryController extends Controller
 {
     public function categoria(Category $category)

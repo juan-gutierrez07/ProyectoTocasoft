@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use App\User;
 use App\Modelos\Role;
-
+use DB;
+use Carbon\Carbon;
 class UserController extends Controller
 {
    

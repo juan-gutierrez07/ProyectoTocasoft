@@ -9,8 +9,8 @@ class AuditoriaController extends Controller
 {
     public function show()
     {
-        $auditoria = Auditoria::all();
+        $registros = Auditoria::all();
 
-        return view('auditoria.show',compact('$auditoria'));
+        return view('auditoria.show',compact('registros'));
     }
 }

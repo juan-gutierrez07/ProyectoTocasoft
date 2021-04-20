@@ -21,6 +21,7 @@ class CreateTuoristRouteTable extends Migration
             $table->text('description');
             $table->uuid('uuid');
             $table->foreignId('category_id')->references('id')->on('categories')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('modul_id')->references('id')->on('moduls')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

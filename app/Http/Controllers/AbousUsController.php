@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use App\Modelos\AbousUs;
 use App\Modelos\Modul;
+use DB;
+use Carbon\Carbon;
 class AbousUsController extends Controller
 {
     public function store(Request $request,Modul $modul)
@@ -40,6 +42,11 @@ class AbousUsController extends Controller
         }
         
         $personal->save();
+        DB::table('auditorias')->insert([
+            'detail' => 'Creación del Personal'. " ". $personal->name ." " .$personal->lastname,
+            'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+            'created_at'=>Carbon::now(),
+        ]);
         return redirect()->route('articles.show',$modul->id)
         ->with('status_success','Contenido Agregado !!'); ;   
     }

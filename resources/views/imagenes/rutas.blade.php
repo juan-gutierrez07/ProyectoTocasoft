@@ -1,4 +1,4 @@
-@extends('layaouts.app')
+@extends('layouts.app')
 @section('content')
 <div class="container">
         @include('establecimientos.message')
@@ -9,7 +9,7 @@
                     <legend class="text-primary">Imagenes ruta</legend>
                     <div class="form-group">
                             <label for="imagenes">Imagenes</label>
-                            <div id="dropzone" class="dropzone form-control"></div>
+                            <div id="dropzone-routes" class="dropzone form-control"></div>
                         </div>
                 <input type="hidden" id="uuid" name="uuid" value={{ $nuevo->uuid}}>
                 <a href="{{ route('home') }}" class="btn btn-primary mt-3">Terminar</a>

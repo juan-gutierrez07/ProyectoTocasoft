@@ -7,7 +7,8 @@ use App\Modelos\Modul;
 use App\Modelos\PublicactionState;
 use App\Modelos\ArticlesAll;
 use App\Modelos\Category;
-
+use DB;
+use Carbon\Carbon;
 class ModulController extends Controller
 {
     public function all()

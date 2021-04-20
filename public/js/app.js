@@ -87763,7 +87763,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var provider = new leaflet_geosearch__WEBPACK_IMPORTED_MODULE_0__["OpenStreetMapProvider"]();
 document.addEventListener('DOMContentLoaded', function () {
-  if (document.querySelector('#map')) {
+  if (document.querySelector('#mapasitio')) {
     var obtenerLatLong = function obtenerLatLong(marker) {
       marker.on('moveend', function (e) {
         marker = e.target;
@@ -87779,7 +87779,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var lat = document.querySelector('#lat').value === '' ? 4.45637843 : document.querySelector('#lat').value;
     var lng = document.querySelector('#lng').value === '' ? -74.63432193 : document.querySelector('#lng').value;
-    var map = L.map('map').setView([4.45637843, -74.63432193], 16);
+    var map = L.map('mapasitio').setView([4.45637843, -74.63432193], 16);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map); //crear capa para pines previos
@@ -87793,14 +87793,22 @@ document.addEventListener('DOMContentLoaded', function () {
     // markers.addLayer(marker);    
 
     obtenerLatLong(marker);
-  }
+  } // if(document.querySelector('#maparutas')){
+  //   const lat = 4.45637843;
+  //   const lng = -74.63432193;
+  //     var map = L.map('maparutas').setView([4.45637843,-74.63432193], 16);
+  // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  // }).addTo(map);
+  // //crear capa para pines previos
+  // // let markers = new L.FeatureGroup().addTo(map);
+  // let marker;
+  // /// Crear pin o marcador dandole una posicion en el mapa para que se ubique
+  // marker = new L.marker([lat,lng],{
+  //     draggable: true
+  //     }).addTo(map);
+  // }   
 
-  if (document.querySelector('#mapa-principal')) {
-    var mapa = L.map('mapa-principal').setView([4.45637843, -74.63432193], 20);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(mapa);
-  }
 }); //Otras cosas que no fueron utiles
 // const buscador = document.querySelector("#formbuscar");
 // buscador.addEventListener('blur',function(e){
@@ -87976,8 +87984,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! S:\proyecto\proyecto2\ProyectoTocasoft\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! S:\proyecto\proyecto2\ProyectoTocasoft\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\ASUS\Desktop\Decimo Semestre- Ya mori\Desarrollo\ProyectoTocasoft\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\ASUS\Desktop\Decimo Semestre- Ya mori\Desarrollo\ProyectoTocasoft\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

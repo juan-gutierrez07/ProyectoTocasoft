@@ -109,7 +109,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                             </div>
         
                             <div class="form-group">
-                                <div id="map" style="height: 400px;"></div>
+                                <div id="mapasitio" style="height: 400px;"></div>
                             </div>
                                 <p class="informacion">Confirma que los siguientes campos son correctos</p>
         
@@ -162,6 +162,8 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                     <textarea
                                         class="form-control  @error('descripcion')  is-invalid  @enderror"
                                         name="descripcion"
+                                        rows="30"
+                                        cols="30"
                                         required >{{ old('descripcion') }}</textarea>
         
                                         @error('descripcion')
@@ -223,6 +225,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
     </div>
 @endsection
 <script>
+    
         function valideKey(evt){
             
             // code is the decimal ASCII representation of the pressed key.

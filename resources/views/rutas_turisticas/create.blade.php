@@ -51,7 +51,7 @@
                   required
               >
                   <option value="" selected disabled>-- Seleccione --</option>
-                  @foreach ($categoria as $categorias)
+                  @foreach ($disponibles as $categorias)
                   <option value="{{ $categorias->id }}">{{ $categorias->name }}</option>
                   @endforeach
                   

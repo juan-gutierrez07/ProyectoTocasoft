@@ -150,7 +150,6 @@ hr {
 	width: 60%;
 	height: 120%;
 	position: absolute;
-	overflow: scroll;
 	margin: auto;
 	background: #fff;
 	border-radius:3px;

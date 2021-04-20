@@ -7,7 +7,8 @@ use App\Modelos\Place;
 use App\Modelos\EventPlace;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
-
+use DB;
+use Carbon\Carbon;
 
 
 
@@ -113,8 +114,8 @@ class EventPlaceController extends Controller
     }
     public function mostrar()
     {   
-        $places = Place::all();
-        $eventos = EventPlace::all();
-        return view('eventos.showeventsall',compact('places','eventos'));
+        $sitios = Place::all();
+        $eventos = EventPlace::with('place')->get();
+        return view('eventos.showeventsall',compact('sitios','eventos'));
     }
 }

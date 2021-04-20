@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use App\Modelos\ImagesRoutes;
 use App\Modelos\Category;
+use DB;
+use Carbon\Carbon;
 class ImagesRoutesController extends Controller
 {
     public function show()
@@ -22,7 +24,7 @@ class ImagesRoutesController extends Controller
         $imagen = Image::make( public_path("storage/{$path_image}"))->fit(600, 450);
         $imagen->save();
         $imagen_route = new ImagesRoutes();
-        $imagen_route->locaction = $path_image;
+        $imagen_route->location = $path_image;
         $imagen_route->id_route= $request['uuid'];
         $imagen_route->save();
         

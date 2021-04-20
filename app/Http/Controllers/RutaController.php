@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Modelos\Category;
 use App\Modelos\TuoristRoute;
+use App\Modelos\Modul;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
-
+use DB;
+use Carbon\Carbon;
 class RutaController extends Controller
 {   
 
@@ -30,7 +32,8 @@ class RutaController extends Controller
         // $historicos=[];
         // $hoteles=[];
         $places = [];
-        $categoria=Category::with('places')->where('type','Ruta')->get();
+        $categoria=Category::with('places')->where('type','Sitio')->get();
+        $disponibles=Category::with('places')->where('type','Ruta')->get();
         // $categoriaruta = Category::where('type','Ruta')->get();
         foreach($categoria as $categorias)
         {
@@ -38,7 +41,7 @@ class RutaController extends Controller
         }
             $places = json_encode($places);
             // return $places;
-        return view('rutas_turisticas.create',compact('categoria', 'places'));    
+        return view('rutas_turisticas.create',compact('categoria', 'places','disponibles'));    
     }
     public function store(Request $request)
     {
@@ -51,10 +54,8 @@ class RutaController extends Controller
                 'description'=>'required|min:20',
                 'uuid' => 'required'
             ]);
-                 
+            $slug = Modul::where('slug','Rutas')->get()->first();
         $path_imagen = $request->file('imagen_principal')->store('rutas_turisticas', 'public');
-
-        
         $imagen = Image::make( public_path("storage/{$path_imagen}"))->fit(800, 450);
         $imagen->save();
             $nuevo= new TuoristRoute();
@@ -64,17 +65,30 @@ class RutaController extends Controller
             $nuevo->category_id = $request->category_id;
             $nuevo->description = $request->description;
             $nuevo->uuid = $request->uuid;
+            $nuevo->modul_id = 3;
             $nuevo->save();
             // $ruta = TuoristRoute::create($request->all());
             $nuevo->places()->sync($request->get('place'));
-            return view('imagenes.sitios',compact('nuevo'))->with('status_success','Ruta Creada, Agrega las imagenes'); 
+            return view('imagenes.rutas',compact('nuevo'))->with('status_success','Ruta Creada, Agrega las imagenes'); 
+             
+        
     }
 
     public function ruta($id)
     {
-        $ruta = TuoristRoute::find($id);
+        $rutas = TuoristRoute::with('places'->all(['lat','lng']))->find($id);
+        $coordenadas= array();
+        return $rutas->places;
+        foreach ($rutas[0]->places as $ruta)
+        {
+
+            $coordenadas=$ruta;
+            
+        }
         
-        return response()->json($ruta->places);
+        
+
+        return response()->json($coordenadas);
     }
 
     /**
@@ -83,9 +97,9 @@ class RutaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        
+        return view('rutas_turisticas.rutasturisticas');
     }
 
     /**

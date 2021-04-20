@@ -1,9 +1,32 @@
 @extends('layouts.app')
+<script>
+document.addEventListener('DOMContentLoaded', () => {    
+document.getElementById("Addimage").onchange = function(e) {
+    // Creamos el objeto de la clase FileReader
+    let reader = new FileReader();
+  
+    // Leemos el archivo subido y se lo pasamos a nuestro fileReader
+    reader.readAsDataURL(e.target.files[0]);
+  
+    // Le decimos que cuando este listo ejecute el código interno
+    reader.onload = function(){
+      let preview = document.getElementById('preview'),
+              image = document.createElement('img');
+  
+      image.src = reader.result;
+      image.style.width="200px"; 
+      image.style.marginTop="20px"; 
+      preview.innerHTML = '';
+      preview.append(image);
+    };
+  }
+});
+</script>
 @section('content')
 <div class="col-md-10 mx-auto bg-white p-3" style="margin-top: 5%;">
     <br>
     @include('establecimientos.message')
-<a class="btn btn-success mb-2" style="margin-left: 90%;" data-toggle="modal" data-target=" @if($modul->slug=="sitios")@if($disponibles->count()>0)#Agregar @else #Noacces @endif @elseif($modul->slug !="sitios")  #Agregar @endif">Agregar</a>
+<a class="btn btn-success mb-2" style="margin-left: 90%;" data-toggle="modal" data-target=" @if($modul->slug=="Sitios")@if($disponibles->count()>0)#Agregar @else #Noacces @endif @elseif($modul->slug !="Sitios")  #Agregar @endif">Agregar</a>
 <div class="card">
     <div class="card-body">
     <table class="table" id="dtable">
@@ -11,16 +34,16 @@
             <tr>
                 <th scole="col">Id</th>
                 <th scole="col">Nombres</th>
-                @if($modul->slug=="personal") <th scole="col">Apellidos</th> @endif
-                <th scole="col">@if($modul->slug=="sitios")Descripción @elseif($modul->slug=="personal") Cargo @endif</th>
-                @if($modul->slug=="personal") <th scole="col">Celular</th> @endif
-                @if($modul->slug=="personal") <th scole="col">Correo</th> @endif
-                @if($modul->slug !="personal")<th scole="col">Estado</th>@endif
+                @if($modul->slug=="Personal") <th scole="col">Apellidos</th> @endif
+                <th scole="col">@if($modul->slug=="Sitios")Descripción @elseif($modul->slug=="Personal") Cargo @endif</th>
+                @if($modul->slug=="Personal") <th scole="col">Celular</th> @endif
+                @if($modul->slug=="Personal") <th scole="col">Correo</th> @endif
+                @if($modul->slug !="Personal")<th scole="col">Estado</th>@endif
                 <th scole="col">Acciones</th>
 
             </tr>
         </thead>
-            @if($modul->slug !="personal")
+            @if($modul->slug !="Personal")
             <tbody>
                 @foreach ($modul->articles as $article)    
                     <tr>
@@ -102,7 +125,7 @@
                     </tr>    
                 @endforeach    
             </tbody>
-            @elseif($modul->slug=="personal")
+            @elseif($modul->slug=="Personal")
                 <tbody>
                     @foreach ($personal as $persona)
                         <tr>
@@ -202,9 +225,9 @@
             <!-- Modal Body -->
             <div class="modal-body">
                 <p class="statusMsg"></p>
-                <form action="@if($modul->slug != "personal") {{ route('articles.store',$modul->id) }}@else {{ route('aboutus.store',$modul->id) }} @endif" method="POST" enctype="multipart/form-data">
+                <form action="@if($modul->slug != "Personal") {{ route('articles.store',$modul->id) }}@else {{ route('aboutus.store',$modul->id) }} @endif" method="POST" enctype="multipart/form-data">
                     @csrf 
-                        @if($modul->slug == "sitios")
+                        @if($modul->slug != "Personal")
                         <div class="form-group">
                         <label for="slug"> Nombre:</label>
                         <select  name ="name" id="slug" class="form-control">
@@ -214,7 +237,7 @@
                             @endforeach
                         </select>
                         </div>
-                        @elseif($modul->slug == "personal")
+                        @elseif($modul->slug == "Personal")
                         <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="txtName"> Nombres:</label>
@@ -245,10 +268,12 @@
                         <label for="imagen_principal">Imagen Principal</label>
                         <input 
                         type="file"
+                        id="Addimage"
                         class="form-control"
-                        name="imagen_principal">     
+                        name="imagen_principal">
+                        <div id="preview"></div>     
                     </div>          
-                    @if($modul->slug != "personal")  
+                    @if($modul->slug != "Personal")  
                     <div class="form-group">
                         <label for="inputDescription">Descripcion</label>
                         <textarea class="form-control" name="description" placeholder="Ingresa el contenido.."></textarea>
@@ -305,6 +330,7 @@
     
 @endsection
 <script>
+
         function valideKey(evt){
             
             // code is the decimal ASCII representation of the pressed key.

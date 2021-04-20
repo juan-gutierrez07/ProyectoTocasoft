@@ -13,7 +13,7 @@ class CreateAuditoria extends Migration
      */
     public function up()
     {
-        Schema::create('auditoria', function (Blueprint $table) {
+        Schema::create('auditorias', function (Blueprint $table) {
             $table->id();
             $table->string('detail');
             $table->string('user');

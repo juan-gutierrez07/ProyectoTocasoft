@@ -13,8 +13,8 @@ class EventPlace extends Model
         'finish',
         'place_id',
     ];
-    public function places()
+    public function place()
     {
-        return $this->belongsTo('App\Modelos\Places');
+        return $this->belongsTo('App\Modelos\Place');
     }
 }

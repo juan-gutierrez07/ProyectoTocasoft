@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class TuoristRoute extends Model
 {
     protected $fillable = [
-        'name','time_travel','description','uuid','category_id','imagen_principal'
+        'name','time_travel','description','uuid','category_id','imagen_principal','modul_id'
 
     ];
     public function places(){
@@ -22,6 +22,10 @@ class TuoristRoute extends Model
     public function commentsroute()
     {
         return $this->hasMany('App\Modelos\CommentsRoute','tuorist_route_id');
+    }
+    public function modul()
+    {
+        return $this->belongsTo('App\Modelos\Modul');
     }
     // public function banners()
     // {
