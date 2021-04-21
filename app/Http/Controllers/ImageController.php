@@ -45,7 +45,12 @@ class ImageController extends Controller
         $respuesta = [
             'archivo' => $path_imagen
         ];
-
+        $nombre_sitio= Place::where("uuid",$imagedb->id_establecimiento)->first();
+        DB::table('auditorias')->insert([
+            'detail' => 'Se agrego nueva imagen'. " ".$nombre_sitio->name,
+            'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+            'created_at'=>Carbon::now(),
+        ]);
         return response()->json($respuesta);
     }
 

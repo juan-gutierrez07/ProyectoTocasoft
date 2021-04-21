@@ -102,7 +102,7 @@ class EventPlaceController extends Controller
         $datos= request()->except(['_token','_method']);
         $nuevo = EventPlace::where('id',$id)->update($datos);
         DB::table('auditorias')->insert([
-            'detail' => 'Actualizacion de evento'. " ". $id,
+            'detail' => 'Actualizacion de evento'. " ". $nuevo->title,
             'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
             'created_at'=>Carbon::now(),
         ]);
@@ -118,6 +118,11 @@ class EventPlaceController extends Controller
     public function destroy($id)
     {
      $eventos = EventPlace::findOrFail($id);
+     DB::table('auditorias')->insert([
+        'detail' => 'Eliminacion de evento'. " ". $eventos->title,
+        'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+        'created_at'=>Carbon::now(),
+    ]);
      $eventos->delete();
      return response()->json($id);
     }
