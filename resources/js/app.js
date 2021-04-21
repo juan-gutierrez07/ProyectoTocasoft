@@ -47,3 +47,4 @@ require('./mapa');
 require("./dropzone");
 require('./dtable');
 require('./metodosjs');
+// require('../../public/Leaflet-Mapping/examples/maparuta');

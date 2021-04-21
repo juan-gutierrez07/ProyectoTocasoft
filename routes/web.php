@@ -22,6 +22,7 @@ Route::get('/comentarios/sitios/{place}','ComentsPlaceController@all')->name('co
 Route::get('/categoria/{category}','CategoryController@categoria')->name('category.place');
 //Modulos
 Route::get('/', 'ModulController@all')->name('home');
+
 Route::post('/modulos/update/{modul}','ModulController@update')->name('modul.update');
 
 //Comentarios
@@ -31,11 +32,11 @@ Route::post('/coment/update/{commentsplace}','ComentsPlaceController@update')->n
 //Eventos
 Route::resource('/eventos','EventPlaceController');
 Route::get('/sitios','PlaceController@mapshow')->name('mapa.places');
-Route::get('/events/mostrar', 'EventPlaceController@mostrar');
+Route::get('/events/mostrar', 'EventPlaceController@mostrar')->name('eventos.mostrar');
 Route::get('/noautorizado',function(){
     return view('errores/401');
 });
-
+Route::get('/backup','HomeController@down')->name('descargar');
 Auth::routes();
 Auth::routes(['verify' => true]);
 

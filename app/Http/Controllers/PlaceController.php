@@ -8,6 +8,7 @@ use App\Modelos\Category;
 use App\Modelos\Images;
 use Illuminate\Support\Facades\Gate;
 use Intervention\Image\Facades\Image;
+use App\Modelos\Modul;
 use DB;
 use Carbon\Carbon;
 
@@ -85,13 +86,15 @@ class PlaceController extends Controller
     }
     public function show(Place $place)
     {
+        $sitios = Modul::where('slug','Sitios')->get()->first();
         $place= Place::where('id','=',$place->id)->get();
-        return view('establecimientos.showestablecimiento',compact('place'));
+        return view('establecimientos.showestablecimiento',compact('place','sitios'));
     }
 
     public function mapshow()
     {
-        return view('establecimientos.mapaall');
+        $sitios = Modul::where('slug','Sitios')->get()->first();
+        return view('establecimientos.mapaall',compact('sitios'));
     }
     public function edit(Place $place)
     {

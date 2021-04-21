@@ -7,6 +7,7 @@ use App\Modelos\Category;
 use App\Modelos\Place;
 use App\Modelos\Images;
 use App\Modelos\ArticlesAll;
+use App\Modelos\Modul;
 use DB;
 use Carbon\Carbon;
 class CategoryController extends Controller
@@ -14,7 +15,8 @@ class CategoryController extends Controller
     public function categoria(Category $category)
     {
         $establecimientos = Place::where('category_id',$category->id)->with('category')->get();
-      return view('establecimientos.establecimientosall',compact('establecimientos'));
+        $sitios = Modul::where('slug','Sitios')->get()->first();
+      return view('establecimientos.establecimientosall',compact('establecimientos','sitios'));
     }
     public function store(Request $request)
     {

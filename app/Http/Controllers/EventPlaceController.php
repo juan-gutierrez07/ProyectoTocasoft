@@ -8,6 +8,7 @@ use App\Modelos\EventPlace;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use DB;
+use App\Modelos\Modul;
 use Carbon\Carbon;
 
 
@@ -22,8 +23,8 @@ class EventPlaceController extends Controller
     public function index()
     {
         $places = Place::all();
-        
-        return view('eventos.eventosplace', compact('places'));
+        $sitios = Modul::where('slug','Sitios')->get()->first();
+        return view('eventos.eventosplace', compact('places','sitios'));
     }
 
     /**
@@ -130,6 +131,7 @@ class EventPlaceController extends Controller
     {   
         $sitios = Place::all();
         $eventos = EventPlace::with('place')->get();
-        return view('eventos.showeventsall',compact('sitios','eventos'));
+        $sitios = Modul::where('slug','Sitios')->get()->first();
+        return view('eventos.showeventsall',compact('sitios','eventos','sitios'));
     }
 }

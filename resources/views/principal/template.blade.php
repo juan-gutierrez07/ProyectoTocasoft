@@ -42,7 +42,7 @@
         <h2>Sin contenido....</h2>
     @else
     <section id="yourServices" class="container">
-        <h2 class="display-4 text-center mt-5 mb-3">{{ $modulos[0]->name}}</h2>
+        <h2 class="display-42 text-center mt-5 mb-3">{{ $modulos[0]->name}}</h2>
         <div class="row text-center" style="display: flex; justify-content: center;">
             @foreach ($modulos[0]->articles->where('state_publication_id',1) as $articulo)
                 <div class="col-md-3 mb-3">

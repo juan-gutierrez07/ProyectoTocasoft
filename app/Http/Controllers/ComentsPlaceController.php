@@ -5,6 +5,7 @@ use App\Modelos\Place;
 use App\Modelos\CommentsPlace;
 use Illuminate\Http\Request;
 use DB;
+use App\Modelos\Modul;
 use Carbon\Carbon;
 class ComentsPlaceController extends Controller
 {
@@ -13,7 +14,8 @@ class ComentsPlaceController extends Controller
         $comentarios = CommentsPlace::where('place_id','=',$place->id)->get();
         $total = CommentsPlace::where('place_id','=',$place->id)->count();
         $puntos = CommentsPlace::where('place_id','=',$place->id)->sum('points');
-        return view('comentarios.showcomentarios',compact('comentarios','total','puntos','place'));
+        $sitios = Modul::where('slug','Sitios')->get()->first();
+        return view('comentarios.showcomentarios',compact('comentarios','total','puntos','place','sitios'));
     }
     public function store(Request $request)
     {

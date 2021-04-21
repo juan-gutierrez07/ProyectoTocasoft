@@ -372,7 +372,15 @@
     margin-left: 28%;
     margin-right: 28%;
 }
-
+.display-42 {
+  font-size: 3.5rem;
+  font-weight: 300;
+  line-height: 1.2;
+  font-family: 'Stick', sans-serif;
+    text-shadow: 0.1em 0.1em 0.05em rgba(12, 10, 10, 0.719);
+    margin-left: 28%;
+    margin-right: 28%;
+}
 .display-41 {
   font-size: 3.5rem;
   font-weight: 300;

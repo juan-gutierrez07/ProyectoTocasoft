@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+
 class HomeController extends Controller
 {
     /**
@@ -24,5 +25,12 @@ class HomeController extends Controller
     public function index()
     {
         return view('principal/template');
+    }
+
+    public function down()
+    {
+        $now = new \DateTime();
+        $file="backup"."-". $now->format("Y-m-d").".sql";
+        return response()->download(storage_path('app\backup\.'. $file));
     }
 }

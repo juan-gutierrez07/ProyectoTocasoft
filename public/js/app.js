@@ -86846,7 +86846,7 @@ __webpack_require__(/*! ./dropzone */ "./resources/js/dropzone.js");
 
 __webpack_require__(/*! ./dtable */ "./resources/js/dtable.js");
 
-__webpack_require__(/*! ./metodosjs */ "./resources/js/metodosjs.js");
+__webpack_require__(/*! ./metodosjs */ "./resources/js/metodosjs.js"); // require('../../public/Leaflet-Mapping/examples/maparuta');
 
 /***/ }),
 
@@ -87800,14 +87800,14 @@ document.addEventListener('DOMContentLoaded', function () {
   // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   // }).addTo(map);
-  // //crear capa para pines previos
-  // // let markers = new L.FeatureGroup().addTo(map);
+  // crear capa para pines previos
+  // let markers = new L.FeatureGroup().addTo(map);
   // let marker;
-  // /// Crear pin o marcador dandole una posicion en el mapa para que se ubique
+  // / Crear pin o marcador dandole una posicion en el mapa para que se ubique
   // marker = new L.marker([lat,lng],{
   //     draggable: true
   //     }).addTo(map);
-  // }   
+  // }  
 
 }); //Otras cosas que no fueron utiles
 // const buscador = document.querySelector("#formbuscar");
@@ -87984,8 +87984,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\ASUS\Desktop\Decimo Semestre- Ya mori\Desarrollo\ProyectoTocasoft\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\ASUS\Desktop\Decimo Semestre- Ya mori\Desarrollo\ProyectoTocasoft\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\ASUS\Desktop\ProyectoTocasoft\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\ASUS\Desktop\ProyectoTocasoft\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

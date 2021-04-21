@@ -33,7 +33,6 @@ class RutaController extends Controller
         // $hoteles=[];
         $places = [];
         $categoria=Category::with('places')->where('type','Sitio')->get();
-        $disponibles=Category::with('places')->where('type','Ruta')->get();
         // $categoriaruta = Category::where('type','Ruta')->get();
         foreach($categoria as $categorias)
         {
@@ -50,7 +49,6 @@ class RutaController extends Controller
                 'time_travel' => 'required',
                 'imagen_principal'=> 'required|max:2000',
                 'place' => 'required',
-                'category_id' => 'required',
                 'description'=>'required|min:20',
                 'uuid' => 'required'
             ]);
@@ -62,7 +60,6 @@ class RutaController extends Controller
             $nuevo->name = $request->name;
             $nuevo->time_travel = $request->time_travel;
             $nuevo->imagen_principal = $path_imagen;
-            $nuevo->category_id = $request->category_id;
             $nuevo->description = $request->description;
             $nuevo->uuid = $request->uuid;
             $nuevo->modul_id = 3;

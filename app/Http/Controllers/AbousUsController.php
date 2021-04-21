@@ -63,6 +63,10 @@ class AbousUsController extends Controller
         $primer_nombre= $abousus->name . " " . $abousus->lastname;
         if($request->get('imagen_principal')) 
         {
+            if(File::exists('storage/'. $abousus->imagen_location))
+            {
+                File::delete('storage/' . $abousus->imagen_location);
+            }
                  //leer imagen
         $path_imagen = $request->file('imagen_principal')->store('personal_alcaldia', 'public');
 

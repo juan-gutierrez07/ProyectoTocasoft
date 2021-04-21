@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('content')
+@include('establecimientos.message')
     <div class="col-md-10 mx-auto bg-white p-3" style="margin-top: 10%;">
-            @include('establecimientos.message')
+     <a class="btn btn-success mb-2" style="margin-left: 70%;" href="{{ route('descargar') }}">Realizar Backup</a>
         <div class="card">
             <div class="card-body">
                 <table class="table" id="dtable">

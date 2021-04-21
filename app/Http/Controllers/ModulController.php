@@ -15,7 +15,7 @@ class ModulController extends Controller
     {   
         $categorias = Category::all()->where('type','Sitios');
         $modulos = Modul::all();
-        $sitios = Modul::where('slug','sitios')->get()->first();
+        $sitios = Modul::where('slug','Sitios')->get()->first();
         
         return view('principal.template',compact('modulos','categorias','sitios'));
     }

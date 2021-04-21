@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-
+use Carbon\Carbon;
 class DatabaseBackUp extends Command
 {
     /**
@@ -11,7 +11,7 @@ class DatabaseBackUp extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'database:backup';
 
     /**
      * The console command description.

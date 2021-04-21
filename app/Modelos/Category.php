@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     protected $fillable = [
-        'name', 'slug',
+        'name', 'slug'
 
     ];
    
@@ -16,10 +16,10 @@ class Category extends Model
         return $this->hasMany('App\Modelos\Place','category_id');
     }
 
-    public function routeturist()
-    {
-        return $this->hasMany('App\Modelos\TuoristRoute','category_id');
-    }
+    // public function routeturist()
+    // {
+    //     return $this->hasMany('App\Modelos\TuoristRoute','category_id');
+    // }
 
     
     // Leer las rutas por slug

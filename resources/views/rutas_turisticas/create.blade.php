@@ -40,27 +40,6 @@
                   </div>
               @enderror
           </div>
-
-          <div class="form-group">
-              <label for="categoria">Categoría</label>
-
-              <select
-                  class="form-control @error('categoria_id') is-invalid @enderror"
-                  name="category_id"
-                  id="categoria"
-                  required
-              >
-                  <option value="" selected disabled>-- Seleccione --</option>
-                  @foreach ($disponibles as $categorias)
-                  <option value="{{ $categorias->id }}">{{ $categorias->name }}</option>
-                  @endforeach
-                  
-              </select>
-              @error('categoria_id')
-                  <div class="invalid-feedback">
-                      {{$message}}
-                  </div>
-              @enderror
               <div class="form-group">
                   <label for="imagen_principal">Imagen Principal</label>
                   <input

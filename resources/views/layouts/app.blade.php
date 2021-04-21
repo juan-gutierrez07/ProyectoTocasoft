@@ -20,8 +20,9 @@
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/dataTables.responsive.min.js" defer> </script>
     <script src="https://cdn.datatables.net/responsive/2.2.7/js/responsive.bootstrap4.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.6.0/main.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     
-    <script src="//cdn.jsdelivr.net/npm/leaflet-routeboxer@1.0.4/src/leaflet-routeboxer.min.js" defer></script>
+    {{-- <script src="//cdn.jsdelivr.net/npm/leaflet-routeboxer@1.0.4/src/leaflet-routeboxer.min.js" defer></script> --}}
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -30,7 +31,12 @@
     <link href="{{ asset('css/principal/template.css') }}"  rel="stylesheet">
     <link href="{{ asset('css/establecimientos/establecimientos.css') }}"  rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+    <link rel="stylesheet" href="{{ asset('css/leaflet.css') }}" />
+
+    {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" /> --}}
+    {{-- <link rel="stylesheet" href="{{ asset('Leaflet-Mapping/dist/leaflet-routing-machine.css') }}" /> --}}
+
+
     {{-- <link
 
         rel="stylesheet"
@@ -40,10 +46,11 @@
       rel="stylesheet"
       href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
     /> --}}
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+    {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-    crossorigin="" />
+    crossorigin="" /> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.css" integrity="sha256-NkyhTCRnLQ7iMv7F3TQWjVq25kLnjhbKEVPqGJBcCUg=" crossorigin="anonymous" />
+    
 </head>
 <body>
     <div id="app">
@@ -113,14 +120,20 @@
                                 <ul class="dropdown-menu">        
                                 @foreach ($sitios->articles->where('state_publication_id',1) as $articulo)
                                      <li class="nav-item">
-                                           <a class="dropdown-item nav-link" href="{{ route('category.place',$articulo->slug) }}">{{ $articulo->name }} </a> {{-- Crear eventos.. --}}        
+                                           <a class="dropdown-item nav-link" href="{{ route('category.place',$articulo->slug) }}">{{ $articulo->name }} </a>   
                                      </li> 
                                 @endforeach
                                 <li class="nav-item">
                                     <a class="dropdown-item nav-link" href="{{ route('mapa.places') }}">Todos los sitios en el mapa</a> {{-- Crear eventos.. --}}        
                                 </li> 
-                                </ul>                                              
-                        </li>    
+                                </ul>      
+                        </li>
+                        <li class="nav-item">
+                                <a href="{{ route('eventos.mostrar') }}" class="nav-link">Eventos</a> 
+                        </li>
+                        <li class="nav-item">
+                                <a href="" class="nav-link">Rutas</a> 
+                        </li>      
                         @endif
                         <!-- Authentication Links -->
                         @guest
@@ -162,6 +175,17 @@
             @yield('scripts')
 
         </main>
+
     </div>
+    {{-- <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuHMEdRMC-p8gFAEU9Sve33OY6RS1QWIA&callback=initMap&libraries=&v=weekly"
+    async
+  ></script> --}}
+    {{-- <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+    <script src="{{ asset('Leaflet-Mapping/dist/leaflet-routing-machine.js')}}"></script>
+    <script src="{{ asset('Leaflet-Mapping/examples/Control.Geocoder.js') }}"></script>
+    <script src="{{ asset('Leaflet-Mapping/examples/config.js') }}"></script>
+    <script src="{{ asset('Leaflet-Mapping/examples/maparuta.js') }}"></script> --}}
 </body>
 </html>
+
