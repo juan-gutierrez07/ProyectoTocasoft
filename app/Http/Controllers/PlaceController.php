@@ -65,7 +65,11 @@ class PlaceController extends Controller
         $nuevo->cierre=$request->cierre;
         $nuevo->uuid=$request['uuid'];
         $nuevo->save();
-        
+        DB::table('auditorias')->insert([
+            'detail' => 'Creación de sitio '. " ". $nuevo->name,
+            'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+            'created_at'=>Carbon::now(),
+        ]);
         return view('imagenes.sitios',compact('nuevo'))->with('status_success','Sitio creado !');
     }
 
@@ -152,7 +156,11 @@ class PlaceController extends Controller
         }
             $nuevo= $place;
             $place->save();
-            
+            DB::table('auditorias')->insert([
+                'detail' => 'Actualizacion del sitio  '. " ". $place->name,
+                'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+                'created_at'=>Carbon::now(),
+            ]);
             return view('imagenes.sitios',compact('nuevo'))->with('status_success','Sitio Creado, Agrega las imagenes'); 
     }
 
@@ -163,6 +171,11 @@ class PlaceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Place $place){
+        DB::table('auditorias')->insert([
+            'detail' => 'Eliminacion del sitio  '. " ". $place->name,
+            'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+            'created_at'=>Carbon::now(),
+        ]);
         $place->delete();
         $respuesta =[
             'status'=> 200,

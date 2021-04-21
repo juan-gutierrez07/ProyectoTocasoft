@@ -66,6 +66,11 @@ class RutaController extends Controller
             $nuevo->save();
             // $ruta = TuoristRoute::create($request->all());
             $nuevo->places()->sync($request->get('place'));
+            DB::table('auditorias')->insert([
+                'detail' => 'Creacion de la ruta  '. " ". $nuevo->name,
+                'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+                'created_at'=>Carbon::now(),
+            ]);
             return view('imagenes.rutas',compact('nuevo'))->with('status_success','Ruta Creada, Agrega las imagenes'); 
              
         
@@ -131,11 +136,17 @@ class RutaController extends Controller
     public function destroy($id)
     {
             $ruta = TuoristRoute::find($id);
+            $nombre=$ruta->name;
             $ruta->delete();
             $respuesta =[
                 'status'=> 200,
                 'body' => "Se elimino correctamente",
             ];
+            DB::table('auditorias')->insert([
+                'detail' => 'Eliminacion de la ruta  '. " ". $nombre,
+                'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+                'created_at'=>Carbon::now(),
+            ]);
             return response()->json($respuesta);
     }
     }

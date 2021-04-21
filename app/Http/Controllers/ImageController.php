@@ -47,7 +47,7 @@ class ImageController extends Controller
         ];
         $nombre_sitio= Place::where("uuid",$imagedb->id_establecimiento)->first();
         DB::table('auditorias')->insert([
-            'detail' => 'Se agrego nueva imagen'. " ".$nombre_sitio->name,
+            'detail' => 'Se agrego nueva imagen en sitio: '. " ".$nombre_sitio->name,
             'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
             'created_at'=>Carbon::now(),
         ]);
