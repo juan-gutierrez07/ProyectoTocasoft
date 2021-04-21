@@ -87,7 +87,7 @@ class ArticlesAllController extends Controller
             $articlesall->slug = $request->name;
             $articlesall->save();
             DB::table('auditorias')->insert([
-                'detail' => 'Actualizacion de contenido'. " de ".$nombre_anterior. "a" .$articlesall->name,
+                'detail' => 'Actualizacion de contenido'. " de ".$nombre_anterior,
                 'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
                 'created_at'=>Carbon::now(),
             ]);

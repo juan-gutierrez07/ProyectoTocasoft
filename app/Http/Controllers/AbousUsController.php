@@ -60,6 +60,7 @@ class AbousUsController extends Controller
             'imagen_principal' => 'max:2000',
 
         ]);
+        $primer_nombre= $abousus->name . " " . $abousus->lastname;
         if($request->get('imagen_principal')) 
         {
                  //leer imagen
@@ -68,7 +69,6 @@ class AbousUsController extends Controller
         //Resize imagen
         $imagen = Image::make( public_path("storage/{$path_imagen}"))->fit(700, 1200);
         $imagen->save();
-        $primer_nombre= $abousus->name . " " . $abousus->lastname;
         $abousus->name= $request->name;
         $abousus->lastname= $request->lastname;
         $abousus->position =$request->position;
