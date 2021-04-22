@@ -118,11 +118,7 @@
                                 <a class="nav-link dropdown-toggle"  data-toggle="dropdown" role="button" aria-expanded="false" >Sitios</a> {{-- Crear contenido para modulos..
                                                     Crear  --}}
                                 <ul class="dropdown-menu">        
-                                @foreach ($sitios->articles->where('state_publication_id',1) as $articulo)
-                                     <li class="nav-item">
-                                           <a class="dropdown-item nav-link" href="{{ route('category.place',$articulo->slug) }}">{{ $articulo->name }} </a>   
-                                     </li> 
-                                @endforeach
+                                
                                 <li class="nav-item">
                                     <a class="dropdown-item nav-link" href="{{ route('mapa.places') }}">Todos los sitios en el mapa</a> {{-- Crear eventos.. --}}        
                                 </li> 

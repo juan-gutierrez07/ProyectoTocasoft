@@ -40,7 +40,7 @@ class RutaController extends Controller
         }
             $places = json_encode($places);
             // return $places;
-        return view('rutas_turisticas.create',compact('categoria', 'places','disponibles'));    
+        return view('rutas_turisticas.create',compact('categoria', 'places'));    
     }
     public function store(Request $request)
     {

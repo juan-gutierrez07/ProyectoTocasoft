@@ -21,7 +21,7 @@ class ArticlesAllController extends Controller
         
         if($modul->slug == "Sitios")
         {
-        $disponibles = Category::whereNotIn("slug", ArticlesAll::pluck("slug")->all())->where('type','Sitio')->get();
+        $disponibles = Category::whereNotIn("slug", ArticlesAll::pluck("slug")->all())->get();
         
         return view('modulos.listarcontenido',compact('modul','disponibles','estados'));
         }else if($modul->slug == "Personal")
@@ -74,7 +74,7 @@ class ArticlesAllController extends Controller
             if($request->imagen_principal != null)
             {
             $path_imagen = $request->imagen_principal->store('articles','public');
-            $imagen = Image::make( public_path("storage/{$path_imagen}"))->resize(1080,1350);
+            $imagen = Image::make( public_path("storage/{$path_imagen}"))->resize(1700, 600);
             $imagen->save();
             }else{
                 $path_imagen= '';
