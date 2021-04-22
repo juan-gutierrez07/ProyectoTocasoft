@@ -32,7 +32,7 @@ class ImageController extends Controller
         $path_imagen = $request->file('file')->store('establecimientos', 'public');
 
         //Resize imagen
-        $imagen = Image::make( public_path("storage/{$path_imagen}"))->fit(800, 450);
+        $imagen = Image::make( public_path("storage/{$path_imagen->getRealPath()}"))->fit(800, 450);
         $imagen->save();
 
         //Guardando imagen
