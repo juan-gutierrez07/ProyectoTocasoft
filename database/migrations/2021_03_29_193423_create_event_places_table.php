@@ -15,7 +15,7 @@ class CreateEventPlacesTable extends Migration
     {
         Schema::create('event_places', function (Blueprint $table) {
             $table->id();
-            $table->string('title',255);
+            $table->string('title',255)->unique();
             $table->text('descripcion');
             $table->string('color',30);
             $table->string('imagen_location');

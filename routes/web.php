@@ -31,6 +31,7 @@ Route::get('/coment/destroy/{commentsplace}','ComentsPlaceController@destroy');
 Route::post('/coment/update/{commentsplace}','ComentsPlaceController@update')->name('coment.update');
 //Eventos
 Route::resource('/eventos','EventPlaceController');
+Route::post('/eventos/update/{eventplace}','EventPlaceController@update')->name('eventos.update');
 Route::get('/sitios','PlaceController@mapshow')->name('mapa.places');
 Route::get('/events/mostrar', 'EventPlaceController@mostrar')->name('eventos.mostrar');
 Route::get('/noautorizado',function(){

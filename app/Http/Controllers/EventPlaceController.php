@@ -45,6 +45,15 @@ class EventPlaceController extends Controller
      */
     public function store( Request $request)
     {   
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required|min:20',
+             'place_id' => 'required',
+            'imagen_location' => 'required|image|max:1000',
+        
+            
+        ]);
+        
         $path_imagen = $request->file('imagen_location')->store('eventos', 'public');
 
         //Resize imagen
@@ -98,16 +107,44 @@ class EventPlaceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,EventPlace $eventplace)
     {
-        $datos= request()->except(['_token','_method']);
-        $nuevo = EventPlace::where('id',$id)->update($datos);
+        $request->validate([
+            'title' => 'required|unique:event_places,title',
+            'description' => 'required|min:20',
+            'horainicio' => 'date_format:H:i',
+            'horafin' => 'date_format:H:i|after:horainicio',
+            'place_id'=> 'required'
+        ]);
+
+        $anterior = $eventplace;
+        if($request->get('imagen_principal')){
+            $path_imagen = $request['imagen_principal']->store('eventos', 'public');
+            $imagen = Image::make( public_path("storage/{$path_imagen}"))->resize(1700, 600);
+            $imagen->save();    
+            $eventplace->imagen_location = $path_imagen;
+        }    
+        
+        $horainicial= date('Y-m-d',strtotime(now())) . " ". date( 'H:i:s',strtotime($request['horainicio'])); 
+        $horafinal= date('Y-m-d',strtotime(now())) . " ". date( 'H:i:s',strtotime($request['horafin'])); 
+        $eventplace->title = $request['title'];
+        $eventplace->descripcion = $request['description'];
+        $eventplace->start = $horainicial;
+        $eventplace->end = $horafinal;
+        $eventplace->place_id = $request['place_id'];
+        if($request->get('color'))
+        {
+         $eventplace->color = $request['color'];
+        }
+        $eventplace->save();
         DB::table('auditorias')->insert([
-            'detail' => 'Actualizacion de evento'. " ". $nuevo->title,
+            'detail' => 'Actualizacion de evento'. " ". $anterior->title . "A ".  $eventplace->title,
             'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
             'created_at'=>Carbon::now(),
         ]);
-        return response()->json($nuevo);
+        $sitios = Place::all();
+        $eventos = EventPlace::with('place')->get();
+        return view('eventos.showeventsall',compact('eventos'));
     }
 
     /**
@@ -131,7 +168,6 @@ class EventPlaceController extends Controller
     {   
         $sitios = Place::all();
         $eventos = EventPlace::with('place')->get();
-        $sitios = Modul::where('slug','Sitios')->get()->first();
-        return view('eventos.showeventsall',compact('sitios','eventos','sitios'));
+        return view('eventos.showeventsall',compact('eventos','sitios'));
     }
 }

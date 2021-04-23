@@ -43,7 +43,13 @@ class ArticlesAllController extends Controller
             'imagen_principal' => 'max:5000',
             'status'           => 'required|not_in:0'
         ]);
-        
+             //leer imagen
+             $path_imagen = $request->file('imagen_principal')->store('contenido', 'public');
+
+             //Resize imagen
+             $imagen = Image::make( public_path("storage/{$path_imagen}"))->fit(1000, 450);
+             $imagen->save();
+     
         $nuevo = new ArticlesAll();
         $nuevo->name = $request->name;
         $nuevo->description = $request->description;
@@ -71,14 +77,11 @@ class ArticlesAllController extends Controller
             'imagen_principal' => 'max:5000',
             
         ]);
-            if($request->imagen_principal != null)
-            {
             $path_imagen = $request->imagen_principal->store('articles','public');
             $imagen = Image::make( public_path("storage/{$path_imagen}"))->resize(1700, 600);
             $imagen->save();
-            }else{
-                $path_imagen= '';
-            }
+        
+            
             $nombre_anterior=  $articlesall->name;
             $articlesall->name = $request->name;
             $articlesall->description = $request->description;

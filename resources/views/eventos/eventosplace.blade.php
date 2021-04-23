@@ -49,7 +49,7 @@
             </div>            
               <div class="form-group">
                   <label for="txtPlace">Sitio </label>
-                  <select  name ="place_id" id="txtPlace" class="form-control">
+                  <select  name ="place_id" id="txtPlace" class="form-control" required>
                       <option value="">----------</option>
                       @foreach($places as $place)
                       <option value="{{ $place->id }}"> {{ $place->name }}</option>
@@ -74,7 +74,6 @@
               <!-- Modal Footer -->
               <div class="modal-footer">
                 <input type="submit" id="btnAgregar" class="btn btn-success" value="Agregar">
-                <a id="btnEditar" class="btn btn-primary">Editar</a>
                 <a id="btnEliminar" class="btn btn-danger">Eliminar</a>        
                 <a class="btn btn-secondary" data-dismiss="modal">Cerrar</a>
               </div>
@@ -103,12 +102,12 @@
           right:'dayGridMonth,timeGridWeek,timeGridDay'
         },
         customButtons:{
-          Agregar:{
-            text:"Agregar evento",
-            click:function(){
+          // Agregar:{
+          //   text:"Agregar evento",
+          //   click:function(){
               
-            }
-          }
+          //   }
+          // }
         },
         dateClick: function(info)
         {
@@ -203,6 +202,7 @@
         formData.append('imagen_location',file);
         formData.append('start',fechainicial);
         formData.append('end',fechafinal);
+
         $.ajax({
               type: 'POST',
               url: '{{ url('/eventos')}}',
@@ -217,6 +217,12 @@
                 alert("Evento:" + data.name+" Agregado !");
                 console.log(data);
 
+              }, error:function(response){
+                $.each(response.responseJSON.errors, function(key,value) {
+                  alert(value);
+                 
+                });
+                  
               }
             });  
       });            
@@ -228,10 +234,6 @@
       // });
       $("#btnEliminar").click(function(){
         objEvent=recolectarInfo("DELETE");
-        enviarInfo('/'+id,objEvent);
-      });
-      $("#btnEditar").click(function(){
-        objEvent=recolectarInfo("PATCH");
         enviarInfo('/'+id,objEvent);
       });
       function recolectarInfo(method)
