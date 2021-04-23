@@ -88054,22 +88054,35 @@ document.addEventListener('DOMContentLoaded', function () {
     var _marker;
 
     var idruta = $("#idRuta").val();
+    var latlngs = [];
     $.ajax({
       type: 'POST',
       url: '/rutas/coordenas/' + idruta,
-      data: idruta,
-      contentType: false,
-      cache: false,
-      dataType: JSON,
-      processData: false,
+      data: {
+        "_token": $("meta[name='csrf-token']").attr("content"),
+        "id": idruta
+      },
+      dataType: "JSON",
       success: function success(response) {
-        console.log(response);
+        console.log(response[0].places);
+        var datos = response[0].places;
+        datos.forEach(function (elementos) {
+          console.log(elementos);
+          var data = [elementos.lat, elementos.lng];
+          latlngs.push(data);
+          console.log(latlngs.length);
+          var polyline = L.polyline(latlngs, {
+            color: 'red'
+          }).addTo(map);
+          map.fitBounds(polyline.getBounds());
+          var marker;
+          marker = new L.marker([elementos.lat, elementos.lng], {
+            draggable: true
+          }).addTo(map);
+        });
       }
     });
-    console.log(idruta); // var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
-    // zoom the map to the polyline
-
-    map.fitBounds(polyline.getBounds()); // marker = new L.marker([lat,lng],{
+    console.log(idruta); // marker = new L.marker([lat,lng],{
     //     draggable: true
     //     }).addTo(map);
   }
@@ -88253,8 +88266,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! S:\proyecto\proyecto2\ProyectoTocasoft\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! S:\proyecto\proyecto2\ProyectoTocasoft\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\ASUS\Desktop\ProyectoTocasoft\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\ASUS\Desktop\ProyectoTocasoft\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

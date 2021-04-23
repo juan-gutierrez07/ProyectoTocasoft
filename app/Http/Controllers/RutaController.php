@@ -78,8 +78,8 @@ class RutaController extends Controller
 
     public function ruta($id)
     {
-        $establecimientos = TuoristRoute::where('id',$id)->with('places')->get()->first();
-        return response()->json($establecimientos->places);
+        $establecimientos = TuoristRoute::with("places")->where('id',$id)->get();
+        return response()->json($establecimientos);
 
         
         

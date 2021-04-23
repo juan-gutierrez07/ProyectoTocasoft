@@ -51,24 +51,37 @@ document.addEventListener('DOMContentLoaded', () => {
     let markers = new L.FeatureGroup().addTo(map);
     let marker;
     var idruta = $("#idRuta").val();
+    var latlngs = [];
     $.ajax({
         type: 'POST',
-        url: '/rutas/coordenas/'+ idruta,
-        data: idruta,
-        contentType: false,
-        cache: false,
-        dataType:JSON,
-        processData:false,
+        url: '/rutas/coordenas/' +idruta ,
+        data:{
+            "_token": $("meta[name='csrf-token']").attr("content"),
+            "id":idruta
+        },
+        dataType:"JSON",
                 success: function(response){
-                    console.log(response);
+                    console.log(response[0].places);
+                    var datos = response[0].places;
+                    datos.forEach( elementos =>{
+                        console.log(elementos);
+                        var data = [elementos.lat,elementos.lng];
+                     latlngs.push(data);
+                     console.log(latlngs.length);
+            var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+            map.fitBounds(polyline.getBounds());
+            let marker;
+            marker = new L.marker([elementos.lat, elementos.lng], {
+            draggable: true
 
+            }).addTo(map);
+                        });
+                    
                 }
         });
-    console.log(idruta);
-    // var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
 
-    // zoom the map to the polyline
-    map.fitBounds(polyline.getBounds());
+    console.log(idruta);
+    
 
         // marker = new L.marker([lat,lng],{
         //     draggable: true

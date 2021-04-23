@@ -77,7 +77,7 @@ class ArticlesAllController extends Controller
             'imagen_principal' => 'max:5000',
             
         ]);
-            $path_imagen = $request->imagen_principal->store('articles','public');
+        $path_imagen = $request->file('imagen_principal')->store('articles', 'public');
             $imagen = Image::make( public_path("storage/{$path_imagen}"))->resize(1700, 600);
             $imagen->save();
         
