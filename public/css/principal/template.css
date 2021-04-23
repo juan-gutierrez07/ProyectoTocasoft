@@ -23,6 +23,9 @@
 	opacity: 0.8;
 	transition: all 0.4s ease !important;
 }
+
+footer{
+  display: block; }
 .your-btn-primary1{
   color: rgb(253, 252, 252);
   font-family: 'Asap', sans-serif;
@@ -70,8 +73,8 @@
 
 /* yourHeader */
 #yourHeader {
-	background-image: url("https://gotrip.tips/wp-content/uploads/tocaima.jpg");
-	background-position: absolute;
+	background-image: url("../../images/iconos/tocaima4762.jpg");
+	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
   min-height: 80vh;
@@ -484,7 +487,7 @@
 .divisionpersonal{
   background-image: url("../../images/iconos/FondoCard.jpg");
   background-size: cover;
-   height: 120%;
+   height: 100%;
    width: 100% ;
    text-align: center;
 }
@@ -524,3 +527,80 @@
   background-color: #3490dc;
 }
 
+/*Footer*/ 
+.footer-07 {
+  background: #df5757; }
+  .footer-07 a {
+    color: #ffffff; }
+  .footer-07 p {
+    color: rgba(255, 255, 255, 0.3); }
+  .footer-07 .footer-heading {
+    font-size: 30px;
+    color: rgb(48, 47, 47);
+    font-weight: 700;
+    margin-bottom: 30px; }
+    .footer-07 .footer-heading .logo {
+      color: rgb(0, 0, 0); }
+  .footer-07 .menu {
+    margin-bottom: 30px; }
+    .footer-07 .menu a {
+      color: rgb(255, 255, 255);
+      font-weight: bolder;
+      margin: 0 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px; }
+  .footer-07 .ftco-footer-social li a {
+    background: transparent;
+    border: 1px solid #a3de8300; }
+
+    .container {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto; }
+      @media (min-width: 576px) {
+        .container {
+          max-width: 540px; } }
+      @media (min-width: 768px) {
+        .container {
+          max-width: 720px; } }
+      @media (min-width: 992px) {
+        .container {
+          max-width: 960px; } }
+      @media (min-width: 1200px) {
+        .container {
+          max-width: 1140px; } }
+    
+    .container-fluid {
+      width: 100%;
+      padding-right: 15px;
+      padding-left: 15px;
+      margin-right: auto;
+      margin-left: auto; }
+      
+footer {
+  padding: 7em 0; }
+
+
+          .ftco-footer-social li {
+            list-style: none;
+            margin: 0 10px 0 0;
+            display: inline-block; }
+            .ftco-footer-social li a {
+              height: 40px;
+              width: 40px;
+              display: block;
+              background: rgba(11, 255, 2, 0.05);
+              border-radius: 50%;
+              position: relative; }
+              .ftco-footer-social li a span {
+                position: absolute;
+                font-size: 20px;
+                top: 50%;
+                left: 50%;
+                -webkit-transform: translate(-50%, -50%);
+                -ms-transform: translate(-50%, -50%);
+                transform: translate(-50%, -50%); }
+              .ftco-footer-social li a:hover {
+                color: #fff; }
