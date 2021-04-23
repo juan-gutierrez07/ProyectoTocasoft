@@ -110,17 +110,18 @@ class EventPlaceController extends Controller
     public function update(Request $request,EventPlace $eventplace)
     {
         $request->validate([
-            'title' => 'required|unique:event_places,title',
+            'title' => 'required',
             'description' => 'required|min:20',
-            'horainicio' => 'date_format:H:i',
-            'horafin' => 'date_format:H:i|after:horainicio',
-            'place_id'=> 'required'
+            'horainicio' => 'required',
+            'horafin' => 'required|after:horainicio',
+            'place_id'=> 'required',
+            'imagen_location' => 'image|max:2000'
         ]);
-
+            
         $anterior = $eventplace;
-        if($request->get('imagen_principal')){
-            $path_imagen = $request['imagen_principal']->store('eventos', 'public');
-            $imagen = Image::make( public_path("storage/{$path_imagen}"))->resize(1700, 600);
+        if($request->imagen_location != null){
+            $path_imagen = $request['imagen_location']->store('eventos', 'public');
+            $imagen = Image::make( public_path("storage/{$path_imagen}"))->resize(800, 600);
             $imagen->save();    
             $eventplace->imagen_location = $path_imagen;
         }    
@@ -138,13 +139,13 @@ class EventPlaceController extends Controller
         }
         $eventplace->save();
         DB::table('auditorias')->insert([
-            'detail' => 'Actualizacion de evento'. " ". $anterior->title . "A ".  $eventplace->title,
+            'detail' => 'Actualizacion en el evento'. " ". $anterior->title . " " ." A ".  $eventplace->title,
             'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
             'created_at'=>Carbon::now(),
         ]);
         $sitios = Place::all();
         $eventos = EventPlace::with('place')->get();
-        return view('eventos.showeventsall',compact('eventos'));
+        return redirect()->route('eventos.mostrar');
     }
 
     /**

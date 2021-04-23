@@ -2128,7 +2128,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   computed: {
@@ -2346,6 +2345,66 @@ __webpack_require__.r(__webpack_exports__);
         iconSize: [40, 50]
       });
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MapaRutas.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MapaRutas.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet */ "./node_modules/leaflet/dist/leaflet-src.js");
+/* harmony import */ var leaflet__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(leaflet__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue2-leaflet */ "./node_modules/vue2-leaflet/dist/vue2-leaflet.es.js");
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    LMap: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LMap"],
+    LTileLayer: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LTileLayer"],
+    LMarker: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LMarker"],
+    LTooltip: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LTooltip"],
+    LIcon: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LIcon"],
+    LPolyline: vue2_leaflet__WEBPACK_IMPORTED_MODULE_1__["LPolyline"]
+  },
+  props: ['rutaId'],
+  data: function data() {
+    sitiosrutas: [];
+
+    return {
+      zoom: 13,
+      center: Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["latLng"])(4.45637843, -74.63432193),
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      currentZoom: 11.5,
+      currentCenter: Object(leaflet__WEBPACK_IMPORTED_MODULE_0__["latLng"])(4.45637843, -74.63432193),
+      showParagraph: false,
+      mapOptions: {
+        zoomSnap: 0.5
+      },
+      showMap: true
+    };
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    axios.get('/rutas/coordenas/' + this.rutaId).then(function (response) {
+      _this.sitiosrutas = response;
+    });
   }
 });
 
@@ -6932,6 +6991,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.mapa[data-v-3020d97d] {\r\n  height: 80%;\r\n  width: 80%\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MapaRutas.vue?vue&type=style&index=0&id=143e93ba&scoped=true&lang=css&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MapaRutas.vue?vue&type=style&index=0&id=143e93ba&scoped=true&lang=css& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+exports.push([module.i, "@import url(https://unpkg.com/leaflet@1.6.0/dist/leaflet.css);", ""]);
+
+// module
+exports.push([module.i, "\n.mapa[data-v-143e93ba] {\r\n  height: 500px;\r\n  width: 100%;\n}\r\n", ""]);
 
 // exports
 
@@ -52837,6 +52915,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MapaRutas.vue?vue&type=style&index=0&id=143e93ba&scoped=true&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MapaRutas.vue?vue&type=style&index=0&id=143e93ba&scoped=true&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./MapaRutas.vue?vue&type=style&index=0&id=143e93ba&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MapaRutas.vue?vue&type=style&index=0&id=143e93ba&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MapaUbicacion.vue?vue&type=style&index=0&id=2411da3f&scoped=true&lang=css&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MapaUbicacion.vue?vue&type=style&index=0&id=2411da3f&scoped=true&lang=css& ***!
@@ -57492,6 +57600,55 @@ var render = function() {
           })
         ],
         2
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MapaRutas.vue?vue&type=template&id=143e93ba&scoped=true&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MapaRutas.vue?vue&type=template&id=143e93ba&scoped=true& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "mapa",
+      staticStyle: {
+        left: "5%",
+        "z-index": "1",
+        "border-radius": "5px 5px 5px 5px"
+      }
+    },
+    [
+      _c(
+        "l-map",
+        {
+          attrs: { zoom: _vm.zoom, center: _vm.center, option: _vm.mapOptions }
+        },
+        [
+          _c("l-tile-layer", {
+            attrs: { url: _vm.url, attribution: _vm.attribution }
+          })
+        ],
+        1
       )
     ],
     1
@@ -86827,6 +86984,7 @@ Vue.component('mapa-ubicacion', __webpack_require__(/*! ./components/MapaUbicaci
 Vue.component('eliminar-comentario', __webpack_require__(/*! ./components/EliminarComentario.vue */ "./resources/js/components/EliminarComentario.vue")["default"]);
 Vue.component('mapa-establecimientos', __webpack_require__(/*! ./components/MapaEstablecimientos.vue */ "./resources/js/components/MapaEstablecimientos.vue")["default"]);
 Vue.component('eliminar-rutas', __webpack_require__(/*! ./components/EliminarRutas.vue */ "./resources/js/components/EliminarRutas.vue")["default"]);
+Vue.component('mapa-rutas', __webpack_require__(/*! ./components/MapaRutas.vue */ "./resources/js/components/MapaRutas.vue")["default"]);
 Vue.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_2__["default"]);
 console.log(Vue.prototype);
 /**
@@ -87483,6 +87641,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/MapaRutas.vue":
+/*!***********************************************!*\
+  !*** ./resources/js/components/MapaRutas.vue ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MapaRutas_vue_vue_type_template_id_143e93ba_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MapaRutas.vue?vue&type=template&id=143e93ba&scoped=true& */ "./resources/js/components/MapaRutas.vue?vue&type=template&id=143e93ba&scoped=true&");
+/* harmony import */ var _MapaRutas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MapaRutas.vue?vue&type=script&lang=js& */ "./resources/js/components/MapaRutas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _MapaRutas_vue_vue_type_style_index_0_id_143e93ba_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MapaRutas.vue?vue&type=style&index=0&id=143e93ba&scoped=true&lang=css& */ "./resources/js/components/MapaRutas.vue?vue&type=style&index=0&id=143e93ba&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _MapaRutas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MapaRutas_vue_vue_type_template_id_143e93ba_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MapaRutas_vue_vue_type_template_id_143e93ba_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "143e93ba",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/MapaRutas.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/MapaRutas.vue?vue&type=script&lang=js&":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/MapaRutas.vue?vue&type=script&lang=js& ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MapaRutas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MapaRutas.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MapaRutas.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MapaRutas_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/MapaRutas.vue?vue&type=style&index=0&id=143e93ba&scoped=true&lang=css&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/MapaRutas.vue?vue&type=style&index=0&id=143e93ba&scoped=true&lang=css& ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_MapaRutas_vue_vue_type_style_index_0_id_143e93ba_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./MapaRutas.vue?vue&type=style&index=0&id=143e93ba&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MapaRutas.vue?vue&type=style&index=0&id=143e93ba&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_MapaRutas_vue_vue_type_style_index_0_id_143e93ba_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_MapaRutas_vue_vue_type_style_index_0_id_143e93ba_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_MapaRutas_vue_vue_type_style_index_0_id_143e93ba_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_MapaRutas_vue_vue_type_style_index_0_id_143e93ba_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/MapaRutas.vue?vue&type=template&id=143e93ba&scoped=true&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/MapaRutas.vue?vue&type=template&id=143e93ba&scoped=true& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MapaRutas_vue_vue_type_template_id_143e93ba_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MapaRutas.vue?vue&type=template&id=143e93ba&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MapaRutas.vue?vue&type=template&id=143e93ba&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MapaRutas_vue_vue_type_template_id_143e93ba_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MapaRutas_vue_vue_type_template_id_143e93ba_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/MapaUbicacion.vue":
 /*!***************************************************!*\
   !*** ./resources/js/components/MapaUbicacion.vue ***!
@@ -87759,7 +88004,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var leaflet_geosearch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet-geosearch */ "./node_modules/leaflet-geosearch/dist/geosearch.module.js");
+/* WEBPACK VAR INJECTION */(function($) {/* harmony import */ var leaflet_geosearch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! leaflet-geosearch */ "./node_modules/leaflet-geosearch/dist/geosearch.module.js");
 
 var provider = new leaflet_geosearch__WEBPACK_IMPORTED_MODULE_0__["OpenStreetMapProvider"]();
 document.addEventListener('DOMContentLoaded', function () {
@@ -87789,26 +88034,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
     marker = new L.marker([lat, lng], {
       draggable: true
-    }).addTo(map); //añadiendo marcador a la capa de marcadores        
-    // markers.addLayer(marker);    
+    }).addTo(map); //añadiendo marcador a la capa de marcadores
+    // markers.addLayer(marker);
 
     obtenerLatLong(marker);
-  } // if(document.querySelector('#maparutas')){
-  //   const lat = 4.45637843;
-  //   const lng = -74.63432193;
-  //     var map = L.map('maparutas').setView([4.45637843,-74.63432193], 16);
-  // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  // }).addTo(map);
-  // crear capa para pines previos
-  // let markers = new L.FeatureGroup().addTo(map);
-  // let marker;
-  // / Crear pin o marcador dandole una posicion en el mapa para que se ubique
-  // marker = new L.marker([lat,lng],{
-  //     draggable: true
-  //     }).addTo(map);
-  // }  
+  }
 
+  if (document.querySelector('#maparutas')) {
+    var _lat = 4.45637843;
+
+    var _lng = -74.63432193;
+
+    var map = L.map('maparutas').setView([4.45637843, -74.63432193], 16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    var markers = new L.FeatureGroup().addTo(map);
+
+    var _marker;
+
+    var idruta = $("#idRuta").val();
+    $.ajax({
+      type: 'POST',
+      url: '/rutas/coordenas/' + idruta,
+      data: idruta,
+      contentType: false,
+      cache: false,
+      dataType: JSON,
+      processData: false,
+      success: function success(response) {
+        console.log(response);
+      }
+    });
+    console.log(idruta); // var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
+    // zoom the map to the polyline
+
+    map.fitBounds(polyline.getBounds()); // marker = new L.marker([lat,lng],{
+    //     draggable: true
+    //     }).addTo(map);
+  }
 }); //Otras cosas que no fueron utiles
 // const buscador = document.querySelector("#formbuscar");
 // buscador.addEventListener('blur',function(e){
@@ -87830,8 +88094,8 @@ document.addEventListener('DOMContentLoaded', function () {
 //         marker = new L.marker(resultado[0].bounds[0],{
 //           draggable: true
 //           }).addTo(map);
-//            Reubicar(marker);  
-//           Agregar el marcador  
+//            Reubicar(marker);
+//           Agregar el marcador
 //           markers.addLayer(marker);
 //       }else{
 //         alert("No se pudo encontrar el sitio por el nombre, por favor ingrese sus coordenadas");
@@ -87846,6 +88110,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // })
 //   }
 // });
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js")))
 
 /***/ }),
 
@@ -87937,7 +88202,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
   state: {
     hoteles: [],
     establecimiento: {},
-    establecimientos: []
+    establecimientos: [],
+    sitiosrutas: []
   },
   mutations: {
     // parte del state general en donde se realizar diferentes metodos que haran una accción dependiendo de data
@@ -87949,6 +88215,9 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
     },
     Agregar_establecimientos: function Agregar_establecimientos(state, data) {
       state.establecimientos = data;
+    },
+    Aregar_sitiosrutas: function Aregar_sitiosrutas(state, data) {
+      state.sitiosrutas = data;
     }
   },
   getters: {

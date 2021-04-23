@@ -38,7 +38,7 @@
 
 <!-- #yourServices -->
 <div class="divisionpersonal" style="margin-top: 0">
-    @if ($modulos[0]->state_publication_id == '2')
+    @if ($modulos->isEmpty() || $modulos[0]->state_publication_id == '2')
         <h2>Sin contenido....</h2>
     @else
     <section id="yourServices" class="container">
@@ -72,7 +72,7 @@
             <p class="lead pb-3">Disfruta de la ruta que elijas</p>
         </div>
     </div>
-            <a href="#" class="your-btn-primary1 btn btn-primary btn-lg  mb-4" role="button">Conocelas</a>
+            <a href="{{ route('ruta.all') }}" class="your-btn-primary1 btn btn-primary btn-lg  mb-4" role="button">Conocelas</a>
 </section>
 </div>
 <!-- end of #yourContact -->
@@ -122,8 +122,7 @@
                 <!-- Modal Body -->
                 <div class="modal-body">
                     <p>
-                        No puedes agregar más contenido sin categorias existentes !
-                        <a class="btn btn-link" href="{{ route('place.list') }}"> Ir a crear</a>
+                        
                     </p>
     
                 </div>

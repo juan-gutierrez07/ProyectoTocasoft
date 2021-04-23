@@ -275,14 +275,14 @@
       function limpiar()
       {
           console.log("Funciono");
-          $("#txtName").val("");
-          $("#txtDescripcion").val("");
-          $("#txtFecha").val("");
-          $("txtHora").val("");
-          $("txtFinal").val("");
-          $("#txtPlace").val("");
-          $("#txtColor").val("");
-          $("txtImagen").val("");
+          $("#txtName").val('');
+          $("#txtDescripcion").val('');
+          $("#txtFecha").val('');
+          $("#txtHora").val('');
+          $("#txtFinal").val('');
+          $("#txtPlace").val('');
+          $("#txtColor").val('');
+          $("#txtImagen").val('');
  
       }
     

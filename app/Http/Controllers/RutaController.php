@@ -17,7 +17,7 @@ class RutaController extends Controller
     {
         $modelos = TuoristRoute::all();
        
-        $categoria=Category::with('routeturist')->where('type','Ruta')->get();
+        $categoria=Category::with('routeturist')->get();
         
         
             // return $places;
@@ -32,7 +32,7 @@ class RutaController extends Controller
         // $historicos=[];
         // $hoteles=[];
         $places = [];
-        $categoria=Category::with('places')->where('type','Sitio')->get();
+        $categoria=Category::with('places')->get();
         // $categoriaruta = Category::where('type','Ruta')->get();
         foreach($categoria as $categorias)
         {
@@ -78,19 +78,12 @@ class RutaController extends Controller
 
     public function ruta($id)
     {
-        $rutas = TuoristRoute::with('places')->get();
-        $coordenadas= array();
-        return $rutas->places;
-        foreach ($rutas[0]->places as $ruta)
-        {
+        $establecimientos = TuoristRoute::where('id',$id)->with('places')->get()->first();
+        return response()->json($establecimientos->places);
 
-            $coordenadas=$ruta;
-            
-        }
         
         
-
-        return response()->json($coordenadas);
+        return response()->json();
     }
 
     /**
@@ -100,16 +93,17 @@ class RutaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show()
-    {
-        return view('rutas_turisticas.rutasturisticas');
+    {   
+        $rutas = TuoristRoute::with('places')->get();
+        
+        return view('rutas_turisticas.showrutasall', compact('rutas'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   public function view(TuoristRoute $tuoristroute)
+   {
+    
+    return view('rutas_turisticas.showindividualruta',compact('tuoristroute'));
+   }
     public function edit($id)
     {
         //

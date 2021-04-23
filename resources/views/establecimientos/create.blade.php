@@ -162,7 +162,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                                     <textarea
                                         class="form-control  @error('descripcion')  is-invalid  @enderror"
                                         name="descripcion"
-                                        rows="30"
+                                        rows="10"
                                         cols="30"
                                         required >{{ old('descripcion') }}</textarea>
         

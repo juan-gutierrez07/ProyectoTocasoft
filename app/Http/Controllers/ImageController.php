@@ -15,7 +15,7 @@ class ImageController extends Controller
  
     public function show()
     {
-        $categorias = Category::where('type','=','Sitio')->get();
+        $categorias = Category::all()->get();
         
         return view('imagenes.sitios',compact('categorias'));
     }

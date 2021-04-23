@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use App\Modelos\ImagesRoutes;
+use App\Modelos\TuoristRoute;
 use App\Modelos\Category;
 use DB;
 use Carbon\Carbon;
@@ -31,7 +32,7 @@ class ImagesRoutesController extends Controller
         $respuesta = [
                 'archivo' => $path_image,
         ];
-        $ruta= TouristRoute::where("uuid",$imagen_route->id_route)->first();
+        $ruta= TuoristRoute::where("uuid",$imagen_route->id_route)->first();
         DB::table('auditorias')->insert([
           'detail' => 'Se agrego nueva imagen en la ruta: '. " ".$ruta->name,
           'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,

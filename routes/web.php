@@ -61,9 +61,11 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/rutas/create','RutaController@create')->name('rutas');
     Route::post('/rutas/store','RutaController@store')->name('rutas.store');
     Route::get('/rutas','RutaController@index')->name('rutas.index');
-    Route::get('/rutas/places/{id}','RutaController@ruta')->name('coordenas');
+
+    Route::get('/rutas/coordenas/{id}','RutaController@ruta')->name('coordenas');
     Route::get('/rutas/destroy/{id}','RutaController@destroy');
-    Route::get('/ruta','RutaController@show')->name('ruta');
+    Route::get('/rutas/all','RutaController@show')->name('ruta.all');
+    Route::get('/ruta/{tuoristroute}','RutaController@view')->name('ruta.view');
     
 }); 
 

@@ -110,6 +110,10 @@
                                     <a class="dropdown-item nav-link" href="{{ route('rutas.index') }}">Ver</a> {{-- Crear contenido para modulos..
                                                                                     Crear  --}}
                                 </li>    
+                                <li class="nav-item">
+                                        <a class="dropdown-item nav-link" href="{{ route('ruta.all') }}">Ver todas</a> {{-- Crear contenido para modulos..
+                                                                                        Crear  --}}
+                                    </li>  
                                 </ul>    
                             </li>  
                         @endif 

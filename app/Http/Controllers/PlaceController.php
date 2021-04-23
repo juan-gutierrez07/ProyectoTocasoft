@@ -77,7 +77,7 @@ class PlaceController extends Controller
     {
         $modelos = Place::all();
         $places = [];
-        $categoria=Category::with('places')->where('type','Sitio')->get();
+        $categoria=Category::with('places')->get();
         // $categoriaruta = Category::where('type','Ruta')->get();
         foreach($categoria as $categorias)
         {

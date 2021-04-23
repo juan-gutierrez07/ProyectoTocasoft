@@ -2,13 +2,15 @@
 <link rel="stylesheet" href="{{ asset('css/showevents.css') }}">
 @section('content')
 <div class="clear">    
+        
 <section id="noticias" >
+        @include('establecimientos.message')
     <br>
     <h1 style="align-self: center; left: 45%;
     position: relative;">Eventos</h1>
     <hr>
     <ul style="margin-left: 8%">
-            @include('establecimientos.message')
+            
         @foreach ($eventos as $evento)
     <li class="rojo" style="background-image: url(../storage/{{$evento->imagen_location}})">
           <h2> {{ $evento->title }}</h2>
@@ -115,7 +117,6 @@
                           <!-- Modal Footer -->
                           <div class="modal-footer">
                             <input type="submit" id="btnAgregar" class="btn btn-success" value="Agregar">
-                            <a id="btnEliminar" class="btn btn-danger">Eliminar</a>        
                             <a class="btn btn-secondary" data-dismiss="modal">Cerrar</a>
                           </div>
                         </form>  
@@ -127,7 +128,6 @@
         </ul>
 </section>
 </div>
-
 <!--Inicia Ventana Modal-->
 
 <!--Termina Ventana Modal-->

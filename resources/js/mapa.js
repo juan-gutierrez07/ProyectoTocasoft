@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
             draggable: true
 
         }).addTo(map);
-        //añadiendo marcador a la capa de marcadores        
-        // markers.addLayer(marker);    
+        //añadiendo marcador a la capa de marcadores
+        // markers.addLayer(marker);
         obtenerLatLong(marker);
 
         function obtenerLatLong(marker) {
@@ -39,26 +39,42 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
-    // if(document.querySelector('#maparutas')){
-    //   const lat = 4.45637843;
-    //   const lng = -74.63432193;
+    if(document.querySelector('#maparutas')){
+      const lat = 4.45637843;
+      const lng = -74.63432193;
 
 
-    //     var map = L.map('maparutas').setView([4.45637843,-74.63432193], 16);
-    // L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    //     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    // }).addTo(map);
-    // crear capa para pines previos
-    // let markers = new L.FeatureGroup().addTo(map);
-    // let marker;
-    // / Crear pin o marcador dandole una posicion en el mapa para que se ubique
-    // marker = new L.marker([lat,lng],{
-    //     draggable: true
+        var map = L.map('maparutas').setView([4.45637843,-74.63432193], 16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    let markers = new L.FeatureGroup().addTo(map);
+    let marker;
+    var idruta = $("#idRuta").val();
+    $.ajax({
+        type: 'POST',
+        url: '/rutas/coordenas/'+ idruta,
+        data: idruta,
+        contentType: false,
+        cache: false,
+        dataType:JSON,
+        processData:false,
+                success: function(response){
+                    console.log(response);
 
-    //     }).addTo(map);
-    // }  
-    
+                }
+        });
+    console.log(idruta);
+    // var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
 
+    // zoom the map to the polyline
+    map.fitBounds(polyline.getBounds());
+
+        // marker = new L.marker([lat,lng],{
+        //     draggable: true
+
+        //     }).addTo(map);
+    }
 });
 
 
@@ -89,8 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //           }).addTo(map);
 
-//            Reubicar(marker);  
-//           Agregar el marcador  
+//            Reubicar(marker);
+//           Agregar el marcador
 //           markers.addLayer(marker);
 //       }else{
 //         alert("No se pudo encontrar el sitio por el nombre, por favor ingrese sus coordenadas");
