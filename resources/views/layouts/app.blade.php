@@ -132,7 +132,7 @@
                                 <a href="{{ route('eventos.mostrar') }}" class="nav-link">Eventos</a> 
                         </li>
                         <li class="nav-item">
-                                <a href="" class="nav-link">Rutas</a> 
+                                <a href="{{ route('ruta.all') }}" class="nav-link">Rutas</a> 
                         </li>      
                         @endif
                         <!-- Authentication Links -->

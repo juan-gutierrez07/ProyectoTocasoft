@@ -17,9 +17,11 @@ use Illuminate\Support\Facades\Gate;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => ['admin','auth']], function(){
 Route::get('/sitio/{place}','PlaceController@show')->name('place.show');
 Route::get('/comentarios/sitios/{place}','ComentsPlaceController@all')->name('coment.place');
-Route::get('/categoria/{category}','CategoryController@categoria')->name('category.place');
+});
+Route::get('/categoria/{category}','CategoryController@categoria')->name('category.place');  
 //Modulos
 Route::get('/', 'ModulController@all')->name('home');
 
@@ -41,6 +43,7 @@ Route::get('/backup','HomeController@down')->name('descargar');
 Auth::routes();
 Auth::routes(['verify' => true]);
 
+
 //Todas las rutas del group debe ser autenticadas o verificadas en tal caso..
 Route::group(['middleware' => ['admin']], function(){
     Route::get('/establecimiento/create','PlaceController@create')->name('place.create');
@@ -57,11 +60,13 @@ Route::group(['middleware' => ['admin']], function(){
     Route::get('/imagensitio/destroy/{images}','ImageController@sitio')->name('imagensitio');
     Route::post('/imagenesrt','ImagesRoutesController@store');
     Route::post('/imagenesrt/destroy','ImagesRoutesController@destroy');
+    Route::get('/imagenesrt/destroy/{imagesroutes}','ImagesRoutesController@ruta');
     //Rutas turisticas
     Route::get('/rutas/create','RutaController@create')->name('rutas');
     Route::post('/rutas/store','RutaController@store')->name('rutas.store');
     Route::get('/rutas','RutaController@index')->name('rutas.index');
-
+    Route::get('/rutas/edit/{tuoristroute}','RutaController@edit')->name('ruta.edit');
+    Route::post('/rutas/update/{tuoristroute}','RutaController@update')->name('ruta.update');
     Route::post('/rutas/coordenas/{id}','RutaController@ruta')->name('coordenas');
     Route::get('/rutas/destroy/{id}','RutaController@destroy');
     Route::get('/rutas/all','RutaController@show')->name('ruta.all');

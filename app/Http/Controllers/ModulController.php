@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Modelos\Modul;
 use App\Modelos\PublicactionState;
 use App\Modelos\ArticlesAll;
+use App\Modelos\EventPlace;
 use App\Modelos\Category;
 use DB;
 use Carbon\Carbon;
@@ -16,8 +17,9 @@ class ModulController extends Controller
         $categorias = Category::all()->where('type','Sitios');
         $modulos = Modul::all();
         $sitios = Modul::where('slug','Sitios')->get()->first();
-        
-        return view('principal.template',compact('modulos','categorias','sitios'));
+        $currentDateTime = date("Y-m-d H:i:s");
+        $listEventCurrent = EventPlace::where("start","<=", $currentDateTime)->where("end",">=", $currentDateTime)->get();
+        return view('principal.template',compact('modulos','categorias','sitios','listEventCurrent'));
     }
     public function show()
     {

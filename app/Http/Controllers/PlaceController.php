@@ -91,7 +91,6 @@ class PlaceController extends Controller
     public function show(Place $place)
     {
         $sitios = Modul::where('slug','Sitios')->get()->first();
-        $place= Place::where('id','=',$place->id)->get();
         return view('establecimientos.showestablecimiento',compact('place','sitios'));
     }
 
@@ -161,7 +160,7 @@ class PlaceController extends Controller
                 'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
                 'created_at'=>Carbon::now(),
             ]);
-            return view('imagenes.sitios',compact('nuevo'))->with('status_success','Sitio Creado, Agrega las imagenes'); 
+            return view('imagenes.sitios',compact('nuevo'))->with('status_success','Sitio Actualizado, Agrega las imagenes'); 
     }
 
     /**

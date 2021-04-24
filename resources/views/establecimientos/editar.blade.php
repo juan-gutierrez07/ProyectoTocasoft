@@ -108,7 +108,7 @@ href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css"
                             </div>
         
                             <div class="form-group">
-                                <div id="map" style="height: 400px;"></div>
+                                <div id="mapasitio" style="height: 400px;"></div>
                             </div>
                                 <p class="informacion">Confirma que los siguientes campos son correctos</p>
         

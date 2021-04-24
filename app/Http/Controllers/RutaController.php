@@ -9,15 +9,16 @@ use App\Modelos\Modul;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
 use DB;
+use App\Modelos\ImagesRoutes;
 use Carbon\Carbon;
 class RutaController extends Controller
 {   
 
     public function index()
     {
-        $modelos = TuoristRoute::all();
+        $modelos = TuoristRoute::with("places")->get();
        
-        $categoria=Category::with('routeturist')->get();
+        $categoria=Category::all();
         
         
             // return $places;
@@ -81,9 +82,6 @@ class RutaController extends Controller
         $establecimientos = TuoristRoute::with("places")->where('id',$id)->get();
         return response()->json($establecimientos);
 
-        
-        
-        return response()->json();
     }
 
     /**
@@ -104,9 +102,19 @@ class RutaController extends Controller
     
     return view('rutas_turisticas.showindividualruta',compact('tuoristroute'));
    }
-    public function edit($id)
+    public function edit( TuoristRoute $tuoristroute)
     {
-        //
+        $ruta = TuoristRoute::with('places')->where('id',$tuoristroute->id)->get()->first();
+        // $disponibles = Category::whereNotIn("slug", ArticlesAll::pluck("slug")->all())->get();
+        // return response()->json($ruta->places->pluck("category_id"));
+
+        //  $categoria = Category::whereIn('id',$ruta->places->pluck("category_id"))->get();
+        foreach($tuoristroute->places as $place) {
+            $places_id[]=$place->id; 
+        }
+            $categoria = Category::all();
+            $imagenes = ImagesRoutes::where('id_route','=',$tuoristroute->uuid)->get();
+         return view('rutas_turisticas.edit', compact('ruta','categoria','places_id','imagenes'));
     }
 
     /**
@@ -116,9 +124,38 @@ class RutaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, TuoristRoute $tuoristroute)
+    {       
+        $request->validate([
+            'name' => 'required|unique:tuorist_routes,name',
+            'time_travel' => 'required',
+            'imagen_principal'=> 'max:2000',
+            'place' => 'required',
+            'description'=>'required|min:20',
+            'uuid' => 'required'
+        ]);
+        if($request->imagen_principal != null)
+        {
+            $path_imagen = $request->file('imagen_principal')->store('rutas_turisticas', 'public');
+            $imagen = Image::make( public_path("storage/{$path_imagen}"))->fit(800, 450);
+            $tuoristroute->imagen_principal = $path_imagen;
+            $imagen->save();    
+        }
+            $anterior = $tuoristroute->name;
+            $tuoristroute->name = $request->name;
+            $tuoristroute->time_travel = $request->time_travel;
+            $tuoristroute->description = $request->description;
+            $tuoristroute->uuid = $request->uuid;
+            $tuoristroute->save();
+            $nuevo =$tuoristroute;
+            // $ruta = TuoristRoute::create($request->all());
+            $tuoristroute->places()->sync($request->get('place'));
+            DB::table('auditorias')->insert([
+                'detail' => 'Se edito la ruta turistica '. " " .$anterior ." ". $nuevo->name,
+                'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
+                'created_at'=>Carbon::now(),
+            ]);
+            return view('imagenes.rutas',compact('nuevo'))->with('status_success','Ruta Editada !, Agrega las imagenes'); 
     }
 
     /**

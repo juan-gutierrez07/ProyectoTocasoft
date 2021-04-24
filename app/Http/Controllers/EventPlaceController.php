@@ -24,6 +24,7 @@ class EventPlaceController extends Controller
     {
         $places = Place::all();
         $sitios = Modul::where('slug','Sitios')->get()->first();
+        
         return view('eventos.eventosplace', compact('places','sitios'));
     }
 

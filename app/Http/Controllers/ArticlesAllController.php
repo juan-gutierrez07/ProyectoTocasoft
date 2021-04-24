@@ -54,7 +54,7 @@ class ArticlesAllController extends Controller
         $nuevo->name = $request->name;
         $nuevo->description = $request->description;
         $nuevo->slug = $request->name;
-        $nuevo->image_location = $request->imagen_principal;
+        $nuevo->image_location = $path_imagen;
         $nuevo->state_publication_id = $request->status;
         $nuevo->modul_id = $modul->id;
         $nuevo->save();
@@ -94,6 +94,6 @@ class ArticlesAllController extends Controller
                 'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
                 'created_at'=>Carbon::now(),
             ]);
-            return redirect()->route('articles.show',$articlesall->modul->id) ->with('status_success','Operación con éxito'); ;
+            return redirect()->route('articles.show',$articlesall->modul->id)->with('status_success','Operación con éxito'); 
     }
 }

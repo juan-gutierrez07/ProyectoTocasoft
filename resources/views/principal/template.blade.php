@@ -111,16 +111,57 @@
 
 <div class="modal fade" id="Noacces" role="dialog" >
     <center>
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content" style="background-color: rgba(68, 68, 68, 0); border-color: rgba(68, 68, 68, 0)" >
                 <!-- Modal Body -->
-                <div class="modal-body">
-                    <img src="{{"../../images/iconos/Bienvenido.gif"}}" style="max-width: 800px;max-height: 600px;" alt="">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="margin-top: -10%;margin-left: -80%; background-color: rgb(255, 255, 255); color: black; font-weight: bolder;">Close</button>
+                <div class="modal-body bg-white">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <img src="{{"../../images/iconos/Bienvenido.gif"}}" style="max-width:100%;" alt="">
+                        </div>
+                        <div class="col-lg-6">
+                            <hr>
+                            <h4>
+                                Eventos que se estan efectuando ahora mismo {{ date("Y-m-d H:i:s") }}
+                            </h4>
+                            <hr>
+                             @if(count($listEventCurrent) == 0)
+                                <div class="text-center">
+                                    No hay eventos efectuandose
+                                </div>
+                            @endif
+                            @foreach ($listEventCurrent as $evento)
+                                <div class="text center">
+                                    <h4>{{$evento->title}}</h4>
+                                    <ul>
+                                        <li style="list-style: none;">
+                                            <div class="row">
+                                            <h4 class="text-secondary text-sm-left ">Fecha Inicio: </h4> 
+                                            <h4>{{ $evento->start }}</h4>
+                                            </div>
+                                        </li>
+                                        <li style="list-style: none;">
+                                            <div class="row">
+                                                    <h4 class="text-secondary text-sm-left ">Fecha Final: </h4> 
+                                                    <h4>{{ $evento->end }}</h4>
+                                            </div>
+
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <hr>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" style="margin-left: -80%; font-weight: bolder;">Cerrar</button>
+                        </div>
+                    </div>
                 </div>
+            </div>
         </div>
-    </div>
-</div>
     </center>
  </div>
 

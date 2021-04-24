@@ -10,7 +10,7 @@
         <div class="container">
             @foreach ($categoria as $categorias)
             <div class="accordion" id="accordionExample_{{ $categorias->id}}" style="margin-bottom: 10px; padding: 10px;">
-            <div class="card" style="border-radius: 10px;">
+            <div class="card" style="border-radius: 10px;     overflow: scroll;">
                 <div class="card-header" id="heading" style="background-color: #DCDCDC;">
                 <h4 class="mb-0">
                     {{ $categorias->name }}

@@ -60,4 +60,18 @@ class ImagesRoutesController extends Controller
             ];
              return response()->json($respuesta);
     }
+    public function ruta(ImagesRoutes $imagesroutes)
+    {
+        if(File::exists('storage/'. $imagesroutes->location))
+        {
+            File::delete('storage/' . $imagesroutes->location);
+
+            ImagesRoutes::where('id','=',$imagesroutes->id)->delete();
+        }
+        $respuesta = [
+            'message'=> 'Se elimino correctamente',
+        ];
+         
+        return response()->json($respuesta);
+    }
 }

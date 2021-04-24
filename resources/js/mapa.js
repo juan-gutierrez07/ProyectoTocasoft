@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let marker;
     var idruta = $("#idRuta").val();
     var latlngs = [];
+    
     $.ajax({
         type: 'POST',
         url: '/rutas/coordenas/' +idruta ,
@@ -66,15 +67,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     datos.forEach( elementos =>{
                         console.log(elementos);
                         var data = [elementos.lat,elementos.lng];
+
                      latlngs.push(data);
                      console.log(latlngs.length);
             var polyline = L.polyline(latlngs, {color: 'red'}).addTo(map);
             map.fitBounds(polyline.getBounds());
             let marker;
             marker = new L.marker([elementos.lat, elementos.lng], {
-            draggable: true
+            draggable: false
 
             }).addTo(map);
+            marker.bindPopup(elementos.name);
+                marker.openPopup();
                         });
                     
                 }

@@ -16,10 +16,12 @@
     <div class="col order-2" style="float: right; margin-left: 1%;">    
         <div style="float: right; width: 75%;height: 80%; padding: 0 0.5em; left: 65%;">
                 <div class="card">
-                    <img class="card-img-top" src="https://www.tekcrispy.com/wp-content/uploads/2019/03/Cascada-640x410.jpeg">
+                    <img class="card-img-top" src="../storage/{{ $tuoristroute->imagen_principal }}">
                     <div class="card-body" style="height: 70%;">
                         <h4 class="card-title">{{ $tuoristroute->name }}</h4>
                         <p class="card-text">{{ $tuoristroute->description }}</p>
+                        <h4 class="card-title">Tiempo de recorrido:</h4>
+                        <p class="card-text"> {{ $tuoristroute->time_travel }}</p>
                     </div>
                 </div>
             </div>

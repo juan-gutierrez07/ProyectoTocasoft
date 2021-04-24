@@ -1,9 +1,9 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-        @include('establecimientos.message')
     <h1 class="text-center mt-4">Registrar imagenes</h1>
     <div class="mt-5 row justify-content-center">
+            @include('establecimientos.message')
         <div class="col-md-9 col-xs-12 card card-body">
             <fieldset class="border p-4">
                     <legend class="text-primary">Imagenes Sitio</legend>

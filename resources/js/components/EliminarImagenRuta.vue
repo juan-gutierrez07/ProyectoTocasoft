@@ -12,7 +12,7 @@ export default {
         {
         this.$swal({
                     title: 'Estas Seguro?',
-                    text: "Eliminaras la imagen del sistema y sitio",
+                    text: "Eliminaras la imagen del sistema y ruta",
                     icon: 'warning',
                     showCancelButton: true,
                     confirmButtonColor: '#3085d6',
@@ -21,7 +21,7 @@ export default {
                     cancelButtonText: 'no'
                     }).then((result) => {
                     if (result.isConfirmed) {
-                        axios.get('/imagensitio/destroy/'+this.imagenId).then( response =>{
+                        axios.get('/imagenesrt/destroy/'+this.imagenId).then( response =>{
                                 console.log(response)
                         });
                         this.$el.parentNode.parentNode.parentNode.removeChild(this.$el.parentNode.parentNode);
