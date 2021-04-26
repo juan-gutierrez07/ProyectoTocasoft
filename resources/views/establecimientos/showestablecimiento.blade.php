@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-    {{-- <mapa-ubicacion latitud ={{ $place[0]->lat }} longitud = {{ $place[0]->lng }}></mapa-ubicacion> --}}
     <div class ="container my-5">
         @include('establecimientos.message')
         <h2 class="text-center mb-5"> {{$place->name}} </h2>
@@ -10,7 +9,7 @@
                      <img src="../storage/{{$place->imagen_principal}}" class="card-img-top" alt="imagen establecimiento">
                      <div class="card-body">
                          <h3 class="card-title text-primary font-weight-bold"> Descripcion:</h3>
-                         <p class="mt-3"> {{$place->descripcion}}   </p>
+                         <p class="mt-3"> {{$place->descripcion}} </p>
                      </div>
                  </div>
                      ------

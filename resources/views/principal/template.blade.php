@@ -78,7 +78,7 @@
 </div>
 <!-- end of #yourContact -->
 <!-- partial:index.partial.html -->
-<div class="divisionpersonal1" id="personal">
+<div class="divisionpersonal1" id="personal" style="overflow: auto">
 <section  class="container" >
 <div class="row text-center" >
    <div class="team mt-125">

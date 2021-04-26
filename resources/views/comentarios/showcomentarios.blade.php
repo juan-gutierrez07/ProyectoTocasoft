@@ -159,6 +159,9 @@
                         </h4>
                         <p>
                             Se el primero en realizar un comentario y cuentanos tu experiencia sobre este sitio.
+                            @if(!auth()->check())
+                            <strong>Inicia sesión para poder hacerlo..</strong>
+                            @endif
                         </p>
                     </div>
                 </div>

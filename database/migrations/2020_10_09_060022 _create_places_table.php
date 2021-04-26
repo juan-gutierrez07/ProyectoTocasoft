@@ -18,8 +18,8 @@ class CreatePlacesTable extends Migration
             $table->string('name');
             $table->foreignId('category_id')->references('id')->on('categories')->onUpdate('cascade')->onUpdate('cascade');
             $table->string('direccion');
-            $table->string('lat');
-            $table->string('lng');
+            $table->string('lat')->unique();
+            $table->string('lng')->unique();
             $table->string('telefono');
             $table->text('descripcion');
             $table->string('imagen_principal');

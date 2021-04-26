@@ -18,15 +18,6 @@ use Illuminate\Support\Facades\Gate;
 |
 */
 Route::group(['middleware' => ['admin','auth']], function(){
-Route::get('/sitio/{place}','PlaceController@show')->name('place.show');
-Route::get('/comentarios/sitios/{place}','ComentsPlaceController@all')->name('coment.place');
-});
-Route::get('/categoria/{category}','CategoryController@categoria')->name('category.place');  
-//Modulos
-Route::get('/', 'ModulController@all')->name('home');
-
-Route::post('/modulos/update/{modul}','ModulController@update')->name('modul.update');
-
 //Comentarios
 Route::post('/comentcreate','ComentsPlaceController@store')->name('comentplace.store');
 Route::get('/coment/destroy/{commentsplace}','ComentsPlaceController@destroy');
@@ -34,52 +25,63 @@ Route::post('/coment/update/{commentsplace}','ComentsPlaceController@update')->n
 //Eventos
 Route::resource('/eventos','EventPlaceController');
 Route::post('/eventos/update/{eventplace}','EventPlaceController@update')->name('eventos.update');
-Route::get('/sitios','PlaceController@mapshow')->name('mapa.places');
-Route::get('/events/mostrar', 'EventPlaceController@mostrar')->name('eventos.mostrar');
+});
 Route::get('/noautorizado',function(){
     return view('errores/401');
 });
+
 Route::get('/backup','HomeController@down')->name('descargar');
 Auth::routes();
 Auth::routes(['verify' => true]);
-
-
 //Todas las rutas del group debe ser autenticadas o verificadas en tal caso..
 Route::group(['middleware' => ['admin']], function(){
+    //Establecimientos
     Route::get('/establecimiento/create','PlaceController@create')->name('place.create');
     Route::post('/establecimiento/store','PlaceController@store')->name('place.store');
     Route::get('/establecimiento/edit/{place}','PlaceController@edit')->name('place.edit');
     Route::post('/establecimiento/update/{place}','PlaceController@update')->name('place.update');
     Route::get('/establecimiento/destroy/{place}','PlaceController@destroy')->name('place.destroy');
     Route::get('/establecimiento/info','PlaceController@info')->name('place.list');
+    //Categorias
     Route::post('/categoria/store','CategoryController@store')->name('category.store');
     Route::post('/categoria/update/{id}','CategoryController@update')->name('category.update');
     //Rutas para administrar imagenes
     Route::post('/imagenes/store','ImageController@store');
     Route::post('/imagenes/destroy','ImageController@destroy');
     Route::get('/imagensitio/destroy/{images}','ImageController@sitio')->name('imagensitio');
+    Route::get('/imagenes','ImageController@show')->name('images.sitio');
     Route::post('/imagenesrt','ImagesRoutesController@store');
+    Route::get('/imagesroute','ImagesRoutesController@show')->name('images.route');
     Route::post('/imagenesrt/destroy','ImagesRoutesController@destroy');
     Route::get('/imagenesrt/destroy/{imagesroutes}','ImagesRoutesController@ruta');
     //Rutas turisticas
     Route::get('/rutas/create','RutaController@create')->name('rutas');
     Route::post('/rutas/store','RutaController@store')->name('rutas.store');
-    Route::get('/rutas','RutaController@index')->name('rutas.index');
     Route::get('/rutas/edit/{tuoristroute}','RutaController@edit')->name('ruta.edit');
     Route::post('/rutas/update/{tuoristroute}','RutaController@update')->name('ruta.update');
     Route::post('/rutas/coordenas/{id}','RutaController@ruta')->name('coordenas');
     Route::get('/rutas/destroy/{id}','RutaController@destroy');
-    Route::get('/rutas/all','RutaController@show')->name('ruta.all');
-    Route::get('/ruta/{tuoristroute}','RutaController@view')->name('ruta.view');
+
     
 }); 
 
+Route::get('/', 'ModulController@all')->name('home');
+Route::get('/rutas','RutaController@index')->name('rutas.index');
+Route::get('/rutas/all','RutaController@show')->name('ruta.all');
+Route::get('/ruta/{tuoristroute}','RutaController@view')->name('ruta.view');
+Route::get('/sitio/{place}','PlaceController@show')->name('place.show');
+Route::get('/comentarios/sitios/{place}','ComentsPlaceController@all')->name('coment.place');
+Route::get('/categoria/{category}','CategoryController@categoria')->name('category.place');  
+Route::get('/sitios','PlaceController@mapshow')->name('mapa.places');
+Route::get('/events/mostrar', 'EventPlaceController@mostrar')->name('eventos.mostrar');
+
+
+
 //Crear contenido del sistema
 Route::group(['middleware' => ['admin']], function(){
- Route::get('/imagenes','ImageController@show')->name('images.sitio');
  Route::post('/categoria/sitios/{category}','ImageController@send');
- Route::get('/imagesroute','ImagesRoutesController@show')->name('images.route');
  Route::get('/modulos','ModulController@show')->name('modul.show');
+ Route::post('/modulos/update/{modul}','ModulController@update')->name('modul.update');
  //Contenido
 Route::get('/contenido/{modul}','ArticlesAllController@index')->name('articles.show');
 Route::post('/create/article/{modul}','ArticlesAllController@store')->name('articles.store');

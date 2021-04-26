@@ -40,9 +40,7 @@ class DatabaseBackUp extends Command
         $filename = "backup-" . Carbon::now()->format('Y-m-d') . ".sql";
 
 
-        $command = "".env('DUMP_PATH')." --user=".env('DB_USERNAME') . " --password=" .env('DB_PASSWORD')
-            . " --host=" .env('DB_HOST') . " " .env('DB_DATABASE') . "  > " . storage_path() . "/app/backup/"
-            . $filename;
+        $command = "".env('DUMP_PATH')." --user=" . env('DB_USERNAME') . " --password=" . env('DB_PASSWORD') . " --host=" . env('DB_HOST') . " " . env('DB_DATABASE') . "  > " . storage_path() . "/app/backup/" . $filename;
 
 
         $returnVar = NULL;

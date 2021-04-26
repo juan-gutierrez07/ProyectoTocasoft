@@ -33,12 +33,12 @@ class PlaceController extends Controller
     {
         $this->authorize('haveaccess','user.show'); 
          $request->validate([
-            'name' => 'required|unique:places,name',
+            'name' => 'required',
             'categoria_id' => 'required',
             'imagen_principal' => 'required|image|max:1000',
             'direccion' => 'required|unique:places,direccion',
-            'lat' => 'required',
-            'lng' => 'required',
+            'lat' => 'required|unique:places,lat',
+            'lng' => 'required|unique:places,lng',
             'telefono' => 'required|numeric',
             'descripcion' => 'required|min:20',
             'apertura' => 'date_format:H:i',
