@@ -91,12 +91,9 @@ class PlaceController extends Controller
     public function show(Place $place)
     {
         $sitios = Modul::where('slug','Sitios')->get()->first();
-<<<<<<< HEAD
-        return view('establecimientos.showestablecimiento',compact('place','sitios'));
-=======
         $images= Images::where('id_establecimiento','=', $place->uuid)->get();
         return view('establecimientos.showestablecimiento',compact('place','sitios','images'));
->>>>>>> 70fee06... Cambios vista sitios
+
     }
 
     public function mapshow()

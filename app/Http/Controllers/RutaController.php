@@ -93,14 +93,13 @@ class RutaController extends Controller
     public function show()
     {   
         $rutas = TuoristRoute::with('places')->get();
-        
         return view('rutas_turisticas.showrutasall', compact('rutas'));
     }
 
    public function view(TuoristRoute $tuoristroute)
    {
-    
-    return view('rutas_turisticas.showindividualruta',compact('tuoristroute'));
+    $images= ImagesRoutes::where('id_route','=', $tuoristroute->uuid)->get();
+    return view('rutas_turisticas.showindividualruta',compact('tuoristroute','images'));
    }
     public function edit( TuoristRoute $tuoristroute)
     {

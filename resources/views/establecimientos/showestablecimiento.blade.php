@@ -3,18 +3,6 @@
 @endsection
 @extends('layouts.app')
 @section('content')
-<<<<<<< HEAD
-    <div class ="container my-5">
-        @include('establecimientos.message')
-        <h2 class="text-center mb-5"> {{$place->name}} </h2>
-         <div class="row align-items-start">
-             <div class="col-md-8 order-2">
-                 <div class="card">
-                     <img src="../storage/{{$place->imagen_principal}}" class="card-img-top" alt="imagen establecimiento">
-                     <div class="card-body">
-                         <h3 class="card-title text-primary font-weight-bold"> Descripcion:</h3>
-                         <p class="mt-3"> {{$place->descripcion}} </p>
-=======
 
     {{-- <mapa-ubicacion latitud ={{ $place->lat }} longitud = {{ $place->lng }}></mapa-ubicacion> --}}
     <div class ="container my-5">
@@ -27,7 +15,7 @@
                      <div class="card-body">
                          <h3 class="card-title  font-weight-bold" style="font-family: 'Asap', sans-serif; font-size: 36px;"> Descripcion:</h3>
                          <p class="mt-3" style="font-size: 20px;"> {{$place->descripcion}}   </p>
->>>>>>> 70fee06... Cambios vista sitios
+
                      </div>
                  </div>
                 <section>
@@ -36,11 +24,6 @@
                     </center>
                     <br>
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                        {{-- <ol class="carousel-indicators">
-                          @foreach ($establecimientos as $establecimiento)
-                            <li data-target="#carouselExampleIndicators" data-slide-to="{{ $loop->index }}"   @if($loop->index==0) class="active" @endif></li>
-                          @endforeach
-                        </ol> --}}
                         <div class="carousel-inner">
                           @foreach ($images as $image)
                             <div class="carousel-item @if($loop->index==0) active @endif">
@@ -92,12 +75,12 @@
                             <a href="{{ route('coment.place',$place->id) }}" class="btn btn-success my-3">Mirar Comentarios</a> <a href="" class="btn btn-danger my-3">Atrás</a>
                         </div>  
                     </aside>
-<<<<<<< HEAD
+
                     <a href="{{ route('coment.place',$place->id) }}" class="btn btn-success my-3">Mirar Comentarios</a>
                 </div>      
-=======
+
                   </div>      
->>>>>>> 70fee06... Cambios vista sitios
+
          </div>
      </div>
      
