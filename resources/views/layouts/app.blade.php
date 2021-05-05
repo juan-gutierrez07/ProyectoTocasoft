@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -211,6 +211,8 @@
     <script src="{{ asset('Leaflet-Mapping/examples/Control.Geocoder.js') }}"></script>
     <script src="{{ asset('Leaflet-Mapping/examples/config.js') }}"></script>
     <script src="{{ asset('Leaflet-Mapping/examples/maparuta.js') }}"></script> --}}
+    
 </body>
+
 </html>
 

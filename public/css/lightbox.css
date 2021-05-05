@@ -1,0 +1,44 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Stick&display=swap');
+body{
+    background-image:linear-gradient(
+        rgba(229, 230, 228, 0.411),
+        rgba(233, 232, 232, 0.315)
+      ), url("../../images/iconos/FondoDiv3.jpg");
+    background-size: cover;
+    
+}
+.display-87 {
+    font-size: 3.9rem;
+  font-weight: bolder;
+  
+  font-family: 'Stick', sans-serif;
+  background: linear-gradient(rgb(12, 141, 51),rgb(26, 88, 37));
+  -webkit-background-clip: text;
+  color: transparent;
+  
+  }
+  .display-31 {
+    font-size: 3.5rem;
+  font-weight: bolder;
+  
+  font-family: 'Stick', sans-serif;
+  background: linear-gradient(rgb(12, 141, 51),rgb(26, 88, 37));
+  -webkit-background-clip: text;
+  color: transparent;
+  }
+  .arreglar{
+      width: 80%;
+      height: 500px;
+      float: right;
+      margin-top: 5%;
+  }
+  .arreglar2{
+    width: 40%;
+    height: 500px;
+    margin-left: 5%;
+    float: left;
+  }
+  .card-body h3{
+      color: black;
+  }
