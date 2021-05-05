@@ -29,7 +29,7 @@ class HomeController extends Controller
 
     public function down()
     {
-        $filename = "backup-" . Carbon::now()->format('Y-m-d') . ".sql";
+        $filename = "backup-" . sha1(Carbon::now()->format('Y-m-d')) . ".sql";
 
         $command = "" . env('DUMP_PATH') . " --user=" . env('DB_USERNAME') . " --password=" . env('DB_PASSWORD')
             . " --host=" . env('DB_HOST') . " " . env('DB_DATABASE') . "  > " . $filename;
@@ -38,11 +38,14 @@ class HomeController extends Controller
         $output = NULL;
 
         exec($command, $output, $returnVar);
+        $antes = \Response::download($filename);
 
-        header("Location: $filename"); // Redireccionamos para descargar el Arcivo ZIP
+        
+        return $antes;
+       // header("Location: $filename"); // Redireccionamos para descargar el Arcivo ZIP
 
-        dd();
-        return redirect('/');
+        //dd();
+        //return redirect('/');
         // $now = new \DateTime();
         // $file="backup"."-". $now->format("Y-m-d").".sql";
         // return response()->download(storage_path('app\backup\.'. $file));

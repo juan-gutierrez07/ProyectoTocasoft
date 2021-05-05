@@ -14,12 +14,13 @@ class ModulController extends Controller
 {
     public function all()
     {   
-        $categorias = Category::all()->where('type','Sitios');
+        $categorias = Category::all();
         $modulos = Modul::all();
         $sitios = Modul::where('slug','Sitios')->get()->first();
         $currentDateTime = date("Y-m-d H:i:s");
         $listEventCurrent = EventPlace::where("start","<=", $currentDateTime)->where("end",">=", $currentDateTime)->get();
-        return view('principal.template',compact('modulos','categorias','sitios','listEventCurrent'));
+        $ultimos = EventPlace::orderBy('id', 'DESC')->get()->take(5);
+        return view('principal.template',compact('modulos','categorias','sitios','listEventCurrent','ultimos'));
     }
     public function show()
     {

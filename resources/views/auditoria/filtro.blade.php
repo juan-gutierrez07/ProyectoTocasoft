@@ -29,15 +29,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($registros as $regristro)
-                        <tr>
-                            <td> {{$regristro->id }}</td>
-                            <td> {{$regristro->detail}} </td>
-                            <td> {{$regristro->user}}</td>
-                            <td> {{$regristro->created_at}}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
+                        @foreach ($filtros as $filtro)
+                            <tr>
+                                <td> {{$filtro->id }}</td>
+                                <td> {{$filtro->detail}} </td>
+                                <td> {{$filtro->user}}</td>
+                                <td> {{$filtro->created_at}}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
             </table>    
         </div>
     </div>

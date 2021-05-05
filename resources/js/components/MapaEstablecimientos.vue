@@ -1,5 +1,5 @@
 <template>
-    <div class ="mapa" style="left:5%; position:absolute;z-index:1;border-radius: 5px 5px 5px 5px;">
+    <div class ="mapa" style="left:10%;top:150px; position:absolute;border-radius: 10px 10px 10px 10px;">
       <l-map :zoom="zoom" :center="center" :option="mapOptions">
         <l-tile-layer :url="url" :attribution="attribution"/>
             <l-marker v-for =" establecimiento in establecimientos" v-bind:key="establecimiento.id"

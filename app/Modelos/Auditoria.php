@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Auditoria extends Model
 {
     protected $fillable =[
-        'detail','user'
+        'detail','user','created_at'
     ];
 }

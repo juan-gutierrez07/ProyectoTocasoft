@@ -14,9 +14,12 @@
         @foreach ($eventos as $evento)
     <li class="rojo" style="background-image: url(../storage/{{$evento->imagen_location}})">
           <h2> {{ $evento->title }}</h2>
-          <a data-toggle="modal" data-target="#Info_{{$evento->id}}" class="boton" style=" @if(auth()->user()->roles[0]->rolname == "Administrador") width: 50%;@endif">Conocer más</a>
-           @if(auth()->user()->roles[0]->rolname == "Administrador") 
+          
+          <a data-toggle="modal" data-target="#Info_{{$evento->id}}" class="boton" style=" @if(auth()->check()  && auth()->user()->roles[0]->rolname == "Administrador") width: 50%;@endif">Conocer más</a>
+          @if(auth()->check())
+          @if(auth()->user()->roles[0]->rolname == "Administrador") 
           <a data-toggle="modal" data-target="#Editar_{{$evento->id}}" class="boton" style="margin-left:50%;width: 50%;">Editar</a>
+          @endif
           @endif
         </li>
         <div id="Info_{{$evento->id}}" class="Modal" data-backdrop="static">

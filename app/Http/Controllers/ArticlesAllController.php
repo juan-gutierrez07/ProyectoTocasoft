@@ -63,7 +63,7 @@ class ArticlesAllController extends Controller
             'user' => auth()->user()->name . " " ."|" .auth()->user()->roles[0]->rolname,
             'created_at'=>Carbon::now(),
         ]);
-        return redirect()->route('articles.show',$modul->id)->with('status_success','Articulo Creado!'); ;
+        return redirect()->route('articles.show',$modul->id)->with('status_success','Articulo Creado!');
         
 
     }

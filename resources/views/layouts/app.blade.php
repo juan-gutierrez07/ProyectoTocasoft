@@ -11,7 +11,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/mapa.js') }}" defer></script>
     {{-- <script src="https://unpkg.com/esri-leaflet" defer></script> --}}
     {{-- <script src="https://unpkg.com/esri-leaflet-geocoder" defer></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.js" integrity="sha256-OG/103wXh6XINV06JTPspzNgKNa/jnP1LjPP5Y3XQDY=" crossorigin="anonymous" defer></script>
@@ -50,7 +49,33 @@
     integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
     crossorigin="" /> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.css" integrity="sha256-NkyhTCRnLQ7iMv7F3TQWjVq25kLnjhbKEVPqGJBcCUg=" crossorigin="anonymous" />
-    
+    {{-- carousel --}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.green.min.css" />
+    <script>
+        jQuery(document).ready(function($){
+      $('.owl-carousel').owlCarousel({
+        loop:true,
+        margin:10,
+        touchDrag:true,
+        responsive:{
+          0:{
+            items:1
+          },
+          600:{
+            items:3
+          },
+          1000:{
+            items:3
+          }
+        }
+      });
+    });
+    </script>
 </head>
 <body>
     <div id="app">
@@ -175,7 +200,7 @@
             @yield('scripts')
 
         </main>
-
+        @extends('layouts.footters')
     </div>
     {{-- <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuHMEdRMC-p8gFAEU9Sve33OY6RS1QWIA&callback=initMap&libraries=&v=weekly"

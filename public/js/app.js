@@ -57533,10 +57533,10 @@ var render = function() {
     {
       staticClass: "mapa",
       staticStyle: {
-        left: "5%",
+        left: "10%",
+        top: "150px",
         position: "absolute",
-        "z-index": "1",
-        "border-radius": "5px 5px 5px 5px"
+        "border-radius": "10px 10px 10px 10px"
       }
     },
     [

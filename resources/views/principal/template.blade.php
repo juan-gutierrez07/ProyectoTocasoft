@@ -43,6 +43,7 @@
     @else
     <section id="yourServices" class="container">
         <h2 class="display-42 text-center mt-5 mb-3">{{ $modulos[0]->name}}</h2>
+        <p class="large-only-text-justify text-dark">{{ $modulos[0]->description }}</p>
         <br><br>
         <div class="row text-center" style="display: flex; justify-content: center;">
             @foreach ($modulos[0]->articles->where('state_publication_id',1) as $articulo)
@@ -76,13 +77,40 @@
             <a href="{{ route('ruta.all') }}" class="your-btn-primary1 btn btn-primary btn-lg  mb-4" role="button">Conocelas</a>
 </section>
 </div>
+<div class="container-eventos row">
+    <h2 class="display-41 text-center mb-3">Ultimos eventos</h2>
+<div class="owl-carousel">
+    @foreach ($ultimos as $ultimo)
+    <div class="col-md-3 mb-3">
+    <div class="card">
+        <img src="../storage/{{$ultimo->imagen_location}}">
+    <div class="row" style="background:{{$ultimo->color}}">
+            <h4 class="text-white m-4" >{{ $ultimo->title }}</h4>
+        </div>
+        <div class="row mt-4">
+            <h4 class="text-justify text-black" style="position: relative;left: 10%;" >Fecha Inicio :</h4>
+            <p class="text-justify text-black" style="position: relative;left: 12%;top: 5%;">{{ $ultimo->start}}</p>
+            <h4 class="text-justify text-black" style="position: relative;left: 10%;" >Fecha Final :</h4>
+            <p class="text-justify text-black" style="position: relative;left: 12%;top: 5%;">{{ $ultimo->end}}</p>
+        </div>
+            <div class="container" style="position: relative;top: 2%;">
+                    <p class="text-black"> Lugar: {{ $ultimo->place->name}}</p>
+                <a href="{{ route('eventos.mostrar') }}"><button class=" btn btn-dark text-white">Conoce más</button></a>
+            </div>
+        </div>
+    </div>
+    @endforeach    
+    </div>
+</div>
+
+
 <!-- end of #yourContact -->
 <!-- partial:index.partial.html -->
 <div class="divisionpersonal1" id="personal" style="overflow: auto">
 <section  class="container" >
 <div class="row text-center" >
    <div class="team mt-125">
-      <div class="your-contact-text container ">
+      <div class="your-contact-text container mt-5" style="position: relative;top: 30px;">
          <h2 class="display-41 text-center mt-5 mb-3">Personal Secretaria de Turismo</h2>
          <br><br>
          <div class="row" style="display: flex; justify-content: center;">
@@ -166,36 +194,7 @@
  </div>
 
 <!--footer-->
- <footer class="footer-07">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-12 text-center">
-                <img src="{{ asset('../images/iconos/tocaimatittle.png') }}" style="height: 120px; width:280px ">
-                <br>
-                <br>
-                <p class="menu">
-                    <a href="#">Home</a>
-                    <a href="#Sitios">Ver sitios</a>
-                    <a href="#rutas">Rutas</a>
-                    <a href="#personal">Personal</a>
-                </p>
-                <ul class="ftco-footer-social p-0">
-      <li class="ftco-animate"><a href="https://twitter.com/AlcaldiaTocaima" target="_blank"><img src="https://www.freeiconspng.com/thumbs/logo-twitter-png/logo-twitter-icon-symbol-0.png" width=48 height=48 alt="Síguenos en Twitter" /></a> </a></li>
-      <li class="ftco-animate"><a href="https://www.facebook.com/AlcaldiaDeTocaima" target="_blank"><img alt="Siguenos en Facebook" src="https://lh3.googleusercontent.com/-NSLbC_ztNls/T6VX0g6z8AI/AAAAAAAAA0A/_vyIBrmZbuY/s48/facebook48.png" width=48 height=48  /></a></li>
-      <li class="ftco-animate"><a href="https://www.instagram.com/alcaldiadetocaima/" target="_blank"><img alt="Siguenos en Blogger" src="https://lh3.googleusercontent.com/-D-erW-8vZFo/UIqE3H6oUuI/AAAAAAAABgE/4kh346Lwaxk/s48/instagram48.png" width=48 height=48  /></a> </span></a></li>
-      <li class="ftco-animate"> <a href="https://www.youtube.com/channel/UCmid4NUKUP_7sU5QhV420xA" target="_blank"><img alt="Siguenos en YouTube" src="https://lh6.googleusercontent.com/-Atgpy-x_OwI/T6mYkA18hYI/AAAAAAAAA1U/qksUJ5uBq3c/s48/youtube48.png" width=48 height=48  /></a></a></li>
-    </ul>
-    <div class="col-md-12 text-center">
-        <a style="color: white; font-size: 16px; "> Direccion : Calle 5 con Carrera 9 Esquina Palacio Municipal - Tocaima - Cundinamarca</a>
-        <br>
-        <br>
-        <a style="color: white; font-size: 16px; ">Teléfono Conmutador: (057) (1) 8340517</a>
-    </div>
-            </div>
-            
-        </div>
-     </div>
-</footer>
+ 
 <!--Final footer-->
 @endsection
 <script>
@@ -205,5 +204,7 @@
             $("#Noacces").modal();
         }
     });
+
+    
 </script>    
 

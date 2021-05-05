@@ -58,7 +58,7 @@ class EventPlaceController extends Controller
         $path_imagen = $request->file('imagen_location')->store('eventos', 'public');
 
         //Resize imagen
-        $imagen = Image::make( public_path("storage/{$path_imagen}"))->resize(1700, 600);
+        $imagen = Image::make( public_path("storage/{$path_imagen}"))->resize(800, 600);
         $imagen->save();
         $datos= request()->except(['_token','_method']);
         $nuevo = new EventPlace();
@@ -172,4 +172,6 @@ class EventPlaceController extends Controller
         $eventos = EventPlace::with('place')->get();
         return view('eventos.showeventsall',compact('eventos','sitios'));
     }
+
+    
 }

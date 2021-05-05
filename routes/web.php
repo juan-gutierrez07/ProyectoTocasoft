@@ -25,11 +25,12 @@ Route::post('/coment/update/{commentsplace}','ComentsPlaceController@update')->n
 //Eventos
 Route::resource('/eventos','EventPlaceController');
 Route::post('/eventos/update/{eventplace}','EventPlaceController@update')->name('eventos.update');
+Route::post('/auditoria/fechas','AuditoriaController@filtro')->name('auditoria.fechas');
 });
 Route::get('/noautorizado',function(){
     return view('errores/401');
 });
-
+//Ruta para backup
 Route::get('/backup','HomeController@down')->name('descargar');
 Auth::routes();
 Auth::routes(['verify' => true]);

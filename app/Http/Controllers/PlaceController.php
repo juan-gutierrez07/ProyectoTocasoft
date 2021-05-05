@@ -118,7 +118,7 @@ class PlaceController extends Controller
     public function update(Request $request, Place $place)
     {
         $data=$request->validate([
-            'name' => 'required|unique:places,name',
+            'name' => 'required',
             'categoria_id' => 'required',
             'imagen_principal' => 'image|max:1000',
             'direccion' => 'required',
